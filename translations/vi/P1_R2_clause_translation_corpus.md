@@ -748,6 +748,7 @@ Các đoạn được đánh dấu **TÓM TẮT/DIỄN GIẢI — KHÔNG PHẢI 
 ## P1R2-2498-ART36 — Commission Implementing Regulation (EU) 2026/2498, Article 36
 
 - **OJ:** [Commission Implementing Regulation (EU) 2026/2498, Article 36](https://eur-lex.europa.eu/eli/reg_impl/2026/2498/oj/eng).
+- **Phiên bản nguồn:** OJ L, 2026/2498, công bố ngày 16-11-2026; `ACT-2026-2498`, SHA-256 `2f7c95bfd566cd6bc6ea2f0244f7dd2d45c8c42f1d42786d7f15da2c768856be`.
 
 ### English source text
 
@@ -755,7 +756,7 @@ Các đoạn được đánh dấu **TÓM TẮT/DIỄN GIẢI — KHÔNG PHẢI 
 >
 > This Regulation shall apply from 1 January 2026.
 >
-> It shall be reviewed in 2027 at the latest.
+> It shall be revised in 2027 at the latest.
 >
 > This Regulation shall be binding in its entirety and directly applicable in all Member States.
 
@@ -765,7 +766,7 @@ Các đoạn được đánh dấu **TÓM TẮT/DIỄN GIẢI — KHÔNG PHẢI 
 >
 > Quy định này được áp dụng từ ngày 1 tháng 1 năm 2026.
 >
-> Quy định này phải được rà soát chậm nhất trong năm 2027.
+> Quy định này phải được sửa đổi chậm nhất trong năm 2027.
 >
 > Quy định này có tính ràng buộc toàn bộ và được áp dụng trực tiếp tại tất cả các quốc gia thành viên.
 

@@ -10,7 +10,7 @@
 | Research cut-off | 17 November 2026 | Published, but not yet in force at this cut-off. |
 | Entry into force | 19 November 2026 | Article 36: third day following publication. Recheck actual status before any post-cut-off release. |
 | Application | 1 January 2026 | Article 36 says the Regulation applies from this date. Keep application separate from publication and entry into force; do not describe it as already in force on 17 November. |
-| Review deadline | By 2027 at the latest | Article 36 says the Regulation is to be revised in 2027 at the latest. |
+| Revision deadline | By 2027 at the latest | Article 36 says the Regulation is to be revised in 2027 at the latest. |
 
 ## Article 8 and Annex III — operator carbon-price report
 

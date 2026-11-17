@@ -18,7 +18,7 @@ Phụ lục III đặt yêu cầu tối thiểu về: (1) mã nhận dạng ngư
 
 ## Điều 36 — Hiệu lực và áp dụng
 
-**Bản dịch tham khảo:** Quy định này có hiệu lực vào ngày thứ ba sau ngày được công bố trên Công báo của Liên minh châu Âu. Quy định được áp dụng từ ngày 1 tháng 1 năm 2026. Quy định sẽ được rà soát chậm nhất trong năm 2027.
+**Bản dịch tham khảo:** Quy định này có hiệu lực vào ngày thứ ba sau ngày được công bố trên Công báo của Liên minh châu Âu. Quy định được áp dụng từ ngày 1 tháng 1 năm 2026. Quy định này phải được sửa đổi chậm nhất trong năm 2027.
 
 ## Dòng thời gian tại ngày chốt 17/11/2026
 
