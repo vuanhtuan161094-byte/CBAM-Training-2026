@@ -37,7 +37,14 @@ Seven formula lines are pinned in P1_R4_FORMULA_EVIDENCE.json: 2025/2547 Annex I
 
 ## Exact-SHA GitHub Actions evidence
 
-**Final PR #9 commit SHA / run URL / run result / artifact / whitespace result: pending.** This report must be updated from the workflow run attached to the new head SHA after pushing this checkpoint. Previous run [#44120462890](https://github.com/vuanhtuan161094-byte/CBAM-Training-2026/actions/runs/44120462890) on 9ae2d82f730447732c8498a7fb1a1fc0c8c844a9 is the rejected baseline and is not evidence for this change.
+Exact-SHA run [#44145821188](https://github.com/vuanhtuan161094-byte/CBAM-Training-2026/actions/runs/44145821188) tested commit `b58b20aa7a9f3d43f999509d00f501306c25920e`: **PASS**. All workflow steps passed, including source inventory and SHA checks, structure/coverage, 77 formula mutation rejections, source-text comparison and `git diff --check`.
+
+- Original-text validation: **28/28** local PDF excerpts/claim quotes matched. Five were exact-token, 13 compact full-block, eight compact ordered-segment, and two used hash-pinned Codex visual source-page evidence for PDF text-layer gaps. The two visual matches are explicitly not independent human review.
+- Formula validation: **11/11** EN–VI lines, local OJ source hash and rendered-page hashes verified; Annex III B.3.2 equations 12–15 are **4/4 PASS_EXACT_PDF_TEXT**. Formula human/legal status remains **PENDING_MANUAL_EQUATION_REVIEW**.
+- Whitespace validation: workflow `git diff --check` **PASS**.
+- Source-comparison artifact: [`p1-r3-r4-source-text-validation.zip`](https://github.com/vuanhtuan161094-byte/CBAM-Training-2026/actions/runs/44145821188/artifacts/14355903202) (artifact ID `14355903202`, 2,934 bytes).
+- The earlier runs on `9ae2d82…`, `3e335054…`, `f74ba1c…` and `64ebaa9…` were failed intermediate checkpoints; they are superseded by the passing run above and are retained as QA history, not acceptance evidence.
+- This report edit will create a new PR head and trigger another exact-SHA Actions run. The resulting final head/run will be recorded in the Draft PR description; no translation/legal approval or P1 exit is implied by workflow PASS.
 
 ## Remaining translation scope, blockers and CTIC decisions
 
