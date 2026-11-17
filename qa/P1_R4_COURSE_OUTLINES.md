@@ -42,4 +42,3 @@
 3. Complete the relevant translations and table/formula coverage; resolve default-value CN/route selection, Registry-only forms and rights holds.
 4. Recheck the status of Regulation 2026/2498 after its scheduled entry-into-force date and any new CBAM benchmark amendment before downstream use.
 5. Keep COM(2026) 616 visibly proposal-only, maintain **NEEDS_LEGAL_REVIEW** where no binding source has been verified, and obtain separate CTIC approval before final numerical models or deliverables.
-
