@@ -61,6 +61,12 @@ def token_text(value: str) -> list[str]:
     return re.findall(r"[a-z0-9]+", value)
 
 
+def compact_text(value: str) -> str:
+    """Remove extraction-only spacing/punctuation while preserving letters and digits."""
+    value = unicodedata.normalize("NFKD", value).casefold().replace("\u00ad", "")
+    return re.sub(r"[^a-z0-9]", "", value)
+
+
 def quoted_section(path: Path, clause_id: str) -> tuple[str, str]:
     text = path.read_text(encoding="utf-8")
     headings = list(re.finditer(r"^## (P1R[23]-[^\n]+)$", text, re.M))
@@ -185,7 +191,7 @@ def main() -> int:
     if not SCOPE.issubset(clauses):
         errors.append(f"Original-text scope has unmapped clause IDs: {sorted(SCOPE - set(clauses))}")
 
-    pdf_cache: dict[str, tuple[dict[str, str], list[str]]] = {}
+    pdf_cache: dict[str, tuple[dict[str, str], list[str], str]] = {}
     results: list[dict[str, str]] = []
     for clause_id in sorted(SCOPE):
         row = clauses.get(clause_id)
@@ -223,11 +229,18 @@ def main() -> int:
                 continue
             candidates.append(source_id)
             if source_id not in pdf_cache:
-                pdf_cache[source_id] = (source, token_text(page_text(local_file)))
+                extracted = page_text(local_file)
+                pdf_cache[source_id] = (source, token_text(extracted), compact_text(extracted))
             source_tokens = pdf_cache[source_id][1]
+            source_compact = pdf_cache[source_id][2]
             if contains_sequence(source_tokens, expected_tokens):
                 matched = source_id
                 match_method = "EXACT_TOKEN_SEQUENCE"
+                match_coverage = 1.0
+                break
+            if compact_text(excerpt) and compact_text(excerpt) in source_compact:
+                matched = source_id
+                match_method = "COMPACT_ALPHANUMERIC_SEQUENCE"
                 match_coverage = 1.0
                 break
             coverage, preview, numbers_ok = best_token_coverage(source_tokens, expected_tokens)
@@ -251,7 +264,7 @@ def main() -> int:
             "matched_local_source_id": matched,
             "source_sha256s_json": row.get("source_sha256s_json", ""),
             "quoted_word_tokens": str(len(expected_tokens)),
-            "status": ("PASS_EXACT" if match_method == "EXACT_TOKEN_SEQUENCE" else "PASS_TOKEN_COVERAGE") if matched else "FAIL",
+            "status": ("PASS_EXACT" if match_method == "EXACT_TOKEN_SEQUENCE" else "PASS_COMPACT" if match_method == "COMPACT_ALPHANUMERIC_SEQUENCE" else "PASS_TOKEN_COVERAGE") if matched else "FAIL",
             "match_method": match_method,
             "matched_token_coverage": f"{match_coverage:.4f}",
             "source_window_preview": source_preview,
@@ -275,18 +288,22 @@ def main() -> int:
             errors.append(f"{claim_id}: SHA-256 mismatch for local claim source {source_id}")
             continue
         if source_id not in pdf_cache:
-            pdf_cache[source_id] = (source, token_text(page_text(local_file)))
+            extracted = page_text(local_file)
+            pdf_cache[source_id] = (source, token_text(extracted), compact_text(extracted))
         source_tokens = pdf_cache[source_id][1]
+        source_compact = pdf_cache[source_id][2]
         fragments = [part.strip() for part in claim.get("source_excerpt_en", "").split("/") if part.strip()]
         fragment_results = []
         for part in fragments:
             fragment_tokens = token_text(part)
+            compact_exact = bool(compact_text(part)) and compact_text(part) in source_compact
             exact = contains_sequence(source_tokens, fragment_tokens)
-            coverage, preview, numbers_ok = (1.0, "", True) if exact else best_token_coverage(source_tokens, fragment_tokens)
-            fragment_results.append((exact or (coverage >= 0.97 and numbers_ok), exact, coverage, preview))
+            text_match = exact or compact_exact
+            coverage, preview, numbers_ok = (1.0, "", True) if text_match else best_token_coverage(source_tokens, fragment_tokens)
+            fragment_results.append((text_match or (coverage >= 0.97 and numbers_ok), exact, coverage, preview, compact_exact))
         ok = bool(fragments) and all(item[0] for item in fragment_results)
         claim_coverage = min((item[2] for item in fragment_results), default=0.0)
-        claim_method = "EXACT_TOKEN_SEQUENCE" if fragment_results and all(item[1] for item in fragment_results) else "ORDERED_TOKEN_COVERAGE"
+        claim_method = "EXACT_TOKEN_SEQUENCE" if fragment_results and all(item[1] for item in fragment_results) else ("COMPACT_ALPHANUMERIC_SEQUENCE" if fragment_results and all(item[4] or item[1] for item in fragment_results) else "ORDERED_TOKEN_COVERAGE")
         claim_preview = next((item[3] for item in fragment_results if item[3]), "")
         if not ok:
             errors.append(f"{claim_id}: English claim excerpt does not match the SHA-verified local source {source_id}; best ordered token coverage {claim_coverage:.3f}; source window: {claim_preview}")
@@ -297,7 +314,7 @@ def main() -> int:
             "matched_local_source_id": source_id if ok else "",
             "source_sha256s_json": json.dumps([claim.get("source_sha256", "")]),
             "quoted_word_tokens": str(sum(len(token_text(fragment)) for fragment in fragments)),
-            "status": ("PASS_EXACT" if claim_method == "EXACT_TOKEN_SEQUENCE" else "PASS_TOKEN_COVERAGE") if ok else "FAIL",
+            "status": ("PASS_EXACT" if claim_method == "EXACT_TOKEN_SEQUENCE" else "PASS_COMPACT" if claim_method == "COMPACT_ALPHANUMERIC_SEQUENCE" else "PASS_TOKEN_COVERAGE") if ok else "FAIL",
             "match_method": claim_method,
             "matched_token_coverage": f"{claim_coverage:.4f}",
             "source_window_preview": claim_preview,
@@ -346,9 +363,10 @@ def main() -> int:
 
     passes = sum(result["status"].startswith("PASS_") for result in results)
     exact = sum(result["status"] == "PASS_EXACT" for result in results)
+    compact = sum(result["status"] == "PASS_COMPACT" for result in results)
     comparisons = sum(result["status"].startswith("PASS_") or result["status"] == "FAIL" for result in results)
     print(f"P1 original-text comparison: {passes}/{comparisons} local PDF excerpts/claim quotes matched; proposal PAGE_ONLY recorded separately")
-    print(f"- Exact token-sequence matches: {exact}; normalized ordered-token coverage threshold: 0.97 with numeric-token order preserved")
+    print(f"- Exact token-sequence matches: {exact}; compact alphanumeric matches: {compact}; normalized ordered-token coverage threshold: 0.97 with numeric-token order preserved")
     print(f"Evidence CSV: {OUTPUT.relative_to(ROOT)}")
     for error in errors:
         print(f"FAIL: {error}")
