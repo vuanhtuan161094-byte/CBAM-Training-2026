@@ -1,0 +1,23 @@
+# Official CBAM form and template inventory
+
+**Checked:** 17 November 2026. This inventory separates legal form requirements, authenticated Registry templates, public guidance and transitional aids. A blank or training form made by CTIC must be labeled as a training aid and must not be described as an official EU form.
+
+| Artifact | Official basis / location | Public standalone file verified? | Applicability and handling |
+|---|---|---:|---|
+| Operator emissions report (OER) | Implementing Regulation (EU) 2025/2547, Article 10 and Annex IV points 1.1, 1.1.1 and 1.2; see `ACT-2025-2547` | No | The legal content/structure is defined; Commission materials associate the operational report with the CBAM Registry. No separately downloadable public 2026 OER workbook was verified. Keep as `NOT_PUBLICLY_VERIFIED` as a standalone file. |
+| Verification report | Implementing Regulation (EU) 2025/2546, Article 6 and its Annex; see `ACT-2025-2546` | No | Article 6 says the verification report is prepared from a Commission electronic template provided via the CBAM Registry. No separate public template file was verified. Authenticated Registry template is distinct from its legal minimum contents. |
+| Operator carbon-price report | Implementing Regulation (EU) 2026/2498, Article 8 and Annex III; see `ACT-2026-2498` | No | The OJ act provides for a Commission electronic template through the CBAM Registry. It was published 16 Nov 2026, enters into force 19 Nov 2026, and states it applies from 1 Jan 2026. No public standalone template file was verified as of 17 Nov. |
+| Annual CBAM declaration | Regulation (EU) 2023/956, Article 6(1); Registry user manual for declarants `REG-PORTAL-DECLARANTS` | No | Submitted via the Registry. The first declaration for 2026 imports is due in 2027 under Article 6. The guide/manual describes portal use; it is not a downloadable Excel form. |
+| Registry report and customs information | CBAM Registry under Regulation (EU) 2024/3210 as amended by 2025/2550; customs information under 2025/2619 | No standalone public form verified | Current portal documentation is listed in the source register. The live portal requires EU Login with 2FA; this work did not log in, submit, or obtain authenticated form payloads. |
+| O3CI operator registration and installation data submission | Basic Regulation Article 10; Registry/O3CI resources `REG-O3CI-*` | Portal workflow and public user guides; no standalone legal blank form verified | Non-EU operators may request registration. Public guides cover access, delegation and portal use. Access documentation is guidance, not a law. |
+| Accredited-verifier Registry access and reports | Regulations (EU) 2025/2546 and 2025/2551; Registry manuals `REG-VERIFIER-*` | Portal workflow and public user guides; standalone report template not verified | Current public guides/manuals available; report template itself is delivered electronically through the Registry under 2025/2546 Article 6. |
+| 2024 CBAM communication template for installations | Transitional Commission template `TEMPLATE-2024-COMMUNICATION`; examples `EXAMPLES-2024-COMMUNICATION`; Implementing Regulation (EU) 2023/1773 | Yes, downloaded official Excel and ZIP | **TRANSITIONAL_ONLY.** Dated 18 Dec 2024; not a required 2026 definitive-period form. Preserve date and label in every reuse. |
+| 2024 importer guidance | `GUIDE-2024-IMPORTER` | Yes, downloaded official PDF | **TRANSITIONAL_ONLY.** Use only for historical transition-period context. |
+| Default-values workbook | Commission CBAM legislation index; legal values in Regulations (EU) 2025/2621 and 2026/1740 | Official link verified; intentionally not copied | Informational workbook only. Its grid factors include IEA-licensed data limited to CBAM use and non-commercial redistribution. Do not redistribute in the public repo without appropriate licence. |
+| CBAM benchmark workbook | Commission CBAM legislation index; legal instrument is Regulation (EU) 2025/2620 | Yes, downloaded informational workbook | Commission labels the workbook informational. **NEEDS_LEGAL_REVIEW** due the 2026 ETS benchmark revision; use legal text as authority. |
+
+## Retrieval rules
+
+- `SOURCE_REGISTER.csv` distinguishes `RETRIEVED`, `NOT_PUBLICLY_VERIFIED`, `EXCLUDED_LICENSE_REVIEW`, and `TRANSITIONAL_ONLY` use in applicability notes.
+- Do not call an absent standalone workbook a broken download if the official public evidence supports a Registry-delivered template. Record the access limitation.
+- Before using a future Registry capture, record the official page, capture date, version/release, role, access condition, bytes and SHA-256. Never record credentials, personal identity data or live customer values.
