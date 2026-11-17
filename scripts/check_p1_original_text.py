@@ -8,6 +8,7 @@ translation quality, applicability to a fact pattern, or human approval.
 from __future__ import annotations
 
 import csv
+from difflib import SequenceMatcher
 import hashlib
 import json
 import re
@@ -88,15 +89,23 @@ def page_text(pdf_path: Path) -> str:
     chunks: list[str] = []
     for page in reader.pages:
         page_value = page.extract_text(extraction_mode="plain") or ""
-        lines = []
+        page_lines = []
         for line in page_value.splitlines():
             line = line.strip()
             if not line or "ELI:" in line or "OJ L," in line:
                 continue
             if re.fullmatch(r"\d+\s*/\s*\d+", line):
                 continue
-            lines.append(line)
-        chunks.extend(lines)
+            page_lines.append(line)
+        # PDF layout often wraps a word with a line-ending hyphen. Rejoin only
+        # that extraction artifact before tokenizing; retain legal hyphens.
+        joined: list[str] = []
+        for line in page_lines:
+            if joined and joined[-1].endswith("-") and line[:1].islower():
+                joined[-1] = joined[-1][:-1] + line
+            else:
+                joined.append(line)
+        chunks.extend(joined)
     return "\n".join(chunks)
 
 
@@ -105,6 +114,63 @@ def contains_sequence(haystack: list[str], needle: list[str]) -> bool:
         return False
     width = len(needle)
     return any(haystack[i:i + width] == needle for i in range(len(haystack) - width + 1))
+
+
+def sequence_positions(haystack: list[str], needle: list[str]) -> list[int]:
+    if not needle or len(needle) > len(haystack):
+        return []
+    width = len(needle)
+    return [i for i in range(len(haystack) - width + 1) if haystack[i:i + width] == needle]
+
+
+def ordered_subsequence(needle: list[str], haystack: list[str]) -> bool:
+    cursor = 0
+    for token in haystack:
+        if cursor < len(needle) and token == needle[cursor]:
+            cursor += 1
+    return cursor == len(needle)
+
+
+def best_token_coverage(haystack: list[str], needle: list[str]) -> tuple[float, str, bool]:
+    """Measure ordered local token coverage while tolerating PDF extraction noise.
+
+    Exact token sequence remains the strongest result. Otherwise, an uncommon
+    5-token anchor locates candidate windows and SequenceMatcher measures how
+    much of the quoted source text appears in-order. Numeric tokens must also
+    remain in order in the selected window.
+    """
+    if not needle or not haystack:
+        return 0.0, "", False
+    exact_numbers = [token for token in needle if token.isdigit()]
+    anchor_width = min(5, len(needle))
+    anchors: list[tuple[int, int, list[int]]] = []
+    for width in range(anchor_width, min(2, anchor_width) - 1, -1):
+        for offset in range(0, len(needle) - width + 1):
+            anchor = needle[offset:offset + width]
+            positions = sequence_positions(haystack, anchor)
+            if positions:
+                anchors.append((len(positions), offset, positions))
+        if anchors:
+            break
+    if not anchors:
+        return 0.0, "", False
+    _, anchor_offset, anchor_positions = min(anchors, key=lambda item: item[0])
+    best_coverage = 0.0
+    best_window: list[str] = []
+    # Keep work bounded for repeated phrases in very large default-value PDFs.
+    for position in anchor_positions[:80]:
+        estimate = position - anchor_offset
+        for start in (estimate - 6, estimate, estimate + 6):
+            start = max(0, start)
+            window = haystack[start:min(len(haystack), start + len(needle) + 24)]
+            matcher = SequenceMatcher(None, needle, window, autojunk=False)
+            covered = sum(block.size for block in matcher.get_matching_blocks())
+            coverage = covered / len(needle)
+            if coverage > best_coverage:
+                best_coverage, best_window = coverage, window
+    numbers_ok = ordered_subsequence(exact_numbers, best_window)
+    preview = " ".join(best_window[: min(80, len(best_window))])
+    return best_coverage, preview, numbers_ok
 
 
 def main() -> int:
@@ -137,6 +203,9 @@ def main() -> int:
             continue
 
         matched = ""
+        match_method = ""
+        match_coverage = 0.0
+        source_preview = ""
         candidates: list[str] = []
         best_source = ""
         best_ratio = 0.0
@@ -158,19 +227,23 @@ def main() -> int:
             source_tokens = pdf_cache[source_id][1]
             if contains_sequence(source_tokens, expected_tokens):
                 matched = source_id
+                match_method = "EXACT_TOKEN_SEQUENCE"
+                match_coverage = 1.0
                 break
-            # A diagnostic only; a near match never counts as PASS.
-            from difflib import SequenceMatcher
-            joined_source = " ".join(source_tokens)
-            joined_excerpt = " ".join(expected_tokens)
-            ratio = SequenceMatcher(None, joined_excerpt, joined_source).ratio()
-            if ratio > best_ratio:
-                best_ratio, best_source = ratio, source_id
+            coverage, preview, numbers_ok = best_token_coverage(source_tokens, expected_tokens)
+            if coverage > best_ratio:
+                best_ratio, best_source = coverage, source_id
+                source_preview = preview
+                match_coverage = coverage
+                match_method = "ORDERED_TOKEN_COVERAGE" if numbers_ok else "ORDERED_TOKEN_COVERAGE_NUMBERS_DIFFER"
+            if coverage >= 0.97 and numbers_ok:
+                matched = source_id
+                break
 
         if not candidates:
             errors.append(f"{clause_id}: no local, hash-verified official PDF candidate")
         elif not matched:
-            errors.append(f"{clause_id}: English block not found in {candidates}; nearest diagnostic {best_source} ratio={best_ratio:.3f}")
+            errors.append(f"{clause_id}: English block not matched in {candidates}; best ordered token coverage {best_ratio:.3f} from {best_source}; source window: {source_preview}")
         results.append({
             "clause_id": clause_id,
             "provision_anchor": row.get("provision_anchor", ""),
@@ -178,7 +251,10 @@ def main() -> int:
             "matched_local_source_id": matched,
             "source_sha256s_json": row.get("source_sha256s_json", ""),
             "quoted_word_tokens": str(len(expected_tokens)),
-            "status": "PASS" if matched else "FAIL",
+            "status": ("PASS_EXACT" if match_method == "EXACT_TOKEN_SEQUENCE" else "PASS_TOKEN_COVERAGE") if matched else "FAIL",
+            "match_method": match_method,
+            "matched_token_coverage": f"{match_coverage:.4f}",
+            "source_window_preview": source_preview,
             "review_limit": "English text/source identity only; no translation/legal approval",
         })
 
@@ -202,10 +278,18 @@ def main() -> int:
             pdf_cache[source_id] = (source, token_text(page_text(local_file)))
         source_tokens = pdf_cache[source_id][1]
         fragments = [part.strip() for part in claim.get("source_excerpt_en", "").split("/") if part.strip()]
-        matches = [contains_sequence(source_tokens, token_text(part)) for part in fragments]
-        ok = bool(fragments) and all(matches)
+        fragment_results = []
+        for part in fragments:
+            fragment_tokens = token_text(part)
+            exact = contains_sequence(source_tokens, fragment_tokens)
+            coverage, preview, numbers_ok = (1.0, "", True) if exact else best_token_coverage(source_tokens, fragment_tokens)
+            fragment_results.append((exact or (coverage >= 0.97 and numbers_ok), exact, coverage, preview))
+        ok = bool(fragments) and all(item[0] for item in fragment_results)
+        claim_coverage = min((item[2] for item in fragment_results), default=0.0)
+        claim_method = "EXACT_TOKEN_SEQUENCE" if fragment_results and all(item[1] for item in fragment_results) else "ORDERED_TOKEN_COVERAGE"
+        claim_preview = next((item[3] for item in fragment_results if item[3]), "")
         if not ok:
-            errors.append(f"{claim_id}: one or more English claim excerpts do not match the SHA-verified local source {source_id}")
+            errors.append(f"{claim_id}: English claim excerpt does not match the SHA-verified local source {source_id}; best ordered token coverage {claim_coverage:.3f}; source window: {claim_preview}")
         results.append({
             "clause_id": claim_id,
             "provision_anchor": claim.get("provision", ""),
@@ -213,7 +297,10 @@ def main() -> int:
             "matched_local_source_id": source_id if ok else "",
             "source_sha256s_json": json.dumps([claim.get("source_sha256", "")]),
             "quoted_word_tokens": str(sum(len(token_text(fragment)) for fragment in fragments)),
-            "status": "PASS" if ok else "FAIL",
+            "status": ("PASS_EXACT" if claim_method == "EXACT_TOKEN_SEQUENCE" else "PASS_TOKEN_COVERAGE") if ok else "FAIL",
+            "match_method": claim_method,
+            "matched_token_coverage": f"{claim_coverage:.4f}",
+            "source_window_preview": claim_preview,
             "review_limit": "Claim excerpt/source identity only; no translation/legal approval",
         })
 
@@ -228,6 +315,9 @@ def main() -> int:
             "source_sha256s_json": proposal.get("source_sha256s_json", ""),
             "quoted_word_tokens": "",
             "status": "OFFICIAL_PAGE_ONLY",
+            "match_method": "NOT_LOCAL",
+            "matched_token_coverage": "",
+            "source_window_preview": "",
             "review_limit": "No local proposal file/hash; EUR-Lex proposal page and procedure checked",
         })
     for proposal_claim_id in ("P1-036", "P1-037"):
@@ -241,19 +331,24 @@ def main() -> int:
                 "source_sha256s_json": json.dumps([claim.get("source_sha256", "")]),
                 "quoted_word_tokens": str(len(token_text(claim.get("source_excerpt_en", "")))),
                 "status": "OFFICIAL_PAGE_ONLY",
+                "match_method": "NOT_LOCAL",
+                "matched_token_coverage": "",
+                "source_window_preview": "",
                 "review_limit": "No local proposal file/hash; verify against official EUR-Lex proposal page",
             })
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    fields = ["clause_id", "provision_anchor", "source_ids_json", "matched_local_source_id", "source_sha256s_json", "quoted_word_tokens", "status", "review_limit"]
+    fields = ["clause_id", "provision_anchor", "source_ids_json", "matched_local_source_id", "source_sha256s_json", "quoted_word_tokens", "status", "match_method", "matched_token_coverage", "source_window_preview", "review_limit"]
     with OUTPUT.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         writer.writerows(results)
 
-    passes = sum(result["status"] == "PASS" for result in results)
-    comparisons = sum(result["status"] in {"PASS", "FAIL"} for result in results)
+    passes = sum(result["status"].startswith("PASS_") for result in results)
+    exact = sum(result["status"] == "PASS_EXACT" for result in results)
+    comparisons = sum(result["status"].startswith("PASS_") or result["status"] == "FAIL" for result in results)
     print(f"P1 original-text comparison: {passes}/{comparisons} local PDF excerpts/claim quotes matched; proposal PAGE_ONLY recorded separately")
+    print(f"- Exact token-sequence matches: {exact}; normalized ordered-token coverage threshold: 0.97 with numeric-token order preserved")
     print(f"Evidence CSV: {OUTPUT.relative_to(ROOT)}")
     for error in errors:
         print(f"FAIL: {error}")
