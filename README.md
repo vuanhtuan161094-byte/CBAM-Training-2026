@@ -23,3 +23,14 @@ Every legal claim must trace to its original **Regulation/Directive, Article, pa
 **Never commit** commercial/customer/supplier data, named-company CBAM reports, personal information, private audit evidence, credentials, unlicensed media or unapproved internal CTIC training content. Use original public EU sources, attributed quotations and synthetic/anonymized worked examples only. Confidential material belongs outside this public repository. Don't contact customers or submit to CBAM Registry without explicit permission.
 
 Start with [AGENTS.md](AGENTS.md) and the GitHub issues. The materials are not an EU official template, certification or verified legal interpretation.
+
+## Issue #2 — P0 source inventory
+
+- [Official source register and hashes](source-register/SOURCE_REGISTER.csv)
+- [2026 applicability baseline](legal/APPLICABILITY_2026.md)
+- [Official form inventory](forms/OFFICIAL_FORM_INVENTORY.md)
+- [Ten-claim legal citation audit](qa/LEGAL_CITATION_AUDIT_10_CLAIMS.md)
+- [Retrieval report and unresolved items](qa/P0_RETRIEVAL_REPORT.md)
+- [Unofficial EN–VI glossary draft](glossary/CBAM_EN_VI_GLOSSARY.csv)
+- [Downloaded EU originals](sources/official/originals/)
+- [Source inventory checker](scripts/check_source_inventory.py)
