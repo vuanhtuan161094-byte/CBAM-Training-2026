@@ -69,5 +69,6 @@ Start with [AGENTS.md](AGENTS.md) and the GitHub issues. The materials are not a
 - [P1-R4 CTIC independent review pack](qa/P1_R4_CTIC_REVIEW_PACK.md)
 - [P1-R4 non-operative expert and client course outlines](qa/P1_R4_COURSE_OUTLINES.md)
 - [P1-R4 formula/source-render evidence](qa/P1_R4_FORMULA_EVIDENCE.json)
+- [P1-R4 text source-page evidence](qa/P1_R4_TEXT_SOURCE_EVIDENCE.json)
 
 P1 material is a research/translation draft only. P1-R2 technical checkpoint passed at its reviewed SHA. P1-R3.1 formulas now have official-PDF text evidence and a SHA-pinned rendered-page comparison; the independent human/legal review remains pending. P1-R4 remains a partial translation tranche; its selected formula/source-image checks do not close the full Annex coverage. The non-operative course outlines are planning drafts only. The overall P1 legal/translation gate remains not passed. PR #9 remains a draft stacked on P0 PR #8; neither is merged. No CTIC legal approval is asserted and no final P2–P4 production material is included.

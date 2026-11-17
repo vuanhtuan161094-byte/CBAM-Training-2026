@@ -26,6 +26,7 @@ SUPPLEMENTAL = ROOT / "source-register" / "P1_R2_SUPPLEMENTAL_SOURCES.csv"
 CLAUSE_COVERAGE = ROOT / "translations" / "CLAUSE_COVERAGE.csv"
 CLAIM_MATRIX = ROOT / "legal" / "CLAIM_MATRIX.csv"
 OUTPUT = ROOT / "qa" / "P1_R3_SOURCE_TEXT_VALIDATION.csv"
+TEXT_SOURCE_EVIDENCE = ROOT / "qa" / "P1_R4_TEXT_SOURCE_EVIDENCE.json"
 CORPUS_FILES = {
     "translations/vi/P1_R2_clause_translation_corpus.md": ROOT / "translations" / "vi" / "P1_R2_clause_translation_corpus.md",
     "translations/vi/P1_R3_expanded_corpus.md": ROOT / "translations" / "vi" / "P1_R3_expanded_corpus.md",
@@ -106,6 +107,49 @@ def ordered_segment_match(source_compact: str, segments: list[str]) -> tuple[boo
         matched += 1
         cursor = position + len(segment)
     return bool(segments) and matched == len(segments), matched, unmatched
+
+
+def validate_visual_source_entry(
+    root: Path,
+    entry: dict[str, str],
+    clause_id: str,
+    source_ids: list[str],
+    source_hashes: list[str],
+    source_excerpt: str,
+    sources: dict[str, dict[str, str]],
+) -> tuple[bool, str]:
+    """Validate narrow Codex visual evidence when PDF text extraction misses one quoted segment."""
+    source_id = entry.get("source_id", "")
+    if entry.get("clause_id") != clause_id or source_id not in source_ids:
+        return False, "visual evidence clause/source does not match coverage row"
+    if entry.get("rendered_visual_status") != "PASS_CODEX_VISUAL_SOURCE_MATCH":
+        return False, "visual evidence has no Codex visual source-match status"
+    if entry.get("human_review_status") != "PENDING_INDEPENDENT_LEGAL_AND_BILINGUAL_REVIEW":
+        return False, "visual evidence must retain pending independent review"
+    source = sources.get(source_id, {})
+    local_pdf = root / entry.get("local_pdf_path", "")
+    image = root / entry.get("evidence_image_path", "")
+    if not local_pdf.is_file() or not image.is_file():
+        return False, "visual evidence source PDF or rendered page is missing"
+    local_pdf_sha = hashlib.sha256(local_pdf.read_bytes()).hexdigest()
+    image_sha = hashlib.sha256(image.read_bytes()).hexdigest()
+    try:
+        source_index = source_ids.index(source_id)
+    except ValueError:
+        return False, "visual evidence source is not attached to the coverage row"
+    if (
+        local_pdf_sha != source.get("sha256")
+        or local_pdf_sha != entry.get("local_pdf_sha256")
+        or source_index >= len(source_hashes)
+        or local_pdf_sha != source_hashes[source_index]
+    ):
+        return False, "visual evidence local PDF SHA-256 does not match source register and clause coverage"
+    if image_sha != entry.get("evidence_image_sha256"):
+        return False, "visual evidence rendered-page SHA-256 mismatch"
+    verified_text = entry.get("visually_verified_english", "")
+    if not verified_text or compact_text(verified_text) not in compact_text(source_excerpt):
+        return False, "visually checked English excerpt is absent from the cited corpus block"
+    return True, source_id
 
 
 def quoted_section(path: Path, clause_id: str) -> tuple[str, str]:
@@ -231,6 +275,14 @@ def main() -> int:
     _, source_rows = read_csv(REGISTER)
     _, supplemental_rows = read_csv(SUPPLEMENTAL)
     sources = {row["source_id"]: row for row in [*source_rows, *supplemental_rows]}
+    try:
+        text_evidence_doc = json.loads(TEXT_SOURCE_EVIDENCE.read_text(encoding="utf-8"))
+        visual_source_evidence = {item["clause_id"]: item for item in text_evidence_doc["entries"]}
+        if text_evidence_doc.get("overall_status") != "PENDING_INDEPENDENT_LEGAL_AND_BILINGUAL_REVIEW":
+            errors.append("P1-R4 visual source evidence must remain pending independent legal and bilingual review")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        visual_source_evidence = {}
+        errors.append(f"P1-R4 visual source evidence file is missing or invalid: {exc}")
     _, clause_rows = read_csv(CLAUSE_COVERAGE)
     clauses = {row["clause_id"]: row for row in clause_rows}
     if not SCOPE.issubset(clauses):
@@ -268,6 +320,17 @@ def main() -> int:
         if len(expected_tokens) < 8:
             errors.append(f"{clause_id}: English source block is too short to compare")
             continue
+        visual_entry = visual_source_evidence.get(clause_id)
+        visual_source_id = ""
+        if visual_entry:
+            row_source_hashes = json.loads(row["source_sha256s_json"])
+            visual_ok, visual_result = validate_visual_source_entry(
+                ROOT, visual_entry, clause_id, source_ids, row_source_hashes, excerpt, sources
+            )
+            if visual_ok:
+                visual_source_id = visual_result
+            else:
+                errors.append(f"{clause_id}: {visual_result}")
 
         matched = ""
         match_method = ""
@@ -288,7 +351,9 @@ def main() -> int:
                 errors.append(f"{clause_id}: local source file missing for {source_id}")
                 continue
             actual_sha = hashlib.sha256(local_file.read_bytes()).hexdigest()
-            if actual_sha != source.get("sha256") or actual_sha != json.loads(row["source_sha256s_json"])[source_ids.index(source_id)]:
+            source_index = source_ids.index(source_id)
+            row_source_hashes = json.loads(row["source_sha256s_json"])
+            if actual_sha != source.get("sha256") or source_index >= len(row_source_hashes) or actual_sha != row_source_hashes[source_index]:
                 errors.append(f"{clause_id}: SHA-256 mismatch for stored source {source_id}")
                 continue
             candidates.append(source_id)
@@ -328,7 +393,13 @@ def main() -> int:
         if not candidates:
             errors.append(f"{clause_id}: no local, hash-verified official PDF candidate")
         elif not matched:
-            errors.append(f"{clause_id}: English block has {segment_matched}/{segment_total} exact quoted segments in source order; unmatched segment previews: {unmatched_segment}; diagnostic token coverage {best_ratio:.3f} from {best_source}; source window: {source_preview}")
+            if visual_source_id in candidates:
+                matched = visual_source_id
+                match_method = "CODEX_VISUAL_SOURCE_MATCH"
+                match_coverage = 1.0
+                source_preview = f"Hash-verified rendered OJ page {visual_entry['source_page']}"
+            if not matched:
+                errors.append(f"{clause_id}: English block has {segment_matched}/{segment_total} exact quoted segments in source order; unmatched segment previews: {unmatched_segment}; diagnostic token coverage {best_ratio:.3f} from {best_source}; source window: {source_preview}")
         results.append({
             "clause_id": clause_id,
             "provision_anchor": row.get("provision_anchor", ""),
@@ -336,13 +407,13 @@ def main() -> int:
             "matched_local_source_id": matched,
             "source_sha256s_json": row.get("source_sha256s_json", ""),
             "quoted_word_tokens": str(len(expected_tokens)),
-            "status": ("PASS_EXACT" if match_method == "EXACT_TOKEN_SEQUENCE" else "PASS_COMPACT" if match_method == "COMPACT_ALPHANUMERIC_SEQUENCE" else "PASS_SEGMENTS" if match_method == "COMPACT_ORDERED_SEGMENTS" else "FAIL"),
+            "status": ("PASS_EXACT" if match_method == "EXACT_TOKEN_SEQUENCE" else "PASS_COMPACT" if match_method == "COMPACT_ALPHANUMERIC_SEQUENCE" else "PASS_SEGMENTS" if match_method == "COMPACT_ORDERED_SEGMENTS" else "PASS_CODEX_VISUAL_SOURCE_MATCH" if match_method == "CODEX_VISUAL_SOURCE_MATCH" else "FAIL"),
             "match_method": match_method,
             "matched_token_coverage": f"{match_coverage:.4f}",
             "source_segments": f"{segment_matched}/{segment_total}",
             "unmatched_segment_preview": unmatched_segment,
             "source_window_preview": source_preview,
-            "review_limit": "English prose/source identity only; formulas are separate evidence rows; no translation/legal approval",
+            "review_limit": ("One pypdf text-layer segment was unmatched; source identity and passage were checked against the SHA-pinned rendered OJ page by Codex. Independent legal and bilingual review remains pending; no translation/legal approval" if match_method == "CODEX_VISUAL_SOURCE_MATCH" else "English prose/source identity only; formulas are separate evidence rows; no translation/legal approval"),
         })
 
     for formula_row in formula_rows:
@@ -464,10 +535,11 @@ def main() -> int:
     exact = sum(result["status"] == "PASS_EXACT" for result in clause_and_claim_results)
     compact = sum(result["status"] == "PASS_COMPACT" for result in clause_and_claim_results)
     segmented = sum(result["status"] == "PASS_SEGMENTS" for result in clause_and_claim_results)
+    visual_source = sum(result["status"] == "PASS_CODEX_VISUAL_SOURCE_MATCH" for result in clause_and_claim_results)
     comparisons = sum(result["status"].startswith("PASS_") or result["status"] == "FAIL" for result in clause_and_claim_results)
     formula_passes = sum(row["status"] == "PASS_EXACT_PDF_TEXT" for row in formula_rows) if not formula_errors else 0
     print(f"P1 prose/claim comparison: {passes}/{comparisons} local PDF excerpts/claim quotes matched; proposal PAGE_ONLY recorded separately")
-    print(f"- Exact token-sequence matches: {exact}; compact full-block matches: {compact}; compact ordered-segment matches: {segmented}")
+    print(f"- Exact token-sequence matches: {exact}; compact full-block matches: {compact}; compact ordered-segment matches: {segmented}; hash-pinned Codex visual source matches: {visual_source}")
     print(f"- Annex III B.3.2 formulas: {formula_passes}/4 PASS_EXACT_PDF_TEXT; overall PENDING_MANUAL_EQUATION_REVIEW")
     print(f"Evidence CSV: {OUTPUT.relative_to(ROOT)}")
     for error in errors:

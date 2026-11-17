@@ -788,7 +788,9 @@
 >
 > 1. Where the embedded emissions in imported goods are determined on the basis of default values in accordance with Article 7(2), point (b), of Regulation (EU) 2023/956, the default values laid down in Annex I to this Regulation shall be used.
 >
-> 2. Where the embedded emissions of complex goods are determined on the basis of actual values, and the embedded emissions of precursors used in the production of those complex goods are determined on the basis of default values in accordance with Article 15 of Commission Implementing Regulation (EU) 2025/2547, the default values laid down in Annex I shall be used for those precursors.
+> 2. Where the embedded emissions of complex goods are determined on the basis of actual values, and the embedded emissions of precursors used in the production of those complex goods are determined on the basis of default values in accordance with Article 15 of Commission Implementing Regulation (EU) 2025/2547 (2), the default values laid down in Annex I shall be used for those precursors.
+>
+> (2) Commission Implementing Regulation (EU) 2025/2547 of 10 December 2025 laying down the rules for the application of Regulation (EU) 2023/956 of the European Parliament and the Council on the methods for the calculation of emissions embedded in goods (OJ L, 2025/2547, 22.12.2025, ELI: http://data.europa.eu/eli/reg_impl/2025/2547/oj).
 >
 > 3. Where the specific indirect embedded emissions are determined on the basis of default values in accordance with Article 7(4) of Regulation (EU) 2023/956, the default values laid down in Annex II to this Regulation shall be used.
 >
@@ -814,7 +816,9 @@
 >
 > 1. Khi phát thải hàm chứa trong hàng hóa nhập khẩu được xác định trên cơ sở giá trị mặc định theo điểm (b) khoản 2 Điều 7 Quy định (EU) 2023/956, phải sử dụng các giá trị mặc định quy định tại Annex I của Quy định này.
 >
-> 2. Khi phát thải hàm chứa của hàng hóa phức hợp được xác định trên cơ sở giá trị thực tế, còn phát thải hàm chứa của tiền chất dùng để sản xuất hàng hóa phức hợp đó được xác định trên cơ sở giá trị mặc định theo Điều 15 Quy định Thực thi (EU) 2025/2547, phải sử dụng các giá trị mặc định tại Annex I cho các tiền chất đó.
+> 2. Khi phát thải hàm chứa của hàng hóa phức hợp được xác định trên cơ sở giá trị thực tế, còn phát thải hàm chứa của tiền chất dùng để sản xuất hàng hóa phức hợp đó được xác định trên cơ sở giá trị mặc định theo Điều 15 Quy định Thực thi (EU) 2025/2547 (2), phải sử dụng các giá trị mặc định tại Annex I cho các tiền chất đó.
+>
+> (2) Quy định thi hành (EU) 2025/2547 của Ủy ban ngày 10 tháng 12 năm 2025 quy định chi tiết việc áp dụng Quy định (EU) 2023/956 của Nghị viện châu Âu và Hội đồng về phương pháp tính phát thải hàm chứa trong hàng hóa (OJ L, 2025/2547, 22.12.2025, ELI: http://data.europa.eu/eli/reg_impl/2025/2547/oj).
 >
 > 3. Khi phát thải hàm chứa gián tiếp riêng được xác định trên cơ sở giá trị mặc định theo khoản 4 Điều 7 Quy định (EU) 2023/956, phải sử dụng các giá trị mặc định tại Phụ lục II của Quy định này.
 >
