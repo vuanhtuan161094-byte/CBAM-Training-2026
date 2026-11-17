@@ -2,8 +2,8 @@
 
 | Phase | Evidence required | Status |
 |---|---|---|
-| P0 Sources | official URLs, retrieval times, amendments, SHA256, licensing and missing-file register | NOT STARTED |
-| P1 Legal & translations | legal claim matrix Article/Annex, 2026 vs transitional diff, traceable EN–VI translation, CTIC review | NOT STARTED |
+| P0 Sources | official URLs, retrieval times, amendments, SHA256, licensing and missing-file register | DRAFT CHECKPOINT; PR #8 review follow-ups open |
+| P1 Legal & translations | legal claim matrix Article/Annex, 2026 vs transitional diff, traceable EN–VI translation, CTIC review | IN PROGRESS — DRAFT; independent human legal/bilingual review pending |
 | P2 Models & forms | three sector models, independent test fixtures, transparent inputs and official/unofficial template labeling | NOT STARTED |
 | P3 Expert | 12h / 120–160 slides, presenter notes, worked exercises and cited technical manual | NOT STARTED |
 | P4 Client | 150min / 40–55 visually verified slides, correct costs/assumptions, handout and privacy clearance | NOT STARTED |

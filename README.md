@@ -34,3 +34,17 @@ Start with [AGENTS.md](AGENTS.md) and the GitHub issues. The materials are not a
 - [Unofficial EN–VI glossary draft](glossary/CBAM_EN_VI_GLOSSARY.csv)
 - [Downloaded EU originals](sources/official/originals/)
 - [Source inventory checker](scripts/check_source_inventory.py)
+
+## Issue #3 — P1 legal/translation draft (human review pending)
+
+- [Article-level claim matrix](legal/CLAIM_MATRIX.csv)
+- [2023–2026 legal change log](legal/LEGAL_CHANGELOG_2023_2026.md)
+- [2026–2027 benchmark legal status](legal/BENCHMARK_2026_2027_LEGAL_STATUS.md)
+- [2026/2498 carbon-price timeline](legal/CARBON_PRICE_2026_2498_TIMELINE.md)
+- [Legal conflict log](legal/CONFLICT_LOG.md)
+- [EN–VI term glossary](glossary/CBAM_EN_VI.csv)
+- [Translation coverage register](translations/coverage.csv)
+- [Vietnamese translation chunks](translations/vi/)
+- [P1 claim and translation checks](qa/P1_CLAIM_AND_TRANSLATION_CHECKS.md)
+
+P1 material is a research/translation draft only. P0 PR #8 remains a draft checkpoint; no CTIC legal approval is asserted and no P2–P4 production material is included.
