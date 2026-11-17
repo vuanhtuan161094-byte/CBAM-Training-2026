@@ -37,9 +37,9 @@
       "local_pdf_sha256": "a6f2a1e67af89aae886862c570f866ac7fd2533d600b766b772a1321f575e66f",
       "source_page": "2/2400",
       "evidence_image_path": "qa/evidence/ACT-2025-2621-ARTICLE-1-OJ-p2-mono.png",
-      "evidence_image_sha256": "1d24c7b2731297a59289445dcbbfc3b3638fbddfde18781ddbc41e78158a3eac",
+      "evidence_image_sha256": "1d24c7b2731297a59289445dcb83fcb3638fbddfde18781ddbc41e78158a3eac",
       "visually_verified_english": "Where the embedded emissions of complex goods are determined on the basis of actual values, and the embedded emissions of precursors used in the production of those complex goods are determined on the basis of default values in accordance with Article 15 of Commission Implementing Regulation (EU) 2025/2547 (2), the default values laid down in Annex I shall be used for those precursors.",
-      "local_text_layer_status": "RECHECKED_AFTER_FOOTNOTE_RESTORATION",
+      "local_text_layer_status": "UNMATCHED_FOOTNOTE_SEGMENT; CODEX_VISUAL_SOURCE_BACKUP",
       "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
       "human_review_status": "PENDING_INDEPENDENT_LEGAL_AND_BILINGUAL_REVIEW"
     }
