@@ -1,0 +1,264 @@
+{
+  "evidence_version": 1,
+  "instrument_scope": "Selected formula-bearing units in P1-R4; not the complete instruments or annexes.",
+  "corpus_path": "translations/vi/P1_R4_expanded_corpus.md",
+  "acquired_or_checked_date": "2026-11-18",
+  "evidence_method": "The checked local official OJ PDFs are rendered with bundled Poppler (pdftoppm, 170 dpi). The rendered full-page PNGs are saved under qa/evidence and SHA-256 pinned. Codex visually compared each listed formula with the rendered official page and the bilingual corpus. This is an AI-assisted source comparison, not human/legal approval and not an OCR or MathML result.",
+  "statuses": {
+    "local_official_pdf_hashes": "PASS_SOURCE_SHA256",
+    "rendered_official_pdf_page_visual": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+    "official_structured_math": "UNVERIFIED_EQUATION",
+    "human_pdf_visual": "UNVERIFIED_EQUATION",
+    "overall": "PENDING_MANUAL_EQUATION_REVIEW"
+  },
+  "render": {
+    "tool": "Poppler pdftoppm",
+    "dpi": 170,
+    "format": "PNG",
+    "render_date": "2026-11-18",
+    "pages": [
+      {
+        "path": "qa/evidence/ACT-2025-2547-ANNEX-II-B7-OJ-p45.png",
+        "sha256": "939a55f2983539ffae1b4f575002dcead7a9c3b1ba001e31b36650c3f24f7859",
+        "printed_page": "45/86"
+      },
+      {
+        "path": "qa/evidence/ACT-2025-2547-ANNEX-II-B7-1-OJ-p46.png",
+        "sha256": "40fb58bfb9f6627a505293b6ebf17e73bacfe477df110d4a56e2afe5e3ddb525",
+        "printed_page": "46/86"
+      },
+      {
+        "path": "qa/evidence/ACT-2025-2547-ANNEX-II-B7-1-OJ-p47.png",
+        "sha256": "2e2691b38c61a9dc48335b1511eed71705e647b96c4fd629c63aaab962e865ed",
+        "printed_page": "47/86"
+      },
+      {
+        "path": "qa/evidence/ACT-2025-2547-ANNEX-II-B9-2-OJ-p50.png",
+        "sha256": "75b05f662f0699dc873b0e9d9830eb8ebe6d462a383ee64b52b559300af933df",
+        "printed_page": "50/86"
+      },
+      {
+        "path": "qa/evidence/ACT-2025-2620-ANNEX-2-3-1-OJ-p6.png",
+        "sha256": "d346e545ef734e5b516bcc17543f738b7fad1645dd4f6315e1267996eb2a906f",
+        "printed_page": "6/65"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "ACT-2025-2547",
+      "instrument": "Commission Implementing Regulation (EU) 2025/2547",
+      "source_version": "OJ L, 2025/2547, 22 December 2025; English OJ PDF",
+      "official_pdf_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202502547",
+      "official_eli_url": "https://eur-lex.europa.eu/eli/reg_impl/2025/2547/oj/eng",
+      "local_pdf_path": "sources/official/originals/ACT-2025-2547.pdf",
+      "local_pdf_sha256": "6ca80e3ed665e47aaef801e59e0791c50287ca46db20aad046e861134608ccf7"
+    },
+    {
+      "source_id": "ACT-2025-2620",
+      "instrument": "Commission Implementing Regulation (EU) 2025/2620",
+      "source_version": "OJ L, 2025/2620, 22 December 2025; English OJ PDF",
+      "official_pdf_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202502620",
+      "official_eli_url": "https://eur-lex.europa.eu/eli/reg_impl/2025/2620/oj/eng",
+      "local_pdf_path": "sources/official/originals/ACT-2025-2620.pdf",
+      "local_pdf_sha256": "8bbba79e7f33f0e4943140c28e91a8810612f2fa770bd6dcad33fdb7045e4c05"
+    }
+  ],
+  "formulas": [
+    {
+      "clause_id": "P1R4-2547-ANNEXII-B71",
+      "source_id": "ACT-2025-2547",
+      "provision": "Annex II, points B.7 and B.7.1, Equation 20",
+      "equation_number": 20,
+      "source_page": "45/86",
+      "evidence_image_path": "qa/evidence/ACT-2025-2547-ANNEX-II-B7-OJ-p45.png",
+      "evidence_image_sha256": "939a55f2983539ffae1b4f575002dcead7a9c3b1ba001e31b36650c3f24f7859",
+      "official_pdf_text": "PFC emissions (total) = PFC emissions (duct)/collection efficiency (Equation 20)",
+      "corpus_text": "PFC emissions (total) = PFC emissions (duct)/collection efficiency (Equation 20)",
+      "variables": [
+        "PFC emissions (total)",
+        "PFC emissions (duct)",
+        "collection efficiency"
+      ],
+      "operator_sequence": [
+        "=",
+        "/"
+      ],
+      "unit_and_context": "Total PFC emissions are calculated from duct/stack point-source emissions divided by duct collection efficiency.",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    },
+    {
+      "clause_id": "P1R4-2547-ANNEXII-B71",
+      "source_id": "ACT-2025-2547",
+      "provision": "Annex II, point B.7.1, Equation 21",
+      "equation_number": 21,
+      "source_page": "46/86",
+      "evidence_image_path": "qa/evidence/ACT-2025-2547-ANNEX-II-B7-1-OJ-p46.png",
+      "evidence_image_sha256": "40fb58bfb9f6627a505293b6ebf17e73bacfe477df110d4a56e2afe5e3ddb525",
+      "official_pdf_text": "CF₄ emissions [t] = AEM × (SEF_CF₄/1 000) × Pr_Al (Equation 21)",
+      "corpus_text": "CF₄ emissions [t] = AEM × (SEF_CF₄/1 000) × Pr_Al (Equation 21)",
+      "variables": [
+        "CF₄ emissions [t]",
+        "AEM",
+        "SEF_CF₄",
+        "Pr_Al"
+      ],
+      "operator_sequence": [
+        "=",
+        "×",
+        "/",
+        "×"
+      ],
+      "unit_and_context": "CF₄ tonnes calculated from anode-effect minutes per cell-day, slope emission factor in kg CF₄/t Al per anode-effect minute/cell-day, factor 1 000, and primary aluminium tonnes.",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    },
+    {
+      "clause_id": "P1R4-2547-ANNEXII-B71",
+      "source_id": "ACT-2025-2547",
+      "provision": "Annex II, point B.7.1, Equation 22",
+      "equation_number": 22,
+      "source_page": "46/86",
+      "evidence_image_path": "qa/evidence/ACT-2025-2547-ANNEX-II-B7-1-OJ-p46.png",
+      "evidence_image_sha256": "40fb58bfb9f6627a505293b6ebf17e73bacfe477df110d4a56e2afe5e3ddb525",
+      "official_pdf_text": "C₂F₆ emissions [t] = CF₄ emissions × F_C₂F₆ (Equation 22)",
+      "corpus_text": "C₂F₆ emissions [t] = CF₄ emissions × F_C₂F₆ (Equation 22)",
+      "variables": [
+        "C₂F₆ emissions [t]",
+        "CF₄ emissions",
+        "F_C₂F₆"
+      ],
+      "operator_sequence": [
+        "=",
+        "×"
+      ],
+      "unit_and_context": "C₂F₆ emissions in tonnes equal CF₄ emissions multiplied by the C₂F₆ weight fraction.",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    },
+    {
+      "clause_id": "P1R4-2547-ANNEXII-B71",
+      "source_id": "ACT-2025-2547",
+      "provision": "Annex II, point B.7.1, Equation 23",
+      "equation_number": 23,
+      "source_page": "46/86",
+      "evidence_image_path": "qa/evidence/ACT-2025-2547-ANNEX-II-B7-1-OJ-p46.png",
+      "evidence_image_sha256": "40fb58bfb9f6627a505293b6ebf17e73bacfe477df110d4a56e2afe5e3ddb525",
+      "official_pdf_text": "AEM = frequency × average duration (Equation 23)",
+      "corpus_text": "AEM = frequency × average duration (Equation 23)",
+      "variables": [
+        "AEM",
+        "frequency",
+        "average duration"
+      ],
+      "operator_sequence": [
+        "=",
+        "×"
+      ],
+      "unit_and_context": "Anode-effect minutes per cell-day equal anode-effect frequency per cell-day multiplied by average duration in minutes per occurrence.",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    },
+    {
+      "clause_id": "P1R4-2547-ANNEXII-B92-1-2",
+      "source_id": "ACT-2025-2547",
+      "provision": "Annex II, point B.9.2.2, Equation 27",
+      "equation_number": 27,
+      "source_page": "50/86",
+      "evidence_image_path": "qa/evidence/ACT-2025-2547-ANNEX-II-B9-2-OJ-p50.png",
+      "evidence_image_sha256": "75b05f662f0699dc873b0e9d9830eb8ebe6d462a383ee64b52b559300af933df",
+      "official_pdf_text": "Cli_prod = (Cem_deliv − Cem_SV) × CCR − Cli_s + Cli_d − Cli_SV (Equation 27)",
+      "corpus_text": "Cli_prod = (Cem_deliv − Cem_SV) × CCR − Cli_s + Cli_d − Cli_SV (Equation 27)",
+      "variables": [
+        "Cli_prod",
+        "Cem_deliv",
+        "Cem_SV",
+        "CCR",
+        "Cli_s",
+        "Cli_d",
+        "Cli_SV"
+      ],
+      "operator_sequence": [
+        "=",
+        "(",
+        "−",
+        ")",
+        "×",
+        "−",
+        "+",
+        "−"
+      ],
+      "unit_and_context": "Clinker production in tonnes is calculated from cement deliveries less cement stock changes times clinker-to-cement ratio, then subtracting clinker supplied, adding clinker dispatched, and subtracting clinker stock changes.",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    },
+    {
+      "clause_id": "P1R4-2620-ANNEX-2-3-1",
+      "source_id": "ACT-2025-2620",
+      "provision": "Annex, point 2, Equation 1",
+      "equation_number": 1,
+      "source_page": "6/65",
+      "evidence_image_path": "qa/evidence/ACT-2025-2620-ANNEX-2-3-1-OJ-p6.png",
+      "evidence_image_sha256": "d346e545ef734e5b516bcc17543f738b7fad1645dd4f6315e1267996eb2a906f",
+      "official_pdf_text": "FAA_g = SEFA_g,y × M_g (Equation 1)",
+      "corpus_text": "FAA_g = SEFA_g,y × M_g (Equation 1)",
+      "variables": [
+        "FAA_g",
+        "SEFA_g,y",
+        "M_g"
+      ],
+      "operator_sequence": [
+        "=",
+        "×"
+      ],
+      "unit_and_context": "Free-allocation adjustment for good g equals the good's specific embedded free allocation times imported mass M_g; this is not a reduction in actual SEE.",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    },
+    {
+      "clause_id": "P1R4-2620-ANNEX-2-3-1",
+      "source_id": "ACT-2025-2620",
+      "provision": "Annex, point 3.1, Equation 2",
+      "equation_number": 2,
+      "source_page": "6/65",
+      "evidence_image_path": "qa/evidence/ACT-2025-2620-ANNEX-2-3-1-OJ-p6.png",
+      "evidence_image_sha256": "d346e545ef734e5b516bcc17543f738b7fad1645dd4f6315e1267996eb2a906f",
+      "official_pdf_text": "SFA_{Proc_{g,y}} = CBAM_y × CSCF_y × BM_g^* (Equation 2)",
+      "corpus_text": "SFA_{Proc_{g,y}} = CBAM_y × CSCF_y × BM_g^* (Equation 2)",
+      "variables": [
+        "SFA_{Proc_{g,y}}",
+        "CBAM_y",
+        "CSCF_y",
+        "BM_g^*"
+      ],
+      "operator_sequence": [
+        "=",
+        "×",
+        "×"
+      ],
+      "unit_and_context": "Process-level specific free allocation is the product of the year's CBAM factor, CSCF, and process-related CBAM benchmark BM_g*.",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    }
+  ],
+  "limitations": [
+    "Rendered images prove which saved local OJ pages were inspected, but the automated check only verifies file hashes and exact corpus/evidence strings; it does not recognize mathematical glyphs by OCR.",
+    "The Codex visual comparison is not an independent human legal or bilingual review.",
+    "No official structured MathML/LaTeX validation is claimed; all formula groups remain PENDING_MANUAL_EQUATION_REVIEW."
+  ]
+}
