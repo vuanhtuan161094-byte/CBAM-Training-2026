@@ -1,6 +1,6 @@
 # CBAM benchmark legal status for 2026–2027
 
-**Cut-off:** 17 November 2026. **Status:** unresolved legal baseline; no benchmark number is approved or reproduced here.
+**Cut-off:** 17 November 2026. **Status:** 2027 CBAM benchmark update remains `NEEDS_LEGAL_REVIEW`; no benchmark number is approved or reproduced here.
 
 ## Two different instruments
 
@@ -10,7 +10,7 @@
 | EU ETS free allocation | Commission Implementing Regulation (EU) 2026/1412 under Directive 2003/87/EC, Art. 10a(2) | Revised ETS benchmarks for harmonised EU allocation from 2026 to 2030 | Published 29 June 2026; concerns ETS allocation. It does not itself amend CBAM Regulation 2025/2620. |
 | COM(2026) 619 proposal | Proposal for a Regulation amending Directive 2003/87/EC on heat/fuel benchmarks | Proposed changes to ETS fallback-benchmark free-allocation levels for 2026–2030; the proposal says the resulting adjustment would be reflected through updated ETS benchmark values | Legislative procedure 2026/0211/COD remained ongoing at 17 November 2026. Proposal only; not operative law and not an amendment to CBAM act 2025/2620. |
 | COM(2026) 616 proposal | Proposal amending Directive 2003/87/EC and Decision (EU) 2015/1814 | Broader ETS review. Its proposed Article 10a(1a) text also sets a separate factor for goods newly added to CBAM Annex I: 97.9% for the first year and 95.8% for the second year of the next five-year period, followed by the proposed schedule. | Legislative procedure 2026/0212/COD remained ongoing at 17 November 2026. Proposal only; not operative law and does not amend CBAM Regulation 2025/2620. Do not apply the proposed factors to current goods or the 2026 claim. |
-| Expected CBAM update | A separate binding CBAM amending act, if adopted | Would amend the CBAM instrument and establish operative CBAM values | No binding CBAM amendment or replacement 2027 values was verified in official sources searched by 17 November 2026. The two ETS proposals above do not establish CBAM values. Treat the update as **not verified/adopted for this draft**, not as an assumed value set. |
+| Expected CBAM update | A separate binding CBAM amending act, if adopted | Would amend the CBAM instrument and establish operative CBAM values | No binding CBAM amendment or replacement 2027 values was verified in the official-source search recorded through 17 November 2026. This is a bounded search result, not proof that no act exists. Treat the update as **NEEDS_LEGAL_REVIEW** and do not assume a value set. |
 
 ## Source-aligned reading
 

@@ -28,10 +28,18 @@
 
 P0 did not verify a standalone public 2026 carbon-price report file. Article 8 specifies a Registry electronic template; this draft does not recreate it.
 
+## Article 15 — conditions for reliance on external reports
+
+Article 15(1) requires the independent person to confirm that the emissions verification report supplied under Article 13(1)(d) meets three conditions: (a) when issued, the entity carrying out verification was a verifier with a valid accreditation certificate and the necessary scope, with no Article 9 administrative measure under Delegated Regulation (EU) 2025/2551 applying; (b) its opinion says the operator's emissions report is verified as satisfactory; and (c) it covers the reporting period in which the carbon-price-certified goods were produced. If those conditions cannot be confirmed, Article 15(1) says the independent person shall not certify the operator's carbon-price report.
+
+Article 15(2) separately addresses external certification evidence for a precursor produced at another installation. It requires a valid accreditation certificate and relevant scope for the certifying independent person, no Article 27 administrative measure, a satisfactory opinion on the operator's carbon-price report, and the same reporting period. If the independent person cannot rely on that report, the final subparagraph permits asking the operator to use the relevant default carbon price under Article 5.
+
+These are conditional reliance requirements; they do not automatically qualify every emissions verifier as an independent person. Article 11 contains a separate, limited verifier pathway for reporting periods 2026 and 2027. The exact relationship among Articles 10–15, accreditation provisions and the transition remains for legal review after the Regulation enters into force.
+
 ## Human checks before release
 
 1. Check OJ publication data and actual entry into force after 19 November 2026.
-2. Re-read Articles 8 and 36, Annex III, and Articles 12–15 in the official OJ text.
+2. Re-read Articles 8, 10–15 and 36, Annexes III–V, and the relevant accreditation provisions in the official OJ text.
 3. Confirm role, accreditation and independence provisions with CTIC legal reviewers.
 4. Keep this report separate from the OER and emissions verification report in the glossary and form map.
 5. Do not claim CTIC legal approval or Registry template access based on this public-source review.

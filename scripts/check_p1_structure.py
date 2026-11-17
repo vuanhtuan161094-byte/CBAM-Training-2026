@@ -14,7 +14,10 @@ REGISTER = ROOT / "source-register" / "SOURCE_REGISTER.csv"
 SUPPLEMENTAL_REGISTER = ROOT / "source-register" / "P1_R2_SUPPLEMENTAL_SOURCES.csv"
 COVERAGE = ROOT / "translations" / "coverage.csv"
 CLAUSE_COVERAGE = ROOT / "translations" / "CLAUSE_COVERAGE.csv"
-CORPUS = ROOT / "translations" / "vi" / "P1_R2_clause_translation_corpus.md"
+CORPUS_FILES = {
+    "translations/vi/P1_R2_clause_translation_corpus.md": ROOT / "translations" / "vi" / "P1_R2_clause_translation_corpus.md",
+    "translations/vi/P1_R3_expanded_corpus.md": ROOT / "translations" / "vi" / "P1_R3_expanded_corpus.md",
+}
 MATRIX = ROOT / "legal" / "CLAIM_MATRIX.csv"
 GLOSSARY = ROOT / "glossary" / "CBAM_EN_VI.csv"
 SAMPLE = ROOT / "qa" / "P1_R2_HUMAN_REVIEW_SAMPLE.md"
@@ -50,17 +53,19 @@ def fail(errors: list[str], message: str) -> None:
 
 
 def section_parts(text: str) -> dict[str, dict[str, str]]:
-    headings = list(re.finditer(r"^## (P1R2-[^\n]+)$", text, re.M))
+    headings = list(re.finditer(r"^## (P1R[23]-[^\n]+)$", text, re.M))
     sections: dict[str, dict[str, str]] = {}
     for index, match in enumerate(headings):
         end = headings[index + 1].start() if index + 1 < len(headings) else len(text)
         block = text[match.start():end]
         clause_id = match.group(1).split(" — ", 1)[0]
-        if "### English source text" not in block or "### Bản dịch tiếng Việt" not in block:
+        english_heading = re.search(r"(?m)^### English (?:source text|proposal text)(?:[^\n]*)$", block)
+        vietnamese_heading = re.search(r"(?m)^### Bản dịch tiếng Việt(?:[^\n]*)$", block)
+        if not english_heading or not vietnamese_heading:
             sections[clause_id] = {"heading": match.group(1), "block": block, "en": "", "vi": ""}
             continue
-        after_en = block.split("### English source text", 1)[1]
-        en, after_vi = after_en.split("### Bản dịch tiếng Việt", 1)
+        en = block[english_heading.end():vietnamese_heading.start()]
+        after_vi = block[vietnamese_heading.end():]
         vi = after_vi.split("\n---", 1)[0]
         note = re.search(r"(?m)^\*\*Ghi chú", vi)
         if note:
@@ -153,10 +158,15 @@ def main() -> int:
     if any("APPROVED" in status.upper() for status in statuses):
         fail(errors, "A generated source coverage status claims approval")
 
-    corpus = CORPUS.read_text(encoding="utf-8")
-    if WATERMARK not in corpus:
-        fail(errors, "Required unofficial-translation watermark is absent")
-    sections = section_parts(corpus)
+    sections: dict[str, dict[str, str]] = {}
+    for relpath, corpus_path in CORPUS_FILES.items():
+        corpus = corpus_path.read_text(encoding="utf-8")
+        if WATERMARK not in corpus:
+            fail(errors, f"Required unofficial-translation watermark is absent from {relpath}")
+        for cid, section in section_parts(corpus).items():
+            if cid in sections:
+                fail(errors, f"Duplicate corpus provision heading {cid}")
+            sections[cid] = {**section, "translation_file": relpath}
     clause_fields, clause_rows = read_csv(CLAUSE_COVERAGE)
     required_clause_fields = {"clause_id", "source_ids_json", "provision_anchor", "source_versions_json", "source_sha256s_json", "official_urls_json", "corpus_heading", "translation_file", "pair_status", "numbering_tokens", "formula_tokens", "human_review_status"}
     if not required_clause_fields.issubset(set(clause_fields)):
@@ -172,10 +182,12 @@ def main() -> int:
         section = sections.get(cid)
         if not section:
             continue
-        if row.get("translation_file") != "translations/vi/P1_R2_clause_translation_corpus.md":
+        if row.get("translation_file") not in CORPUS_FILES:
             fail(errors, f"{cid} maps to an unexpected translation file")
         if row.get("corpus_heading") != section["heading"]:
             fail(errors, f"{cid} heading differs from the clause-coverage anchor")
+        if row.get("translation_file") != section.get("translation_file"):
+            fail(errors, f"{cid} translation_file does not match the corpus containing the clause")
         if len(section["en"]) < 30 or len(section["vi"]) < 30:
             fail(errors, f"{cid} has an empty or implausibly short source/translation pair")
         if structural_labels(section["en"]) != structural_labels(section["vi"]):
@@ -223,6 +235,25 @@ def main() -> int:
             if term_en and term_vi and term_en.casefold() in section["en"].casefold() and term_vi.casefold() not in section["vi"].casefold():
                 fail(errors, f"{cid} has glossary mismatch: {term_en!r} does not map to {term_vi!r}")
 
+    section_fields, section_rows = read_csv(ROOT / "translations" / "P1_R3_SECTION_COVERAGE.csv")
+    required_section_fields = {"source_id", "instrument", "provision_group", "publication_or_version", "local_source_sha256", "source_status", "section_scope", "translation_status", "section_completion", "source_text_check", "review_status", "blocker_or_next_action"}
+    if not required_section_fields.issubset(set(section_fields)):
+        fail(errors, f"P1-R3 section coverage is missing schema fields: {sorted(required_section_fields - set(section_fields))}")
+    section_source_ids = [row.get("source_id", "") for row in section_rows]
+    if len(section_source_ids) != len(set(section_source_ids)):
+        fail(errors, "P1-R3 section coverage contains duplicate source IDs")
+    for row in section_rows:
+        source = sources.get(row.get("source_id", ""))
+        if not source:
+            fail(errors, f"P1-R3 section coverage references unknown source ID {row.get('source_id', '')!r}")
+            continue
+        if row.get("local_source_sha256", "") != source.get("sha256", ""):
+            fail(errors, f"P1-R3 section coverage SHA-256 differs from source register for {row.get('source_id')}")
+        if row.get("source_status", "") != source.get("retrieval_status", ""):
+            fail(errors, f"P1-R3 section coverage source status differs from source register for {row.get('source_id')}")
+        if "PENDING" not in row.get("review_status", ""):
+            fail(errors, f"P1-R3 section coverage row {row.get('source_id')} is not marked human review pending")
+
     claim_fields, claims = read_csv(MATRIX)
     required_claim_fields = {
         "claim_id", "claim_statement", "source_id", "legal_instrument", "provision",
@@ -233,8 +264,8 @@ def main() -> int:
     if not required_claim_fields.issubset(set(claim_fields)):
         fail(errors, f"Claim matrix is missing schema fields: {sorted(required_claim_fields - set(claim_fields))}")
     claim_ids = [row.get("claim_id", "") for row in claims]
-    if len(claims) != 33 or len(set(claim_ids)) != len(claims):
-        fail(errors, f"Expected 33 unique claims; found {len(claims)} rows")
+    if len(claims) < 33 or len(set(claim_ids)) != len(claims):
+        fail(errors, f"Expected at least 33 unique claims; found {len(claims)} rows")
     for row in claims:
         cid = row.get("claim_id", "")
         sid = row.get("source_id", "")
@@ -291,15 +322,16 @@ def main() -> int:
             fail(errors, f"Human-review pack does not include the full selected English/Vietnamese {industry} section {clause_id}")
 
     if errors:
-        print("P1-R2 structural QA: FAIL")
+        print("P1-R3 structural and traceability QA: FAIL")
         for error in errors:
             print(f"- {error}")
         return 1
-    print("P1-R2 structural QA: PASS (structure and traceability only; no legal or translation approval)")
+    print("P1-R3 structural and traceability QA: PASS (no legal or translation approval)")
     print(f"- P0 sources covered: {len(source_rows)}")
-    print(f"- P1-R2 supplemental status sources: {len(supplemental_rows)}")
-    print(f"- Clause pairs checked: {len(clause_rows)}")
+    print(f"- Supplemental status sources: {len(supplemental_rows)}")
+    print(f"- Clause pairs checked (R2 + R3): {len(clause_rows)}")
     print(f"- One-source claims checked: {len(claims)}")
+    print(f"- P1-R3 section-coverage records checked: {len(section_rows)}")
     print(f"- Human review sample: {len(sample_claims)} claims / 3 industries")
     return 0
 

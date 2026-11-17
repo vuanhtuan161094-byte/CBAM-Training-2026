@@ -23,7 +23,7 @@
 
 | Sector | English source anchors | Vietnamese draft checked | Back-check result |
 |---|---|---|---|
-| Steel | 2025/2547 Annex I points 3.13, 3.15–3.16; Annex II point B.3.2 | translations/vi/REG_2025_2547_sector_boundaries.md — hot-metal split, BOF/EAF units, primary hot rolling/rough forging, steel-product exclusions. | **Selected-term/back-check matched.** Independent bilingual legal/technical edit pending; scrap/billet cases not approved. |
+| Steel | 2025/2547 Annex I points 3.13, 3.15–3.16; Annex III point B.3.2 | translations/vi/REG_2025_2547_sector_boundaries.md — hot-metal split, BOF/EAF units, primary hot rolling/rough forging, steel-product exclusions. | **Selected-term/back-check matched.** Independent bilingual legal/technical edit pending; scrap/billet cases not approved. The R2 reviewer confirmed the correct anchor is Annex III B.3.2, referenced from Annex I 3.15.2; the former Annex II label was stale and is corrected here. |
 | Aluminium | 2025/2547 Annex I points 3.17–3.18; Annex II point B.7 | Same chunk — unwrought forms/integrated liquid charge, primary smelting and anode-effect PFCs, product exclusions. | **Selected-term/back-check matched.** Secondary/remelting and product-specific cases remain untranslated/unresolved. |
 | Cement | 2025/2547 Annex I points 3.3–3.4; Annex II point B.9.2 | Same chunk — clinker calcination/fuel/raw-material boundary and separate cement drying provision. | **Selected-term/back-check matched.** Composition/precursor cases need technical legal review. |
 

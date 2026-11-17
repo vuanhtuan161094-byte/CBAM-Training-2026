@@ -41,6 +41,7 @@ Start with [AGENTS.md](AGENTS.md) and the GitHub issues. The materials are not a
 - [2023–2026 legal change log](legal/LEGAL_CHANGELOG_2023_2026.md)
 - [2026–2027 benchmark legal status](legal/BENCHMARK_2026_2027_LEGAL_STATUS.md)
 - [2026/2498 carbon-price timeline](legal/CARBON_PRICE_2026_2498_TIMELINE.md)
+- [P1-R3 legal publication/effect/application register](legal/P1_R3_LEGAL_STATUS_REGISTER.md)
 - [Legal conflict log](legal/CONFLICT_LOG.md)
 - [EN–VI term glossary](glossary/CBAM_EN_VI.csv)
 - [Translation coverage register](translations/coverage.csv)
@@ -53,5 +54,12 @@ Start with [AGENTS.md](AGENTS.md) and the GitHub issues. The materials are not a
 - [P1 claim and translation checks](qa/P1_CLAIM_AND_TRANSLATION_CHECKS.md)
 - [P1-R2 structural QA checker](scripts/check_p1_structure.py)
 - [P1-R2 CI setup and exact-SHA evidence procedure](qa/P1_R2_CI_EVIDENCE.md)
+- [P1-R3 section-level translation coverage](translations/P1_R3_SECTION_COVERAGE.csv)
+- [P1-R3 translation coverage dashboard](qa/P1_R3_TRANSLATION_DASHBOARD.md)
+- [P1-R3 CTIC bilingual/legal review pack](qa/P1_R3_CTIC_REVIEW_PACK.md)
+- [P1-R3 source-aligned EN–VI additions](translations/vi/P1_R3_expanded_corpus.md)
+- [Current law vs COM(2026) 616 factor comparison](legal/CURRENT_LAW_VS_COM_2026_616_CBAM_FACTOR.md)
+- [P1-R3 original-text comparison checker](scripts/check_p1_original_text.py)
+- [P1-R3 QA report](qa/P1_R3_QA_REPORT.md)
 
-P1 material is a research/translation draft only. P1-R2 structural QA is not human review or legal approval; P1 exit remains not passed. PR #9 remains a draft stacked on P0 PR #8; neither is merged. No CTIC legal approval is asserted and no P2–P4 production material is included.
+P1 material is a research/translation draft only. P1-R2 technical checkpoint passed at its reviewed SHA; P1-R3 automated QA and independent bilingual/legal review are separate gates. The overall P1 legal/translation gate remains not passed. PR #9 remains a draft stacked on P0 PR #8; neither is merged. No CTIC legal approval is asserted and no P2–P4 production material is included.
