@@ -754,6 +754,8 @@ Các đoạn được đánh dấu **TÓM TẮT/DIỄN GIẢI — KHÔNG PHẢI 
 > It shall apply from 1 January 2026.
 >
 > It shall be reviewed in 2027 at the latest.
+>
+> This Regulation shall be binding in its entirety and directly applicable in all Member States.
 
 ### Bản dịch tiếng Việt
 
@@ -762,6 +764,8 @@ Các đoạn được đánh dấu **TÓM TẮT/DIỄN GIẢI — KHÔNG PHẢI 
 > Quy định này được áp dụng từ ngày 1 tháng 1 năm 2026.
 >
 > Quy định này phải được rà soát chậm nhất trong năm 2027.
+>
+> Quy định này có tính ràng buộc toàn bộ và được áp dụng trực tiếp tại tất cả các quốc gia thành viên.
 
 ---
 

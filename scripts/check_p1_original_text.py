@@ -67,6 +67,26 @@ def compact_text(value: str) -> str:
     return re.sub(r"[^a-z0-9]", "", value)
 
 
+def quote_segments(value: str) -> list[str]:
+    """Return each quoted source paragraph/line separately for page-wrap checking."""
+    return [compact_text(line) for line in value.splitlines() if compact_text(line)]
+
+
+def ordered_segment_match(source_compact: str, segments: list[str]) -> tuple[bool, int, str]:
+    cursor = 0
+    matched = 0
+    first_unmatched = ""
+    for segment in segments:
+        position = source_compact.find(segment, cursor)
+        if position < 0:
+            if not first_unmatched:
+                first_unmatched = segment[:160]
+            continue
+        matched += 1
+        cursor = position + len(segment)
+    return bool(segments) and matched == len(segments), matched, first_unmatched
+
+
 def quoted_section(path: Path, clause_id: str) -> tuple[str, str]:
     text = path.read_text(encoding="utf-8")
     headings = list(re.finditer(r"^## (P1R[23]-[^\n]+)$", text, re.M))
@@ -98,9 +118,11 @@ def page_text(pdf_path: Path) -> str:
         page_lines = []
         for line in page_value.splitlines():
             line = line.strip()
-            if not line or "ELI:" in line or "OJ L," in line:
+            if not line or "ELI:" in line or "OJ L," in line or line == "EN":
                 continue
             if re.fullmatch(r"\d+\s*/\s*\d+", line):
+                continue
+            if re.fullmatch(r"\d{1,2}\.\d{1,2}\.20\d{2}", line):
                 continue
             page_lines.append(line)
         # PDF layout often wraps a word with a line-ending hyphen. Rejoin only
@@ -204,6 +226,7 @@ def main() -> int:
             errors.append(f"{clause_id}: {exc}")
             continue
         expected_tokens = token_text(excerpt)
+        segments = quote_segments(excerpt)
         if len(expected_tokens) < 8:
             errors.append(f"{clause_id}: English source block is too short to compare")
             continue
@@ -215,6 +238,9 @@ def main() -> int:
         candidates: list[str] = []
         best_source = ""
         best_ratio = 0.0
+        segment_total = len(segments)
+        segment_matched = 0
+        unmatched_segment = ""
         for source_id in source_ids:
             source = sources.get(source_id)
             if not source or not source.get("local_path"):
@@ -237,10 +263,21 @@ def main() -> int:
                 matched = source_id
                 match_method = "EXACT_TOKEN_SEQUENCE"
                 match_coverage = 1.0
+                segment_matched = segment_total
                 break
             if compact_text(excerpt) and compact_text(excerpt) in source_compact:
                 matched = source_id
                 match_method = "COMPACT_ALPHANUMERIC_SEQUENCE"
+                match_coverage = 1.0
+                segment_matched = segment_total
+                break
+            all_segments_match, matched_count, first_unmatched = ordered_segment_match(source_compact, segments)
+            if matched_count > segment_matched:
+                segment_matched = matched_count
+                unmatched_segment = first_unmatched
+            if all_segments_match:
+                matched = source_id
+                match_method = "COMPACT_ORDERED_SEGMENTS"
                 match_coverage = 1.0
                 break
             coverage, preview, numbers_ok = best_token_coverage(source_tokens, expected_tokens)
@@ -249,14 +286,11 @@ def main() -> int:
                 source_preview = preview
                 match_coverage = coverage
                 match_method = "ORDERED_TOKEN_COVERAGE" if numbers_ok else "ORDERED_TOKEN_COVERAGE_NUMBERS_DIFFER"
-            if coverage >= 0.97 and numbers_ok:
-                matched = source_id
-                break
 
         if not candidates:
             errors.append(f"{clause_id}: no local, hash-verified official PDF candidate")
         elif not matched:
-            errors.append(f"{clause_id}: English block not matched in {candidates}; best ordered token coverage {best_ratio:.3f} from {best_source}; source window: {source_preview}")
+            errors.append(f"{clause_id}: English block has {segment_matched}/{segment_total} exact quoted segments in source order; first missing segment: {unmatched_segment}; diagnostic token coverage {best_ratio:.3f} from {best_source}; source window: {source_preview}")
         results.append({
             "clause_id": clause_id,
             "provision_anchor": row.get("provision_anchor", ""),
@@ -264,9 +298,11 @@ def main() -> int:
             "matched_local_source_id": matched,
             "source_sha256s_json": row.get("source_sha256s_json", ""),
             "quoted_word_tokens": str(len(expected_tokens)),
-            "status": ("PASS_EXACT" if match_method == "EXACT_TOKEN_SEQUENCE" else "PASS_COMPACT" if match_method == "COMPACT_ALPHANUMERIC_SEQUENCE" else "PASS_TOKEN_COVERAGE") if matched else "FAIL",
+            "status": ("PASS_EXACT" if match_method == "EXACT_TOKEN_SEQUENCE" else "PASS_COMPACT" if match_method == "COMPACT_ALPHANUMERIC_SEQUENCE" else "PASS_SEGMENTS" if match_method == "COMPACT_ORDERED_SEGMENTS" else "FAIL"),
             "match_method": match_method,
             "matched_token_coverage": f"{match_coverage:.4f}",
+            "source_segments": f"{segment_matched}/{segment_total}",
+            "unmatched_segment_preview": unmatched_segment,
             "source_window_preview": source_preview,
             "review_limit": "English text/source identity only; no translation/legal approval",
         })
@@ -298,15 +334,15 @@ def main() -> int:
             fragment_tokens = token_text(part)
             compact_exact = bool(compact_text(part)) and compact_text(part) in source_compact
             exact = contains_sequence(source_tokens, fragment_tokens)
-            text_match = exact or compact_exact
-            coverage, preview, numbers_ok = (1.0, "", True) if text_match else best_token_coverage(source_tokens, fragment_tokens)
-            fragment_results.append((text_match or (coverage >= 0.97 and numbers_ok), exact, coverage, preview, compact_exact))
+            coverage, preview, _ = (1.0, "", True) if (exact or compact_exact) else best_token_coverage(source_tokens, fragment_tokens)
+            fragment_results.append((exact or compact_exact, exact, coverage, preview, compact_exact, part))
         ok = bool(fragments) and all(item[0] for item in fragment_results)
         claim_coverage = min((item[2] for item in fragment_results), default=0.0)
-        claim_method = "EXACT_TOKEN_SEQUENCE" if fragment_results and all(item[1] for item in fragment_results) else ("COMPACT_ALPHANUMERIC_SEQUENCE" if fragment_results and all(item[4] or item[1] for item in fragment_results) else "ORDERED_TOKEN_COVERAGE")
+        claim_method = "EXACT_TOKEN_SEQUENCE" if fragment_results and all(item[1] for item in fragment_results) else ("COMPACT_ALPHANUMERIC_SEQUENCE" if ok else "ORDERED_TOKEN_COVERAGE_DIAGNOSTIC")
         claim_preview = next((item[3] for item in fragment_results if item[3]), "")
         if not ok:
-            errors.append(f"{claim_id}: English claim excerpt does not match the SHA-verified local source {source_id}; best ordered token coverage {claim_coverage:.3f}; source window: {claim_preview}")
+            failed_text = next((item[5] for item in fragment_results if not item[0]), "")
+            errors.append(f"{claim_id}: quoted claim text is absent from the SHA-verified local source {source_id}; diagnostic ordered token coverage {claim_coverage:.3f}; missing excerpt: {failed_text}; source window: {claim_preview}")
         results.append({
             "clause_id": claim_id,
             "provision_anchor": claim.get("provision", ""),
@@ -314,9 +350,11 @@ def main() -> int:
             "matched_local_source_id": source_id if ok else "",
             "source_sha256s_json": json.dumps([claim.get("source_sha256", "")]),
             "quoted_word_tokens": str(sum(len(token_text(fragment)) for fragment in fragments)),
-            "status": ("PASS_EXACT" if claim_method == "EXACT_TOKEN_SEQUENCE" else "PASS_COMPACT" if claim_method == "COMPACT_ALPHANUMERIC_SEQUENCE" else "PASS_TOKEN_COVERAGE") if ok else "FAIL",
+            "status": ("PASS_EXACT" if claim_method == "EXACT_TOKEN_SEQUENCE" else "PASS_COMPACT" if claim_method == "COMPACT_ALPHANUMERIC_SEQUENCE" else "FAIL"),
             "match_method": claim_method,
             "matched_token_coverage": f"{claim_coverage:.4f}",
+            "source_segments": f"{sum(1 for item in fragment_results if item[0])}/{len(fragment_results)}",
+            "unmatched_segment_preview": next((item[5][:160] for item in fragment_results if not item[0]), ""),
             "source_window_preview": claim_preview,
             "review_limit": "Claim excerpt/source identity only; no translation/legal approval",
         })
@@ -334,6 +372,8 @@ def main() -> int:
             "status": "OFFICIAL_PAGE_ONLY",
             "match_method": "NOT_LOCAL",
             "matched_token_coverage": "",
+            "source_segments": "",
+            "unmatched_segment_preview": "",
             "source_window_preview": "",
             "review_limit": "No local proposal file/hash; EUR-Lex proposal page and procedure checked",
         })
@@ -350,12 +390,14 @@ def main() -> int:
                 "status": "OFFICIAL_PAGE_ONLY",
                 "match_method": "NOT_LOCAL",
                 "matched_token_coverage": "",
+                "source_segments": "",
+                "unmatched_segment_preview": "",
                 "source_window_preview": "",
                 "review_limit": "No local proposal file/hash; verify against official EUR-Lex proposal page",
             })
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    fields = ["clause_id", "provision_anchor", "source_ids_json", "matched_local_source_id", "source_sha256s_json", "quoted_word_tokens", "status", "match_method", "matched_token_coverage", "source_window_preview", "review_limit"]
+    fields = ["clause_id", "provision_anchor", "source_ids_json", "matched_local_source_id", "source_sha256s_json", "quoted_word_tokens", "status", "match_method", "matched_token_coverage", "source_segments", "unmatched_segment_preview", "source_window_preview", "review_limit"]
     with OUTPUT.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
@@ -364,9 +406,10 @@ def main() -> int:
     passes = sum(result["status"].startswith("PASS_") for result in results)
     exact = sum(result["status"] == "PASS_EXACT" for result in results)
     compact = sum(result["status"] == "PASS_COMPACT" for result in results)
+    segmented = sum(result["status"] == "PASS_SEGMENTS" for result in results)
     comparisons = sum(result["status"].startswith("PASS_") or result["status"] == "FAIL" for result in results)
     print(f"P1 original-text comparison: {passes}/{comparisons} local PDF excerpts/claim quotes matched; proposal PAGE_ONLY recorded separately")
-    print(f"- Exact token-sequence matches: {exact}; compact alphanumeric matches: {compact}; normalized ordered-token coverage threshold: 0.97 with numeric-token order preserved")
+    print(f"- Exact token-sequence matches: {exact}; compact full-block matches: {compact}; compact ordered-segment matches: {segmented}")
     print(f"Evidence CSV: {OUTPUT.relative_to(ROOT)}")
     for error in errors:
         print(f"FAIL: {error}")
