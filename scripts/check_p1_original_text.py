@@ -76,19 +76,18 @@ def quote_segments(value: str) -> list[str]:
     return segments
 
 
-def ordered_segment_match(source_compact: str, segments: list[str]) -> tuple[bool, int, str]:
+def ordered_segment_match(source_compact: str, segments: list[str]) -> tuple[bool, int, list[str]]:
     cursor = 0
     matched = 0
-    first_unmatched = ""
+    unmatched: list[str] = []
     for segment in segments:
         position = source_compact.find(segment, cursor)
         if position < 0:
-            if not first_unmatched:
-                first_unmatched = segment[:160]
+            unmatched.append(segment[:160])
             continue
         matched += 1
         cursor = position + len(segment)
-    return bool(segments) and matched == len(segments), matched, first_unmatched
+    return bool(segments) and matched == len(segments), matched, unmatched
 
 
 def quoted_section(path: Path, clause_id: str) -> tuple[str, str]:
@@ -275,10 +274,10 @@ def main() -> int:
                 match_coverage = 1.0
                 segment_matched = segment_total
                 break
-            all_segments_match, matched_count, first_unmatched = ordered_segment_match(source_compact, segments)
+            all_segments_match, matched_count, unmatched_segments = ordered_segment_match(source_compact, segments)
             if matched_count > segment_matched:
                 segment_matched = matched_count
-                unmatched_segment = first_unmatched
+                unmatched_segment = " | ".join(unmatched_segments)
             if all_segments_match:
                 matched = source_id
                 match_method = "COMPACT_ORDERED_SEGMENTS"
@@ -294,7 +293,7 @@ def main() -> int:
         if not candidates:
             errors.append(f"{clause_id}: no local, hash-verified official PDF candidate")
         elif not matched:
-            errors.append(f"{clause_id}: English block has {segment_matched}/{segment_total} exact quoted segments in source order; first missing segment: {unmatched_segment}; diagnostic token coverage {best_ratio:.3f} from {best_source}; source window: {source_preview}")
+            errors.append(f"{clause_id}: English block has {segment_matched}/{segment_total} exact quoted segments in source order; unmatched segment previews: {unmatched_segment}; diagnostic token coverage {best_ratio:.3f} from {best_source}; source window: {source_preview}")
         results.append({
             "clause_id": clause_id,
             "provision_anchor": row.get("provision_anchor", ""),

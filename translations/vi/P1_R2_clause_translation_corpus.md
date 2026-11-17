@@ -753,7 +753,7 @@ Các đoạn được đánh dấu **TÓM TẮT/DIỄN GIẢI — KHÔNG PHẢI 
 
 > This Regulation shall enter into force on the third day following that of its publication in the Official Journal of the European Union.
 >
-> It shall apply from 1 January 2026.
+> This Regulation shall apply from 1 January 2026.
 >
 > It shall be reviewed in 2027 at the latest.
 >
