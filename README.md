@@ -44,7 +44,14 @@ Start with [AGENTS.md](AGENTS.md) and the GitHub issues. The materials are not a
 - [Legal conflict log](legal/CONFLICT_LOG.md)
 - [EN–VI term glossary](glossary/CBAM_EN_VI.csv)
 - [Translation coverage register](translations/coverage.csv)
-- [Vietnamese translation chunks](translations/vi/)
+- [P1-R2 source-level coverage dashboard](qa/P1_R2_COVERAGE_DASHBOARD.md)
+- [P1-R2 selected-clause EN–VI corpus](translations/vi/P1_R2_clause_translation_corpus.md)
+- [P1-R2 clause-level pair/source map](translations/CLAUSE_COVERAGE.csv)
+- [P1-R2 human-review sample: 10 claims / 3 industries](qa/P1_R2_HUMAN_REVIEW_SAMPLE.md)
+- [P1-R2 source provenance and rights log](legal/P1_R2_SOURCE_RIGHTS_LOG.md)
+- [Earlier Vietnamese translation drafts](translations/vi/)
 - [P1 claim and translation checks](qa/P1_CLAIM_AND_TRANSLATION_CHECKS.md)
+- [P1-R2 structural QA checker](scripts/check_p1_structure.py)
+- [P1-R2 CI setup and exact-SHA evidence procedure](qa/P1_R2_CI_EVIDENCE.md)
 
-P1 material is a research/translation draft only. P0 PR #8 remains a draft checkpoint; no CTIC legal approval is asserted and no P2–P4 production material is included.
+P1 material is a research/translation draft only. P1-R2 structural QA is not human review or legal approval; P1 exit remains not passed. PR #9 remains a draft stacked on P0 PR #8; neither is merged. No CTIC legal approval is asserted and no P2–P4 production material is included.

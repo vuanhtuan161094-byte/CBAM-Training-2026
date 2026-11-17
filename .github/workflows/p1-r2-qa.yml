@@ -1,0 +1,50 @@
+name: P1-R2 structural QA
+
+on:
+  pull_request:
+    branches:
+      - codex/issue-2-p0-source-inventory
+    paths:
+      - "README.md"
+      - "legal/**"
+      - "glossary/**"
+      - "translations/**"
+      - "scripts/**"
+      - "source-register/**"
+      - "qa/**"
+      - ".github/workflows/p1-r2-qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  structural-qa:
+    name: P0 hashes and P1-R2 structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Record tested commit
+        run: |
+          echo "tested_commit=$(git rev-parse HEAD)"
+          echo "workflow_sha=${GITHUB_SHA}"
+
+      - name: Verify official source inventory and local SHA256 files
+        run: python scripts/check_source_inventory.py
+
+      - name: Verify P1-R2 source coverage, clause pairs, claims, glossary and watermark
+        run: python scripts/check_p1_structure.py
+
+      - name: Check patch whitespace
+        if: ${{ github.event_name == 'pull_request' }}
+        run: git diff --check "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}"

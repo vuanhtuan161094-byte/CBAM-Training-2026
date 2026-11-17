@@ -1,4 +1,6 @@
-# P1 claim and translation checks
+# P1 claim and translation checks — historical R1 snapshot
+
+> **SUPERSEDED for PR #9/P1-R2.** This file records Codex self-checks against the earlier R1 draft. The PR #9 review found that its selected checks did not establish the claimed row-level English/Vietnamese correspondence or independent review. Do not treat the “matched” labels below as validation of the R2 matrix or translation corpus. Use [the R2 human-review sample](P1_R2_HUMAN_REVIEW_SAMPLE.md), [the clause coverage map](../translations/CLAUSE_COVERAGE.csv), and [the generated structural QA](P1_R2_CI_EVIDENCE.md) for the current draft. Human bilingual and legal review remain pending.
 
 **Cut-off:** 17 November 2026. **Check type:** Codex source cross-check of this draft against EUR-Lex/OJ English texts and the latest PR #8 review. This is not an independent human audit, legal opinion or approval. Every result remains **HUMAN LEGAL REVIEW PENDING**.
 
