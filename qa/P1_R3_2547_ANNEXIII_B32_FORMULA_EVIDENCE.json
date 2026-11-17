@@ -1,0 +1,90 @@
+{
+  "evidence_version": 1,
+  "source_id": "ACT-2025-2547",
+  "instrument": "Commission Implementing Regulation (EU) 2025/2547",
+  "clause_id": "P1R3-2547-ANNEXIII-B32",
+  "corpus_path": "translations/vi/P1_R3_expanded_corpus.md",
+  "provision": "Annex III, point B.3.2, Equations 12–15",
+  "source_version": "OJ L, 2025/2547, 22 December 2025; English OJ PDF",
+  "official_pdf_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202502547",
+  "official_eli_url": "https://eur-lex.europa.eu/eli/reg_impl/2025/2547/oj/eng",
+  "local_pdf_path": "sources/official/originals/ACT-2025-2547.pdf",
+  "local_pdf_sha256": "6ca80e3ed665e47aaef801e59e0791c50287ca46db20aad046e861134608ccf7",
+  "source_page": "36/86",
+  "acquired_or_checked_date": "2026-11-17",
+  "evidence_method": "Formula lines reproduced from the official EUR-Lex OJ PDF text extraction for printed page 36/86 and visually compared by Codex with the rendered page from the saved, hash-verified official OJ PDF. The local pypdf text layer does not expose these four formula glyph sequences. The visual comparison is not independent human or legal approval.",
+  "statuses": {
+    "exact_pdf_text": "PASS_EXACT_PDF_TEXT",
+    "official_structured_math": "UNVERIFIED_EQUATION",
+    "rendered_pdf_visual": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+    "human_pdf_visual": "UNVERIFIED_EQUATION",
+    "overall": "PENDING_MANUAL_EQUATION_REVIEW"
+  },
+  "rendered_page_evidence": {
+    "path": "qa/evidence/ACT-2025-2547-ANNEX-III-B3-2-OJ-p36.png",
+    "sha256": "96270594b8c08c81d7742c119c68707e006a4ef9fcfa7cc94d2bdc147b127a9c",
+    "printed_page": "36/86",
+    "renderer": "Poppler pdftoppm",
+    "resolution_dpi": 170,
+    "render_date": "2026-11-18"
+  },
+  "formulas": [
+    {
+      "equation_number": 12,
+      "official_pdf_text": "Emₖ = f × ADₖ × CCₖ (Equation 12)",
+      "corpus_text": "Emₖ = f × ADₖ × CCₖ (Equation 12)",
+      "variables": ["Emₖ", "f", "ADₖ", "CCₖ"],
+      "operator_sequence": ["=", "×", "×"],
+      "unit_and_context": "Emissions for each source stream; ADₖ is material activity data in t and negative for outputs; f = 3,664 t CO₂/t C; CCₖ is dimensionless and positive.",
+      "exact_pdf_text_status": "PASS_EXACT_PDF_TEXT",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    },
+    {
+      "equation_number": 13,
+      "official_pdf_text": "CCₖ = EFₖ × NCVₖ/f (Equation 13)",
+      "corpus_text": "CCₖ = EFₖ × NCVₖ/f (Equation 13)",
+      "variables": ["CCₖ", "EFₖ", "NCVₖ", "f"],
+      "operator_sequence": ["=", "×", "/"],
+      "unit_and_context": "Used when the fuel emission factor is expressed in t CO₂/TJ; NCVₖ is the net calorific value; f = 3,664 t CO₂/t C.",
+      "exact_pdf_text_status": "PASS_EXACT_PDF_TEXT",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    },
+    {
+      "equation_number": 14,
+      "official_pdf_text": "CCₖ = EFₖ/f (Equation 14)",
+      "corpus_text": "CCₖ = EFₖ/f (Equation 14)",
+      "variables": ["CCₖ", "EFₖ", "f"],
+      "operator_sequence": ["=", "/"],
+      "unit_and_context": "Used when the material or fuel emission factor is expressed in t CO₂/t; f = 3,664 t CO₂/t C.",
+      "exact_pdf_text_status": "PASS_EXACT_PDF_TEXT",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    },
+    {
+      "equation_number": 15,
+      "official_pdf_text": "CCₖ = CCₚᵣₑ,ₖ × (1 − BFₖ) (Equation 15)",
+      "corpus_text": "CCₖ = CCₚᵣₑ,ₖ × (1 − BFₖ) (Equation 15)",
+      "variables": ["CCₖ", "CCₚᵣₑ,ₖ", "BFₖ"],
+      "operator_sequence": ["=", "×", "−"],
+      "unit_and_context": "For mixed fuels when the biomass-zero-rating criteria at Annex III B.3.3 are met; BFₖ is the dimensionless zero-rated biomass fraction.",
+      "exact_pdf_text_status": "PASS_EXACT_PDF_TEXT",
+      "structured_math_status": "UNVERIFIED_EQUATION",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "human_visual_status": "UNVERIFIED_EQUATION",
+      "review_status": "PENDING_MANUAL_EQUATION_REVIEW"
+    }
+  ],
+  "limitations": [
+    "This evidence does not claim access to EUR-Lex MathML or PASS_HUMAN_PDF_VISUAL. The saved rendered page is linked by SHA-256; Codex visually compared the four formulas against that official OJ page.",
+    "PASS_EXACT_PDF_TEXT records the exact formula text exposed by EUR-Lex's official OJ PDF text extraction and checked against the saved official-PDF hash; the Codex rendered-image comparison is separately recorded and is not human or legal approval.",
+    "The Vietnamese formula/terminology review remains pending with CTIC; automated exact-text and mutation checks do not provide legal approval."
+  ]
+}

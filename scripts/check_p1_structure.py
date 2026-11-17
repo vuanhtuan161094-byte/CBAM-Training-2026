@@ -17,6 +17,7 @@ CLAUSE_COVERAGE = ROOT / "translations" / "CLAUSE_COVERAGE.csv"
 CORPUS_FILES = {
     "translations/vi/P1_R2_clause_translation_corpus.md": ROOT / "translations" / "vi" / "P1_R2_clause_translation_corpus.md",
     "translations/vi/P1_R3_expanded_corpus.md": ROOT / "translations" / "vi" / "P1_R3_expanded_corpus.md",
+    "translations/vi/P1_R4_expanded_corpus.md": ROOT / "translations" / "vi" / "P1_R4_expanded_corpus.md",
 }
 MATRIX = ROOT / "legal" / "CLAIM_MATRIX.csv"
 GLOSSARY = ROOT / "glossary" / "CBAM_EN_VI.csv"
@@ -53,7 +54,7 @@ def fail(errors: list[str], message: str) -> None:
 
 
 def section_parts(text: str) -> dict[str, dict[str, str]]:
-    headings = list(re.finditer(r"^## (P1R[23]-[^\n]+)$", text, re.M))
+    headings = list(re.finditer(r"^## (P1R[234]-[^\n]+)$", text, re.M))
     sections: dict[str, dict[str, str]] = {}
     for index, match in enumerate(headings):
         end = headings[index + 1].start() if index + 1 < len(headings) else len(text)
@@ -329,9 +330,9 @@ def main() -> int:
     print("P1-R3 structural and traceability QA: PASS (no legal or translation approval)")
     print(f"- P0 sources covered: {len(source_rows)}")
     print(f"- Supplemental status sources: {len(supplemental_rows)}")
-    print(f"- Clause pairs checked (R2 + R3): {len(clause_rows)}")
+    print(f"- Clause pairs checked (R2 + R3 + R4): {len(clause_rows)}")
     print(f"- One-source claims checked: {len(claims)}")
-    print(f"- P1-R3 section-coverage records checked: {len(section_rows)}")
+    print(f"- P1 source section-coverage records checked: {len(section_rows)}")
     print(f"- Human review sample: {len(sample_claims)} claims / 3 industries")
     return 0
 

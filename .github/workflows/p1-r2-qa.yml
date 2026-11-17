@@ -1,4 +1,4 @@
-name: P1-R3 structural and source-text QA
+name: P1-R3/R4 structural and source-text QA
 
 on:
   pull_request:
@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   structural-qa:
-    name: P0 hashes, P1-R2/R3 structure and original text
+    name: P0 hashes, P1-R2/R3/R4 structure and original text
     runs-on: ubuntu-latest
     steps:
       - name: Check out the exact PR head
@@ -45,8 +45,14 @@ jobs:
       - name: Verify official source inventory and local SHA256 files
         run: python scripts/check_source_inventory.py
 
-      - name: Verify P1-R2/R3 source coverage, clause pairs, claims, glossary and watermark
+      - name: Verify P1-R2/R3/R4 source coverage, clause pairs, claims, glossary and watermark
         run: python scripts/check_p1_structure.py
+
+      - name: Test P1-R3/R4 formula evidence against intentional mutations
+        run: python -m unittest discover -s tests -p 'test_p1_formula_evidence.py' -v
+
+      - name: Verify P1-R3/R4 formula source hashes, rendered pages and EN–VI lines
+        run: python scripts/check_p1_formula_evidence.py
 
       - name: Compare selected clauses and claims with hash-verified local EU originals
         run: python scripts/check_p1_original_text.py
@@ -54,19 +60,19 @@ jobs:
       - name: Record exact-SHA QA summary
         if: always()
         run: |
-          echo "## P1-R3 exact-SHA QA" >> "$GITHUB_STEP_SUMMARY"
+          echo "## P1-R3/R4 exact-SHA QA" >> "$GITHUB_STEP_SUMMARY"
           echo "tested_commit=$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
           echo "workflow_sha=${GITHUB_SHA}" >> "$GITHUB_STEP_SUMMARY"
-          echo "Source comparison output is attached as the p1-r3-source-text-validation artifact." >> "$GITHUB_STEP_SUMMARY"
+          echo "Source comparison and separate formula evidence are attached as the p1-r3-r4-source-text-validation artifact." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload clause-to-original comparison evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: p1-r3-source-text-validation
+          name: p1-r3-r4-source-text-validation
           path: qa/P1_R3_SOURCE_TEXT_VALIDATION.csv
           if-no-files-found: warn
 
       - name: Check patch whitespace
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ always() && github.event_name == 'pull_request' }}
         run: git diff --check "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}"

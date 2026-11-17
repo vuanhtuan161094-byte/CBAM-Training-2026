@@ -73,7 +73,7 @@ Trong `source_excerpt_en`, dấu `/` ngăn cách các cụm trích nguyên văn 
 - **Claim:** For primary electrolytic aluminium, perfluorocarbon emissions caused by anode effects are monitored under Annex II, point B.7.
 - **Exact provision:** `Annex I, point 3.17.2.1, fourth indent; Annex II, point B.7` in [ACT-2025-2547](https://eur-lex.europa.eu/eli/reg_impl/2025/2547/oj/eng) · version `OJ L, 2025/2547, 22 December 2025` · SHA256 `6ca80e3ed665e47aaef801e59e0791c50287ca46db20aad046e861134608ccf7`
 - **English source excerpt (short):** “perfluorocarbon emissions caused by anode effects monitored in accordance with point B.7 of Annex II”
-- **Vietnamese counterpart:** “phát thải perfluorocarbon (PFC) do hiệu ứng anốt (anode effect), được giám sát theo điểm B.7 Phụ lục II”
+- **Vietnamese counterpart:** “phát thải các hợp chất perfluorocarbon (PFC) do hiệu ứng anốt (anode effect), được giám sát theo điểm B.7 Phụ lục II”
 - **Application/amendment status:** From 1 Jan 2026. Annex II B.7 contains the PFC monitoring provisions; not reproduced in this excerpt.
 - **Scope and unresolved boundary:** Primary (electrolytic) unwrought aluminium. Technical parameters and measurement calculations are not translated in this row; independent aluminium technical review required.
 - **Review state:** `SOURCE CHECKED; HUMAN LEGAL REVIEW PENDING` — Human bilingual and legal review pending; automated checks do not constitute legal approval.
@@ -335,7 +335,7 @@ Các ví dụ ngành lấy từ ma trận claim và bộ cặp điều khoản. 
 >
 > — mọi quy trình có liên kết trực tiếp hoặc gián tiếp với quy trình sản xuất phát thải CO2 từ việc xử lý khí thải, từ natri cacbonat (soda ash) hoặc đá vôi nếu có liên quan;
 >
-> — phát thải perfluorocarbon (PFC) do hiệu ứng anốt (anode effect), được giám sát theo điểm B.7 Phụ lục II.
+> — phát thải các hợp chất perfluorocarbon (PFC) do hiệu ứng anốt (anode effect), được giám sát theo điểm B.7 Phụ lục II.
 >
 > 3.17.2.2. Nấu chảy thứ cấp (tái chế)
 >

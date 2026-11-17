@@ -18,6 +18,8 @@ from pathlib import Path
 
 from pypdf import PdfReader
 
+from check_p1_formula_evidence import validate as validate_formula_evidence
+
 ROOT = Path(__file__).resolve().parents[1]
 REGISTER = ROOT / "source-register" / "SOURCE_REGISTER.csv"
 SUPPLEMENTAL = ROOT / "source-register" / "P1_R2_SUPPLEMENTAL_SOURCES.csv"
@@ -27,6 +29,7 @@ OUTPUT = ROOT / "qa" / "P1_R3_SOURCE_TEXT_VALIDATION.csv"
 CORPUS_FILES = {
     "translations/vi/P1_R2_clause_translation_corpus.md": ROOT / "translations" / "vi" / "P1_R2_clause_translation_corpus.md",
     "translations/vi/P1_R3_expanded_corpus.md": ROOT / "translations" / "vi" / "P1_R3_expanded_corpus.md",
+    "translations/vi/P1_R4_expanded_corpus.md": ROOT / "translations" / "vi" / "P1_R4_expanded_corpus.md",
 }
 
 # The first R3 audit covers legal-backbone and priority industrial provisions;
@@ -45,8 +48,23 @@ SCOPE = {
     "P1R3-2547-ANNEXIII-B32",
     "P1R3-2498-ART15-1-2",
     "P1R3-959-ART10A-1A",
+    "P1R4-2547-ANNEXII-A5",
+    "P1R4-2547-ANNEXII-B71",
+    "P1R4-2547-ANNEXII-B92-1-2",
+    "P1R4-2547-ANNEXIV-SECTOR-PARAMETERS",
+    "P1R4-2546-ANNEX-1-1-2-3",
+    "P1R4-2551-ANNEXII-1-1-1",
+    "P1R4-2620-ANNEX-2-3-1",
+    "P1R4-2621-ART1-2",
+    "P1R4-1740-ART1-2",
 }
 CLAIM_SCOPE = {"P1-034", "P1-035", "P1-038", "P1-039", "P1-040", "P1-041"}
+FORMULA_EQUATIONS = {
+    "P1R3-2547-ANNEXIII-B32": (12, 13, 14, 15),
+    "P1R4-2547-ANNEXII-B71": (20, 21, 22, 23),
+    "P1R4-2547-ANNEXII-B92-1-2": (27,),
+    "P1R4-2620-ANNEX-2-3-1": (1, 2),
+}
 
 
 def read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -92,7 +110,7 @@ def ordered_segment_match(source_compact: str, segments: list[str]) -> tuple[boo
 
 def quoted_section(path: Path, clause_id: str) -> tuple[str, str]:
     text = path.read_text(encoding="utf-8")
-    headings = list(re.finditer(r"^## (P1R[23]-[^\n]+)$", text, re.M))
+    headings = list(re.finditer(r"^## (P1R[234]-[^\n]+)$", text, re.M))
     for index, heading in enumerate(headings):
         cid = heading.group(1).split(" — ", 1)[0]
         if cid != clause_id:
@@ -208,6 +226,8 @@ def main() -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     errors: list[str] = []
+    formula_rows, formula_errors = validate_formula_evidence(ROOT)
+    errors.extend(formula_errors)
     _, source_rows = read_csv(REGISTER)
     _, supplemental_rows = read_csv(SUPPLEMENTAL)
     sources = {row["source_id"]: row for row in [*source_rows, *supplemental_rows]}
@@ -228,8 +248,23 @@ def main() -> int:
         except (ValueError, KeyError, json.JSONDecodeError) as exc:
             errors.append(f"{clause_id}: {exc}")
             continue
-        expected_tokens = token_text(excerpt)
-        segments = quote_segments(excerpt)
+        pdf_text_excerpt = excerpt
+        if clause_id in FORMULA_EQUATIONS:
+            # PDF math glyphs may be omitted from the text layer. Exclude only
+            # the exact equation lines whose source/render evidence is recorded
+            # separately; every surrounding English prose/table segment remains
+            # in the hash-verified local-PDF comparison.
+            for equation_number in FORMULA_EQUATIONS[clause_id]:
+                pattern = rf"(?m)^\s*.*\(Equation\s+{equation_number}\)\s*$"
+                exact_formula_lines = re.findall(pattern, pdf_text_excerpt)
+                if len(exact_formula_lines) != 1:
+                    errors.append(
+                        f"{clause_id}: expected exactly one English Equation {equation_number} source line; "
+                        f"found {len(exact_formula_lines)}"
+                    )
+                pdf_text_excerpt = re.sub(pattern, "", pdf_text_excerpt)
+        expected_tokens = token_text(pdf_text_excerpt)
+        segments = quote_segments(pdf_text_excerpt)
         if len(expected_tokens) < 8:
             errors.append(f"{clause_id}: English source block is too short to compare")
             continue
@@ -307,7 +342,25 @@ def main() -> int:
             "source_segments": f"{segment_matched}/{segment_total}",
             "unmatched_segment_preview": unmatched_segment,
             "source_window_preview": source_preview,
-            "review_limit": "English text/source identity only; no translation/legal approval",
+            "review_limit": "English prose/source identity only; formulas are separate evidence rows; no translation/legal approval",
+        })
+
+    for formula_row in formula_rows:
+        formula_status = "FAIL" if formula_errors else formula_row["status"]
+        results.append({
+            "clause_id": formula_row["clause_id"],
+            "provision_anchor": formula_row["provision_anchor"],
+            "source_ids_json": json.dumps([formula_row["source_id"]]),
+            "matched_local_source_id": formula_row["source_id"] if not formula_errors else "",
+            "source_sha256s_json": json.dumps([formula_row["source_sha256"]]),
+            "quoted_word_tokens": "",
+            "status": formula_status,
+            "match_method": formula_row["match_method"],
+            "matched_token_coverage": "1.0000" if not formula_errors else "0.0000",
+            "source_segments": "1/1" if not formula_errors else "0/1",
+            "unmatched_segment_preview": "" if not formula_errors else "formula evidence error",
+            "source_window_preview": f"official PDF printed page {formula_row['source_locator']}",
+            "review_limit": f"{formula_row['review_limit']}; final status {formula_row['formula_review_status']}",
         })
 
     _, claim_rows = read_csv(CLAIM_MATRIX)
@@ -406,13 +459,16 @@ def main() -> int:
         writer.writeheader()
         writer.writerows(results)
 
-    passes = sum(result["status"].startswith("PASS_") for result in results)
-    exact = sum(result["status"] == "PASS_EXACT" for result in results)
-    compact = sum(result["status"] == "PASS_COMPACT" for result in results)
-    segmented = sum(result["status"] == "PASS_SEGMENTS" for result in results)
-    comparisons = sum(result["status"].startswith("PASS_") or result["status"] == "FAIL" for result in results)
-    print(f"P1 original-text comparison: {passes}/{comparisons} local PDF excerpts/claim quotes matched; proposal PAGE_ONLY recorded separately")
+    clause_and_claim_results = [row for row in results if "-EQ" not in row["clause_id"]]
+    passes = sum(result["status"].startswith("PASS_") for result in clause_and_claim_results)
+    exact = sum(result["status"] == "PASS_EXACT" for result in clause_and_claim_results)
+    compact = sum(result["status"] == "PASS_COMPACT" for result in clause_and_claim_results)
+    segmented = sum(result["status"] == "PASS_SEGMENTS" for result in clause_and_claim_results)
+    comparisons = sum(result["status"].startswith("PASS_") or result["status"] == "FAIL" for result in clause_and_claim_results)
+    formula_passes = sum(row["status"] == "PASS_EXACT_PDF_TEXT" for row in formula_rows) if not formula_errors else 0
+    print(f"P1 prose/claim comparison: {passes}/{comparisons} local PDF excerpts/claim quotes matched; proposal PAGE_ONLY recorded separately")
     print(f"- Exact token-sequence matches: {exact}; compact full-block matches: {compact}; compact ordered-segment matches: {segmented}")
+    print(f"- Annex III B.3.2 formulas: {formula_passes}/4 PASS_EXACT_PDF_TEXT; overall PENDING_MANUAL_EQUATION_REVIEW")
     print(f"Evidence CSV: {OUTPUT.relative_to(ROOT)}")
     for error in errors:
         print(f"FAIL: {error}")

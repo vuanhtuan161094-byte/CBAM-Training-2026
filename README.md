@@ -60,6 +60,14 @@ Start with [AGENTS.md](AGENTS.md) and the GitHub issues. The materials are not a
 - [P1-R3 source-aligned EN–VI additions](translations/vi/P1_R3_expanded_corpus.md)
 - [Current law vs COM(2026) 616 factor comparison](legal/CURRENT_LAW_VS_COM_2026_616_CBAM_FACTOR.md)
 - [P1-R3 original-text comparison checker](scripts/check_p1_original_text.py)
+- [P1-R3.1 Annex III B.3.2 formula evidence](qa/P1_R3_2547_ANNEXIII_B32_FORMULA_EVIDENCE.json)
+- [P1-R3.1 formula evidence checker](scripts/check_p1_formula_evidence.py)
+- [P1-R3.1 formula mutation tests](tests/test_p1_formula_evidence.py)
 - [P1-R3 QA report](qa/P1_R3_QA_REPORT.md)
+- [P1-R3/R4 translation progress dashboard](qa/P1_R3_TRANSLATION_DASHBOARD.md)
+- [P1-R4 source-aligned EN–VI corpus](translations/vi/P1_R4_expanded_corpus.md)
+- [P1-R4 CTIC independent review pack](qa/P1_R4_CTIC_REVIEW_PACK.md)
+- [P1-R4 non-operative expert and client course outlines](qa/P1_R4_COURSE_OUTLINES.md)
+- [P1-R4 formula/source-render evidence](qa/P1_R4_FORMULA_EVIDENCE.json)
 
-P1 material is a research/translation draft only. P1-R2 technical checkpoint passed at its reviewed SHA; P1-R3 automated QA and independent bilingual/legal review are separate gates. The overall P1 legal/translation gate remains not passed. PR #9 remains a draft stacked on P0 PR #8; neither is merged. No CTIC legal approval is asserted and no P2–P4 production material is included.
+P1 material is a research/translation draft only. P1-R2 technical checkpoint passed at its reviewed SHA. P1-R3.1 formulas now have official-PDF text evidence and a SHA-pinned rendered-page comparison; the independent human/legal review remains pending. P1-R4 remains a partial translation tranche; its selected formula/source-image checks do not close the full Annex coverage. The non-operative course outlines are planning drafts only. The overall P1 legal/translation gate remains not passed. PR #9 remains a draft stacked on P0 PR #8; neither is merged. No CTIC legal approval is asserted and no final P2–P4 production material is included.

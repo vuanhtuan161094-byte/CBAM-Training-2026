@@ -538,7 +538,7 @@ Các đoạn được đánh dấu **TÓM TẮT/DIỄN GIẢI — KHÔNG PHẢI 
 >
 > — mọi quy trình có liên kết trực tiếp hoặc gián tiếp với quy trình sản xuất phát thải CO2 từ việc xử lý khí thải, từ natri cacbonat (soda ash) hoặc đá vôi nếu có liên quan;
 >
-> — phát thải perfluorocarbon (PFC) do hiệu ứng anốt (anode effect), được giám sát theo điểm B.7 Phụ lục II.
+> — phát thải các hợp chất perfluorocarbon (PFC) do hiệu ứng anốt (anode effect), được giám sát theo điểm B.7 Phụ lục II.
 >
 > 3.17.2.2. Nấu chảy thứ cấp (tái chế)
 >
