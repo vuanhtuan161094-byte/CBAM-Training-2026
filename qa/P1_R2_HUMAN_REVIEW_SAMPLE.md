@@ -127,7 +127,7 @@ Các ví dụ ngành lấy từ ma trận claim và bộ cặp điều khoản. 
 >
 > 3.3.2. System boundary
 >
-> For cement clinker, direct emissions monitoring shall take into account:
+> For cement clinker, direct emissions monitoring take into account:
 >
 > — calcination of limestone and other carbonates in the raw materials, conventional fossil kiln fuels, alternative fossil-based kiln fuels and raw materials, biomass kiln fuels (such as waste-derived fuels), non-kiln fuels, non-carbonate carbon content in raw materials, or alternative raw materials such as fly ash used in the raw meal in the kiln and raw materials used for flue gas scrubbing;
 >
@@ -155,7 +155,7 @@ Các ví dụ ngành lấy từ ma trận claim và bộ cặp điều khoản. 
 >
 > 3.3.2. Ranh giới hệ thống
 >
-> Đối với clinker xi măng, việc giám sát phát thải trực tiếp phải tính đến:
+> Đối với clinker xi măng, hoạt động giám sát phát thải trực tiếp tính đến:
 >
 > — quá trình nung phân hủy đá vôi và các cacbonat khác trong nguyên liệu; nhiên liệu hóa thạch thông thường của lò nung; nhiên liệu và nguyên liệu hóa thạch thay thế; nhiên liệu sinh khối cho lò nung (chẳng hạn nhiên liệu từ chất thải); nhiên liệu không dùng cho lò nung; hàm lượng carbon không phải cacbonat trong nguyên liệu; hoặc nguyên liệu thay thế như tro bay được dùng trong phối liệu thô của lò nung và nguyên liệu dùng để xử lý khí thải;
 >
@@ -172,6 +172,8 @@ Các ví dụ ngành lấy từ ma trận claim và bộ cặp điều khoản. 
 > Đối với xi măng, việc giám sát phát thải trực tiếp phải tính đến:
 >
 > — mọi quy trình có liên kết trực tiếp hoặc gián tiếp với quy trình sản xuất, nếu có liên quan đến việc làm khô vật liệu.
+
+**NEEDS_LEGAL_REVIEW:** Bản tiếng Anh OJ tại điểm 3.3.2 viết “direct emissions monitoring take into account” (không có “shall”). Bản dịch giữ cách diễn đạt không thêm động từ tình thái; chuyên gia CTIC cần xác nhận ý nghĩa pháp lý và cách dịch theo các bản ngôn ngữ chính thức khác.
 
 - **Claim mẫu liên quan:** The calculation-method act makes no distinction between grey and white cement clinker.
 - **Ranh giới cần rà:** Do not conflate clinker with finished cement or assume composition/precursor treatment without checking the exact good and method.

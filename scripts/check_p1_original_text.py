@@ -68,8 +68,12 @@ def compact_text(value: str) -> str:
 
 
 def quote_segments(value: str) -> list[str]:
-    """Return each quoted source paragraph/line separately for page-wrap checking."""
-    return [compact_text(line) for line in value.splitlines() if compact_text(line)]
+    """Return quoted paragraphs and individual source-table cells for exact comparison."""
+    segments: list[str] = []
+    for line in value.splitlines():
+        parts = line.split("|") if "|" in line else [line]
+        segments.extend(compact_text(part) for part in parts if compact_text(part))
+    return segments
 
 
 def ordered_segment_match(source_compact: str, segments: list[str]) -> tuple[bool, int, str]:

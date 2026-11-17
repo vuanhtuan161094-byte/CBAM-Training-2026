@@ -162,7 +162,7 @@
 
 ### English source text
 
-> A factor reducing the free allocation for the production of those goods shall be applied (CBAM factor). The CBAM factor shall be equal to 100 % for the period between the entry into force of Regulation (EU) 2023/956 and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 90 % in 2028, 77,5 % in 2029, 51,5 % in 2030, 39 % in 2031, 26,5 % in 2032 and 14 % in 2033. From 2034, no CBAM factor shall apply.
+> A factor reducing the free allocation for the production of those goods shall be applied (CBAM factor). The CBAM factor shall be equal to 100 % for the period between the entry into force of that Regulation and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 90 % in 2028, 77,5 % in 2029, 51,5 % in 2030, 39 % in 2031, 26,5 % in 2032 and 14 % in 2033. From 2034, no CBAM factor shall apply.
 
 ### Bản dịch tiếng Việt
 
