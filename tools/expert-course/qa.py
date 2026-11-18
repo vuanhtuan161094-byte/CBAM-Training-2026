@@ -35,6 +35,30 @@ WORD_FILES = {
 }
 NS = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main"}
 TEXT_HASH_SUFFIXES = {".csv", ".json", ".md", ".txt"}
+UNTRANSLATED_ENGLISH_MARKERS = (
+    "Report grain and data lineage",
+    "Current law vs COM(2026) 616 proposal",
+    "Verification report and Registry delivery",
+    "Special test: steel carbon balance",
+    "Independent reviewer and impartiality",
+    "Exercise: reconcile SEE, FAA and scenario",
+    "CBAM benchmark ≠ EU ETS benchmark",
+    "Cost scenario ≠ statutory liability",
+    "5% threshold không phải sai số cho phép",
+    "Independent person có tự động được thẩm tra",
+    "Public website confirms Registry operation",
+    "Define one row’s grain before building report",
+    "Specific embedded emissions connect emissions",
+    "Trace precursor consumption, precursor SEE",
+    "Regulation 2026/1412 updates EU ETS benchmark",
+    "Build transparent scenarios using synthetic inputs",
+    "As of source review, Art 10a(1a)",
+    "2025/2546 sets verification principles",
+    "Plan engagement, understand operator/data flows",
+    "Article 5(1) references 5%",
+    "Independent reviewer reviews verifier’s work",
+    "Use the answer key to check finding quality",
+)
 
 
 def repository_bytes(path: Path) -> bytes:
@@ -82,7 +106,7 @@ def module_qa(module: dict) -> dict:
     expected = [slide["title"] for slide in slides]
     actual = [heading.split(" · ", 1)[1] for heading in headings]
     assert actual == expected, f"{code}: Word slide headings/order mismatch"
-    pages = len(PdfReader(str(pdf)).pages)
+    pages = len(PdfReader(str(pdf), strict=True).pages)
     assert pages == module["slideCount"], f"{code}: preview PDF page count mismatch"
 
     return {
@@ -97,9 +121,22 @@ def module_qa(module: dict) -> dict:
 
 
 rows = [module_qa(module) for module in DATA]
+for module in DATA:
+    if module["code"] not in {"EXP-06", "EXP-07"}:
+        continue
+    for slide in module["slides"]:
+        text_fields = [slide.get(key, "") for key in ("title", "explain", "prompt", "answer", "pitfall")]
+        text_fields.extend(slide.get("bullets", []))
+        for value in text_fields:
+            if isinstance(value, str):
+                assert not any(marker.casefold() in value.casefold() for marker in UNTRANSLATED_ENGLISH_MARKERS), (
+                    f"{module['code']} slide {slide['index']}: untranslated English narration found"
+                )
 course_slides = 18 + sum(row["slides"] for row in rows)
 course_minutes = 90 + sum(module["duration"] for module in DATA)
 assert course_slides == 136 and course_minutes == 720
+assert len(PdfReader(str(OUT / "CTIC_EXP01_CBAM_Basics_Vietnamese_PREVIEW.pdf"), strict=True).pages) == 18
+assert len(PdfReader(str(OUT / "CTIC_EXP01_CONTACT_SHEET.pdf"), strict=True).pages) == 2
 
 with (OUT / "CTIC_Expert_Claim_Traceability_Matrix_DRAFT.csv").open(encoding="utf-8-sig", newline="") as stream:
     claims = list(csv.DictReader(stream))
@@ -126,6 +163,7 @@ sync = {
     "claimMatrixRows": len(claims),
     "claimsMarkedNeedsLegalReviewFor2026_2498": len(claims_2498),
     "glossaryTerms": len(glossary),
+    "exp06Exp07VietnameseEditorial": "PASS — mapped English instructional prose removed; CTIC language/legal review pending",
     "workbookExpectedValues": {
         "SFA_process_Eq2": sefa[0][0],
         "SEFA_simple_good_Eq3": sefa[1][0],
@@ -170,12 +208,13 @@ lines += [
     "- Claim matrix: 182 rows; each row has a provision and URL. Glossary: 46 terms. Coverage dashboard lists selected provision references, not full translations of EU instruments.",
     "- Regulation (EU) 2026/2498 EUR-Lex metadata is available, but direct full-text retrieval was blocked by the JavaScript challenge in this runner. The corresponding claim-matrix rows are `NEEDS_LEGAL_REVIEW`; CTIC must confirm Articles 10–11 and Article 32 against the official text before use. [Official EUR-Lex record](https://eur-lex.europa.eu/eli/reg_impl/2026/2498/oj/eng).",
     "- Steel mass-balance cross-references, clinker wording, post-2026 CBAM benchmarks, Registry/O3CI fields, and live-case CN/route/default decisions remain open for CTIC.",
-    "- EXP-05–07 retain English technical narration in parts of the bilingual working draft; a Vietnamese editorial pass is required before delivery of training.",
+    "- An editorial map translates the remaining explanatory narration, prompts, answers and pitfalls in EXP-06–07 into Vietnamese. Official instrument names/acronyms remain; the Vietnamese wording still awaits CTIC language and legal review.",
     "- All exercise data are synthetic. Vietnamese legal text remains a reference translation awaiting editing and is not an official EU text.",
     "",
     "## Visual / desktop validation",
     "",
     "- All 118 new slides were rendered; all six module contact sheets and the corrected SFA/SEFA worksheet render were visually inspected, with selected full-size slides checked.",
+    "- All six module preview PDFs, the retained EXP-01 preview and its contact-sheet PDF parse in strict mode; page counts are checked against the slide inventory.",
     "- Word desktop visual rendering and native Excel open/recalculate were not available in this runner. No desktop validation is claimed.",
     "- GitHub Actions exact-SHA result must be read from and linked in Draft PR #12 after the delivery commit is pushed; this local report does not infer a CI result.",
     "- SHA-256 manifest hashes binary artifacts byte-for-byte and normalizes tracked text files to Git's LF blob bytes for Windows/Linux consistency.",

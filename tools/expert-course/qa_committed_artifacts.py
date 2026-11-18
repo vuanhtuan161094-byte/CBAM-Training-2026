@@ -25,6 +25,30 @@ MODULES = [
 ]
 NS = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main"}
 TEXT_HASH_SUFFIXES = {".csv", ".json", ".md", ".txt"}
+UNTRANSLATED_ENGLISH_MARKERS = (
+    "Report grain and data lineage",
+    "Current law vs COM(2026) 616 proposal",
+    "Verification report and Registry delivery",
+    "Special test: steel carbon balance",
+    "Independent reviewer and impartiality",
+    "Exercise: reconcile SEE, FAA and scenario",
+    "CBAM benchmark ≠ EU ETS benchmark",
+    "Cost scenario ≠ statutory liability",
+    "5% threshold không phải sai số cho phép",
+    "Independent person có tự động được thẩm tra",
+    "Public website confirms Registry operation",
+    "Define one row’s grain before building report",
+    "Specific embedded emissions connect emissions",
+    "Trace precursor consumption, precursor SEE",
+    "Regulation 2026/1412 updates EU ETS benchmark",
+    "Build transparent scenarios using synthetic inputs",
+    "As of source review, Art 10a(1a)",
+    "2025/2546 sets verification principles",
+    "Plan engagement, understand operator/data flows",
+    "Article 5(1) references 5%",
+    "Independent reviewer reviews verifier’s work",
+    "Use the answer key to check finding quality",
+)
 
 
 def require(condition: bool, message: str) -> None:
@@ -64,14 +88,24 @@ def check_module(code: str, stem: str, word_name: str, slide_count: int) -> dict
     require(len(notes) == slide_count, f"{code}: speaker notes are not 1:1 with slides")
     require(all(text.strip() for text in slide_text), f"{code}: empty slide text found")
     require(all(re.search(r"https?://", text) for text in notes_text), f"{code}: a speaker note has no source URL")
+    require(
+        not any(marker.casefold() in text.casefold() for marker in UNTRANSLATED_ENGLISH_MARKERS for text in notes_text),
+        f"{code}: untranslated English instructional prose remains in speaker notes",
+    )
     require(contact.is_file(), f"{code}: contact sheet missing")
 
     document = Document(docx)
+    word_text = "\n".join(p.text for p in document.paragraphs)
+    word_text += "\n" + "\n".join(cell.text for table in document.tables for row in table.rows for cell in row.cells)
+    require(
+        not any(marker.casefold() in word_text.casefold() for marker in UNTRANSLATED_ENGLISH_MARKERS),
+        f"{code}: untranslated English instructional prose remains in Word script",
+    )
     headings = [p.text for p in document.paragraphs if re.match(r"^SLIDE \d{2} · ", p.text)]
     titles = [heading.split(" · ", 1)[1] for heading in headings]
     require(len(headings) == slide_count, f"{code}: Word slide heading count mismatch")
     require(all(title in text for title, text in zip(titles, slide_text)), f"{code}: slide/Word titles do not match")
-    pdf_pages = len(PdfReader(str(pdf)).pages)
+    pdf_pages = len(PdfReader(str(pdf), strict=True).pages)
     require(pdf_pages == slide_count, f"{code}: preview PDF has {pdf_pages} pages")
     return {"module": code, "slides": len(slides), "notes": len(notes), "wordHeadings": len(headings), "previewPages": pdf_pages}
 
@@ -86,7 +120,8 @@ def main() -> None:
     exp01_pdf = OUT / "CTIC_EXP01_CBAM_Basics_Vietnamese_PREVIEW.pdf"
     with ZipFile(exp01_pptx) as package:
         exp01_slides = sum(bool(re.fullmatch(r"ppt/slides/slide\d+\.xml", name)) for name in package.namelist())
-    require(exp01_slides == 18 and len(PdfReader(str(exp01_pdf)).pages) == 18, "Retained EXP-01 must remain 18 slides / PDF pages")
+    require(exp01_slides == 18 and len(PdfReader(str(exp01_pdf), strict=True).pages) == 18, "Retained EXP-01 must remain 18 slides / PDF pages")
+    require(len(PdfReader(str(OUT / "CTIC_EXP01_CONTACT_SHEET.pdf"), strict=True).pages) == 2, "EXP-01 contact sheet must parse as a 2-page PDF")
 
     with (OUT / "CTIC_Expert_Claim_Traceability_Matrix_DRAFT.csv").open(encoding="utf-8-sig", newline="") as stream:
         claims = list(csv.DictReader(stream))
@@ -115,6 +150,8 @@ def main() -> None:
     require("matched 0 entries" in workbook_qa["formulaErrors"], "Workbook formula-error scan is not clear")
     sefa = workbook_qa["results"]["sefa"]
     require([sefa[index][0] for index in (0, 1, 2, 3, 4, 6)] == [0.3825, 0.3825, 382.5, 1800, 1417.5, 99225], "SFA/SEFA expected values changed")
+    sync_qa = json.loads((OUT / "PPT_WORD_SYNC_QA.json").read_text(encoding="utf-8"))
+    require(sync_qa.get("exp06Exp07VietnameseEditorial", "").startswith("PASS"), "EXP-06/07 editorial audit did not pass")
 
     manifest = OUT / "EXPERT_COURSE_SHA256SUMS.txt"
     manifest_count = 0

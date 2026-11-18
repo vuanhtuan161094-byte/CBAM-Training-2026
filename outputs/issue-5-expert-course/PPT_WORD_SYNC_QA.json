@@ -42,7 +42,7 @@
       "slides": 17,
       "speakerNotes": 17,
       "wordSlideHeadings": 17,
-      "wordCount": 5439,
+      "wordCount": 6901,
       "previewPdfPages": 17,
       "slideWordTitleSourceSync": "PASS"
     },
@@ -51,7 +51,7 @@
       "slides": 18,
       "speakerNotes": 18,
       "wordSlideHeadings": 18,
-      "wordCount": 5098,
+      "wordCount": 6637,
       "previewPdfPages": 18,
       "slideWordTitleSourceSync": "PASS"
     }
@@ -59,10 +59,11 @@
   "newModuleSlides": 118,
   "totalCourseSlidesIncludingEXP01": 136,
   "totalTeachingMinutes": 720,
-  "newModuleWordCount": 36901,
+  "newModuleWordCount": 39902,
   "claimMatrixRows": 182,
   "claimsMarkedNeedsLegalReviewFor2026_2498": 3,
   "glossaryTerms": 46,
+  "exp06Exp07VietnameseEditorial": "PASS — mapped English instructional prose removed; CTIC language/legal review pending",
   "workbookExpectedValues": {
     "SFA_process_Eq2": 0.3825,
     "SEFA_simple_good_Eq3": 0.3825,

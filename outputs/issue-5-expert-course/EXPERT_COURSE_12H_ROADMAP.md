@@ -43,5 +43,5 @@ Day 1: EXP-01 90 + EXP-02 120 + EXP-03 120 + EXP-04 30 = **360 min**. Day 2: EXP
 
 - All 118 new slides across EXP-02–07 were rendered; the six full contact sheets and the corrected SFA/SEFA workbook sheet were visually reviewed. EXP-01 remains the previously rendered 18-slide module.
 - Workbook calculation and error scan used Artifact Tool, not native Excel. Word documents could not be visually rendered because the environment has no Word/LibreOffice. See `EXPERT_COURSE_QA.md` for exact evidence and limitations.
-- EXP-05–07 retain English technical narration in parts of the current bilingual working draft. A Vietnamese editorial pass remains required before training delivery.
+- Remaining instructional narration in EXP-06–07 has been mapped into Vietnamese; technical acronyms and official instrument names remain. CTIC language and legal editing is still required before live training.
 - This package uses synthetic examples and public-source illustrations only; no client or supplier records are included.

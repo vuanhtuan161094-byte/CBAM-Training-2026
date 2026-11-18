@@ -270,6 +270,26 @@ async function makeSlide(pres, mod, s, idx, prev, next) {
 }
 
 await fs.mkdir(OUT,{recursive:true}); await fs.mkdir(BUILD,{recursive:true});
+const editorialMap = JSON.parse(await fs.readFile(path.join(ROOT, 'tools/expert-course/vietnamese_editorial_map.json'), 'utf8'));
+for (const [moduleCode, slideEdits] of Object.entries(editorialMap)) {
+  const module = modules.find(item => item.code === moduleCode);
+  if (!module) throw new Error(`Vietnamese editorial map references unknown module ${moduleCode}`);
+  for (const [slideNumber, edits] of Object.entries(slideEdits)) {
+    const slide = module.slides[Number(slideNumber) - 1];
+    if (!slide) throw new Error(`${moduleCode}: editorial map references missing slide ${slideNumber}`);
+    for (const [field, value] of Object.entries(edits)) {
+      if (field === 'bullets') {
+        for (const [bulletIndex, translation] of Object.entries(value)) {
+          if (!slide.bullets?.[Number(bulletIndex)]) throw new Error(`${moduleCode} slide ${slideNumber}: missing bullet ${bulletIndex}`);
+          slide.bullets[Number(bulletIndex)] = translation;
+        }
+      } else {
+        slide[field] = value;
+      }
+    }
+  }
+}
+
 const generated=[];
 for(const mod of modules) {
   if(mod.slides.length!==mod.minutes.length) throw new Error(`${mod.code}: slide/minute count mismatch ${mod.slides.length}/${mod.minutes.length}`);
