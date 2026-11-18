@@ -1,0 +1,3 @@
+/.build/
+/node_modules/
+/outputs/issue-5-expert-course/*.inspect.ndjson

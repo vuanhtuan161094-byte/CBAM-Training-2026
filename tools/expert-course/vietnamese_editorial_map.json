@@ -1,0 +1,261 @@
+{
+  "EXP-06": {
+    "1": {
+      "title": "Từ Monitoring Plan đến báo cáo của đơn vị vận hành",
+      "explain": "Module theo dõi dữ liệu từ cơ sở lắp đặt đến CBAM Registry, SEE, SEFA (phân bổ miễn phí cụ thể hàm chứa) và kịch bản chi phí. Chỉ dùng thông tin Registry công khai đã xác minh; không coi bảng tính CTIC là biểu mẫu chính thức.",
+      "bullets": {"1": "Các trường công khai của Registry có thể thay đổi theo phiên bản", "2": "Workbook: chỉ dùng kịch bản tổng hợp"},
+      "answer": "Không. Mỗi giá trị báo cáo phải truy nguyên được về đơn vị đo, kỳ, phương pháp, nguồn, tiền chất và hoạt động kiểm soát."
+    },
+    "2": {
+      "title": "Bản đồ báo cáo: đơn vị vận hành, người khai báo và verifier",
+      "explain": "Phân biệt báo cáo của đơn vị vận hành cơ sở lắp đặt, nghĩa vụ của người khai báo được ủy quyền/nhà nhập khẩu, báo cáo của verifier và việc nộp qua Registry. Mỗi vai trò có dữ liệu và trách nhiệm riêng; ví dụ trong khóa học không thay cho việc kiểm tra quyền truy cập thực tế.",
+      "bullets": {"0": "Dữ liệu của đơn vị vận hành → OER/báo cáo", "1": "Nghĩa vụ người khai báo → nhà nhập khẩu", "2": "Báo cáo thẩm tra → kênh verifier"},
+      "answer": "Không nhất thiết; hãy xác định pháp nhân và vai trò theo Quy định hiện hành."
+    },
+    "3": {
+      "explain": "Trang thông tin công khai xác nhận hoạt động/hướng dẫn của Registry, nhưng danh mục dự án chưa xác minh được mẫu OER riêng hoặc mẫu báo cáo thẩm tra công khai. Không tự đặt mã trường, cũng không gọi bảng tính trao đổi thông tin giai đoạn chuyển tiếp năm 2024 là biểu mẫu pháp lý năm 2026. Cùng CTIC/khách hàng kiểm tra màn hình theo quyền truy cập.",
+      "bullets": {"0": "Trường dữ liệu có thể khác theo vai trò/phiên bản", "1": "Mẫu OER và báo cáo verifier: nộp điện tử qua Registry; chưa xác minh được bản mẫu công khai", "2": "Biểu mẫu CTIC hiện được đánh dấu là bản nháp làm tài liệu đào tạo"},
+      "pitfall": "Coi bảng tính đào tạo là biểu mẫu chính thức."
+    },
+    "4": {
+      "title": "Cấp độ dữ liệu báo cáo và truy xuất nguồn gốc",
+      "explain": "Xác định cấp độ của từng dòng dữ liệu trước khi lập báo cáo: cơ sở lắp đặt, hàng hóa, quy trình sản xuất, kỳ báo cáo, quốc gia/mã CN, giá trị thực tế/mặc định, trực tiếp/gián tiếp và tiền chất. Đối chiếu mọi tổng số với sản lượng, hồ sơ nguồn và trạng thái thẩm tra.",
+      "bullets": {"0": "Mã định danh ổn định và đơn vị được kiểm soát", "1": "Không trộn kỳ của mã CN/sản phẩm", "2": "Trường nguồn và phiên bản cho giá trị thực tế/mặc định"},
+      "prompt": "Chỉ nêu “tổng phát thải” có đủ cho báo cáo trên Registry không?",
+      "answer": "Không: trường báo cáo cần có phạm vi, kỳ, phương pháp và thông tin chi tiết về hàng hóa áp dụng.",
+      "pitfall": "Gộp dữ liệu cấp sản phẩm/quy trình trước khi tổng hợp."
+    },
+    "5": {
+      "title": "SEE: phát thải cụ thể hàm chứa",
+      "explain": "Phát thải cụ thể hàm chứa liên kết lượng phát thải quy cho quy trình sản xuất và hàng hóa với sản lượng đầu ra cùng phần phát thải hàm chứa từ tiền chất. Dùng các công thức tại Phụ lục III của Quy định 2025/2547, giữ nguyên đơn vị chức năng và cách xử lý phát thải trực tiếp/gián tiếp; tách trạng thái thẩm tra khỏi phép tính số học.",
+      "bullets": {"0": "Phát thải trên mỗi tấn/đơn vị chức năng", "1": "Phần tiền chất tính theo lượng đã tiêu thụ", "2": "Giá trị thực tế, mặc định và đã thẩm tra là các trạng thái khác nhau"},
+      "prompt": "Có thể lấy SEE bằng phát thải năm của toàn cơ sở chia cho tổng số tấn không?",
+      "answer": "Chỉ khi phạm vi, phân bổ, hàng hóa/quy trình, kỳ báo cáo và cách xử lý tiền chất đã khớp nhau.",
+      "pitfall": "Lấy phát thải toàn cơ sở chia cho khối lượng của một sản phẩm duy nhất."
+    },
+    "6": {
+      "title": "Hàng hóa phức hợp và chuỗi công thức tiền chất",
+      "explain": "Truy nguyên lượng tiền chất đã tiêu thụ, SEE của tiền chất, phát thải của quy trình sản xuất và sản lượng cuối cùng theo Phần B Phụ lục III. Các công thức 59–64 áp dụng cho hàng hóa phức hợp. Tránh tính trùng bằng cách tách dòng vật chất khỏi phần đóng góp phát thải hàm chứa.",
+      "bullets": {"0": "Lượng tiền chất tiêu thụ × SEE của tiền chất", "1": "Cộng phát thải quy trình nằm trong ranh giới", "2": "Chia cho sản lượng hàng hóa/đơn vị chức năng"},
+      "prompt": "Phôi nhôm đã mua nhưng còn trong kho, chưa dùng, có được tính vào hồ sơ đầu ra không?",
+      "answer": "Không: dùng lượng đã tiêu thụ theo phương pháp quy định; đối chiếu tồn kho và kỳ báo cáo.",
+      "pitfall": "Dùng lượng hàng đã nhận thay cho lượng đã tiêu thụ."
+    },
+    "7": {
+      "title": "Thực tế, đã thẩm tra, mặc định: kiểm soát trạng thái",
+      "explain": "“Thực tế” mô tả lộ trình tính toán; “đã thẩm tra” nghĩa là đã qua quy trình thẩm tra áp dụng; “mặc định” là giá trị được pháp luật quy định cho đúng phạm vi/năm/xuất xứ/lộ trình. Theo dõi trạng thái và bằng chứng ở các trường riêng biệt.",
+      "bullets": {"0": "Văn bản/phiên bản/ngày hiệu lực", "1": "Mã CN, xuất xứ, lộ trình, năm", "2": "Báo cáo thẩm tra và phạm vi khi được yêu cầu"},
+      "prompt": "Giá trị của nhà cung cấp đã được thẩm tra có luôn là giá trị thực tế không?",
+      "answer": "Không nên giả định; hãy xác định lộ trình được phép và bằng chứng chính xác theo luật hiện hành.",
+      "pitfall": "Coi bản tự khai của nhà cung cấp là kết quả thẩm tra."
+    },
+    "8": {
+      "title": "Điều chỉnh phân bổ miễn phí: Phương trình 1",
+      "explain": "Phương trình 1 của Quy định 2025/2620 xác định điều chỉnh phân bổ miễn phí (FAA) cho hàng hóa bằng lượng phân bổ miễn phí cụ thể hàm chứa nhân với khối lượng. Phương trình 2/3 tính SEFA thông qua hệ số áp dụng, CSCF và benchmark. Khoản điều chỉnh này không phải tỷ lệ miễn trừ áp lên SEE thực tế.",
+      "bullets": {"0": "FAA_g = SEFA_g,y × M_g", "1": "Giữ đơn vị khối lượng nhất quán", "2": "Chỉ dùng benchmark CBAM đang có hiệu lực"},
+      "prompt": "Benchmark ở mức 97,5% có nghĩa là được miễn 97,5% SEE không?",
+      "answer": "Không. Khoản điều chỉnh tính từ benchmark và SEE thực tế là hai đại lượng riêng biệt.",
+      "pitfall": "Gọi 97,5% là tỷ lệ miễn trừ trực tiếp trên phát thải thực tế."
+    },
+    "9": {
+      "title": "SEFA: quy trình, hàng hóa đơn giản và tiền chất phức hợp",
+      "explain": "Đối với đầu ra của quy trình, SEFA được xác định theo hệ số CBAM × CSCF × benchmark trong Phương trình 2. Hàng hóa đơn giản và trường hợp tiền chất phức hợp áp dụng Phương trình 3/4; giá trị mặc định dùng Phương trình 6. Phải khớp hệ số và benchmark với năm/nhóm hàng hóa và phiên bản đang áp dụng.",
+      "bullets": {"0": "Phương trình 2: lượng cấp quy trình", "1": "Phương trình 3: hàng hóa đơn giản", "2": "Phương trình 4: tiền chất phức hợp; Phương trình 6: giá trị mặc định"},
+      "prompt": "Nhóm có thể nhập benchmark từ slide EU ETS vào công thức CBAM này không?",
+      "answer": "Không. Phải phân biệt văn bản quy định benchmark và kỳ áp dụng.",
+      "pitfall": "Sao chép benchmark EU ETS làm benchmark CBAM."
+    },
+    "10": {
+      "title": "Benchmark CBAM ≠ benchmark EU ETS",
+      "explain": "Quy định 2026/1412 cập nhật giá trị benchmark EU ETS giai đoạn 2026–2030. Văn bản đó không tự sửa benchmark CBAM được thiết lập theo Quy định 2025/2620. Trong bộ nguồn đã rà soát chưa tìm thấy sửa đổi CBAM năm 2027 có tính ràng buộc đã được xác nhận; đánh dấu vấn đề này NEEDS_LEGAL_REVIEW.",
+      "bullets": {"0": "EU ETS 2026/1412 → kỳ benchmark ETS", "1": "CBAM 2025/2620 → điều chỉnh phân bổ miễn phí CBAM", "2": "Không thay giá trị nếu chưa có sửa đổi ràng buộc"},
+      "prompt": "Nếu benchmark EU ETS mới trùng quy trình thì có thể thay benchmark CBAM không?",
+      "answer": "Không phải chỉ dựa vào sự trùng khớp đó; hãy kiểm tra văn bản CBAM áp dụng và ngày công bố.",
+      "pitfall": "Âm thầm thay benchmark trong công thức CBAM bằng giá trị 2026/1412."
+    },
+    "11": {
+      "title": "Giá trị mặc định: chọn đúng dòng pháp lý",
+      "explain": "Phải đọc Quy định 2025/2621 cùng Quy định 2026/1740; văn bản 2026/1740 thay thế các Phụ lục I và IV được chỉ định và áp dụng từ ngày 1 tháng 1 năm 2026. Đối chiếu mã CN, quốc gia/xuất xứ, lộ trình, năm và đơn vị với đúng dòng đang áp dụng; tuân thủ quyền sử dụng và không đăng lại các giá trị workbook bị hạn chế.",
+      "bullets": {"0": "Chuỗi phiên bản 2025/2621 + 2026/1740", "1": "Áp dụng từ 1/1/2026; kiểm tra từng điều khoản", "2": "Không dùng dòng giá trị mặc định không khớp"},
+      "prompt": "Có thể dùng giá trị mặc định của xuất xứ A và mã CN X cho xuất xứ B không?",
+      "answer": "Không, trừ khi có quy tắc phạm vi nêu rõ; hãy tra đúng dòng pháp lý.",
+      "pitfall": "Dùng giá trị gần giống vì thấy có vẻ hợp lý."
+    },
+    "12": {
+      "title": "Kịch bản chi phí ≠ nghĩa vụ pháp định",
+      "explain": "Lập kịch bản minh bạch với đầu vào tổng hợp cho SEE, SEFA, khối lượng, giá chứng chỉ, khoản khấu trừ giá carbon và giá trị mặc định. Gắn nhãn mọi kịch bản là “chỉ dùng đào tạo”; không phải số tiền thực phải nộp hay dự báo cho khách hàng. Tách phát thải sản xuất, điều chỉnh phân bổ miễn phí và nghĩa vụ chứng chỉ.",
+      "bullets": {"0": "Đầu vào được nêu rõ là giả định", "1": "SEE thực tế − khoản điều chỉnh áp dụng theo phương pháp pháp lý", "2": "Khoản khấu trừ giá carbon tách riêng và có bằng chứng"},
+      "prompt": "Có thể gửi công cụ tính kịch bản cho khách hàng như một báo giá không?",
+      "answer": "Không. Đây là phân tích độ nhạy, không phải báo giá pháp lý hay thương mại.",
+      "pitfall": "Trình bày một kịch bản như khoản thanh toán dự báo."
+    },
+    "13": {
+      "prompt": "Verifier có tự động trở thành chủ thể độc lập không?"
+    },
+    "14": {
+      "title": "Luật hiện hành và đề xuất COM(2026) 616",
+      "explain": "Theo bộ nguồn đã rà soát, Điều 10a(1a) của Chỉ thị 2003/87/EC quy định lộ trình hệ số 2028–2033: 90, 77.5, 51.5, 39, 26.5, 14%; từ 2034 không còn áp dụng hệ số. COM(2026) 616 đề xuất lộ trình riêng 2028–2038: 91.5, 81, 59, 48, 37.5, 27, 15, 15, 15, 15, 0%. Đề xuất này chưa phải luật.",
+      "bullets": {"0": "Tách cột và trạng thái pháp lý", "1": "Không có hệ số từ 2034 không đồng nghĩa hệ số 0%", "2": "Không dùng giá trị đề xuất trong workbook tính theo luật hiện hành"},
+      "prompt": "Có thể dùng giá trị trong đề xuất làm kịch bản cơ sở năm 2030 không?",
+      "answer": "Không. Chỉ trình bày trong phân tích độ nhạy lập pháp có gắn nhãn; không dùng để tính theo luật hiện hành.",
+      "pitfall": "Gọi đề xuất là văn bản đã được thông qua hoặc luật hiện hành."
+    },
+    "15": {
+      "title": "Bài tập: đối chiếu SEE, FAA và kịch bản",
+      "explain": "Dùng dữ liệu hoàn toàn tổng hợp: khối lượng 1.000 t, SEE 1,8 tCO2e/t, SEFA 0,4 tCO2e/t và giá chứng chỉ 70 EUR. So sánh tổng phát thải hàm chứa, FAA, lượng chứng chỉ ròng trước khoản khấu trừ và chi phí gộp của kịch bản. Không nhập dòng benchmark hoặc giá trị mặc định.",
+      "bullets": {"0": "Phát thải: 1.800 tCO2e", "1": "FAA: 400 tCO2e", "2": "Kịch bản ròng: 1.400 chứng chỉ × €70"},
+      "prompt": "Chi phí gộp của kịch bản là bao nhiêu?",
+      "answer": "98.000 EUR trước mọi khoản khấu trừ giá carbon đủ điều kiện, biện pháp bảo vệ hoặc điều chỉnh pháp lý; chỉ là số liệu tổng hợp.",
+      "pitfall": "Báo cáo kịch bản như số tiền phải nộp."
+    },
+    "16": {
+      "explain": "Chuỗi công thức: FAA = 0,4 × 1.000 = 400; chứng chỉ theo kịch bản = 1.800 − 400 = 1.400; chi phí = 1.400 × 70 = 98.000 EUR. Trước mọi quyết định vận hành, cần rà soát pháp lý riêng để xác minh hệ số hiện hành, dòng benchmark, CSCF, khoản khấu trừ giá carbon, trạng thái verifier và ngày áp dụng.",
+      "bullets": {"0": "Công thức truy nguyên được về đầu vào", "1": "Mỗi đầu vào có nguồn/trạng thái", "2": "Khóa học không đưa ra xác nhận pháp lý"},
+      "prompt": "Điều gì khiến không thể dùng kịch bản này cho vận hành?",
+      "answer": "Tham số pháp lý chưa xác minh, sản phẩm/mã CN, luật hiện hành, kỳ báo cáo, hồ sơ verifier và bằng chứng giá carbon.",
+      "pitfall": "Coi QA số học là xác nhận pháp lý."
+    },
+    "17": {
+      "title": "Tổng kết báo cáo và kiểm tra cuối",
+      "explain": "Học viên lập sơ đồ truy xuất từ báo cáo về nguồn và gắn ba cờ ngoại lệ: giá trị mặc định/phiên bản không khớp, thay nhầm benchmark, hồ sơ giá carbon chưa được giải quyết. Lưu bằng chứng về kỳ báo cáo, đăng ký và công nhận cho mọi vai trò chủ thể độc lập theo Quy định 2026/2498. Chuyển sang thẩm tra phát thải với bộ dữ liệu và danh mục bằng chứng riêng.",
+      "bullets": {"0": "Tình trạng biểu mẫu Registry còn bỏ ngỏ", "1": "SEE và SEFA là hai đại lượng riêng", "2": "Tách riêng đề xuất và luật hiện hành", "3": "Lộ trình chủ thể độc lập: Điều 10–11; vai trò có điều kiện"},
+      "answer": "Tham số pháp lý không có căn cứ, nguồn không thể kiểm chứng, thiếu dữ liệu, sai phạm vi hoặc vai trò/công nhận chưa được xác nhận.",
+      "pitfall": "Phát hành báo cáo “đạt” chỉ vì workbook tính được kết quả."
+    }
+  },
+  "EXP-07": {
+    "1": {
+      "explain": "Module đi từ xác định phạm vi công việc đến bằng chứng, chọn mẫu, phát hiện, báo cáo, khắc phục và Registry. Năng lực công nhận, rà soát độc lập và chủ thể độc lập chứng nhận giá carbon là các vai trò khác nhau.",
+      "bullets": {"0": "90 phút · 18 slide"},
+      "prompt": "Workbook đã kiểm tra công thức có thể thay verifier không?",
+      "pitfall": "Dùng QA nội bộ như một ý kiến đảm bảo độc lập.",
+      "answer": "Không. Thẩm tra cần đánh giá bằng chứng độc lập theo luật hiện hành."
+    },
+    "2": {
+      "explain": "Quy định 2025/2546 đặt ra nguyên tắc thẩm tra, phân tích chiến lược/rủi ro, trọng yếu, bằng chứng và nộp báo cáo. Quy định 2025/2551 quy định công nhận, phạm vi và năng lực. Lập sơ đồ từ hàng hóa và cơ sở lắp đặt đến phạm vi thẩm tra áp dụng.",
+      "bullets": {"0": "Phạm vi hàng hóa, kỳ, quy trình và phát thải", "1": "Phiên bản tiêu chí và mức thẩm tra", "2": "Phạm vi công nhận phải khớp hoạt động"},
+      "prompt": "Verifier được công nhận cho mọi loại phát thải, bất kể phạm vi không?",
+      "answer": "Không. Xác nhận phạm vi, nhóm hoạt động, năng lực kỹ thuật và hiệu lực.",
+      "pitfall": "Giả định một công nhận chung bao phủ mọi nhóm tại Phụ lục I."
+    },
+    "3": {
+      "title": "Quy trình thẩm tra",
+      "explain": "Lập kế hoạch công việc, tìm hiểu đơn vị vận hành và luồng dữ liệu, phân tích chiến lược và rủi ro, kiểm tra và chọn mẫu dữ liệu, đánh giá trọng yếu, thực hiện hoạt động tại chỗ/từ xa theo phạm vi được phép, đánh giá sai lệch, kết luận và báo cáo.",
+      "bullets": {"0": "Lập kế hoạch → kiểm tra → phát hiện → kết luận", "1": "Chọn mẫu theo rủi ro và truy về nguồn", "2": "Dữ liệu đã sửa phải được kiểm tra lại và ghi nhận"},
+      "prompt": "Có thể thẩm tra mọi quy trình chỉ qua hồ sơ từ xa không?",
+      "answer": "Làm theo luật và mức rủi ro; xác định bằng chứng nào đủ và khi nào cần hoạt động tại chỗ.",
+      "pitfall": "Dùng một mẫu cho mọi dòng nguồn mà không nêu lý do."
+    },
+    "4": {
+      "title": "Dấu vết dữ liệu và chất lượng bằng chứng",
+      "explain": "Truy ngược giá trị đã báo cáo về cơ sở/quy trình, đầu vào, nguồn dữ liệu, đồng hồ/laboratory, phép tính, kỳ, kiểm soát và hồ sơ bằng chứng. Đánh giá tính xác thực, liên quan, tin cậy và đầy đủ; bảng có chữ ký không tự chứng minh phép đo gốc.",
+      "bullets": {"0": "Tính lại các phép tính trọng yếu", "1": "Nối mẫu đã chọn với dữ liệu gốc và hệ thống", "2": "Đối chiếu hồ sơ của bên thứ ba"},
+      "prompt": "Chỉ cần bảng tính có chữ ký của đơn vị vận hành là đủ không?",
+      "answer": "Không tự động; cần đánh giá bằng chứng gốc và chuỗi kiểm soát.",
+      "pitfall": "Chấp nhận xác nhận của ban quản lý làm bằng chứng duy nhất."
+    },
+    "5": {
+      "title": "Đánh giá rủi ro và thiết kế chọn mẫu",
+      "explain": "Xác định rủi ro tiềm tàng/kiểm soát theo dữ liệu hoạt động, hệ số phát thải, tiền chất, cân bằng carbon, sản lượng, chọn giá trị mặc định, điểm cắt và kiểm soát. Chọn mẫu theo rủi ro và độ tin cậy của bằng chứng; mở rộng mẫu nếu ngoại lệ có thể làm thay đổi kết luận.",
+      "bullets": {"0": "Rủi ro cao: cân bằng vật chất/tiền chất/lộ trình", "1": "Kiểm tra tính đầy đủ của tổng thể và điểm cắt kỳ", "2": "Ghi lý do và mọi mở rộng mẫu"},
+      "prompt": "Chỉ chọn hóa đơn có giá trị lớn có đủ không?",
+      "answer": "Cần chọn theo rủi ro và kiểm tra tính đầy đủ/điểm cắt kỳ; giá trị lớn nhỏ không phải căn cứ duy nhất.",
+      "pitfall": "Chỉ chọn các dòng dữ liệu thuận tiện."
+    },
+    "6": {
+      "title": "Ngưỡng 5% không phải sai số cho phép",
+      "explain": "Khoản 1 Điều 5 đề cập mức 5% của phát thải hàm chứa và 5% của phân bổ miễn phí cụ thể hàm chứa cho việc áp dụng rủi ro/trọng yếu đã xác định. Khoản 2 Điều 5 vẫn yêu cầu xét đoán chuyên môn và đánh giá các tham số khác ngay cả khi dưới mức này. Đây không phải sai số cho phép của đơn vị vận hành hay ngưỡng tự động đạt.",
+      "bullets": {"0": "Mức 5% thuộc quy tắc trọng yếu/rủi ro của verifier", "1": "Các tham số khác vẫn cần xét đoán chuyên môn", "2": "Việc sửa lỗi và cộng gộp sai lệch vẫn quan trọng"},
+      "prompt": "Sai lệch 4,9% chắc chắn không trọng yếu sao?",
+      "answer": "Không. Rủi ro định tính, tham số khác, sai lệch cộng dồn và khoản 2 Điều 5 vẫn áp dụng."
+    },
+    "7": {
+      "title": "Rà soát phân tích và đối chiếu chéo",
+      "explain": "So sánh cường độ phát thải với kỳ trước, công suất sản xuất, năng lượng, cân bằng vật chất và dữ liệu độc lập. Điều tra điểm bất thường và giải thích chênh lệch. Thủ tục phân tích giúp định hướng rủi ro nhưng không thay cho kiểm tra có mục tiêu.",
+      "bullets": {"0": "Ngưỡng biến động được thiết lập và giải trình", "1": "Chỉ so sánh thận trọng lộ trình thép/nhôm/xi măng tương đồng", "2": "Theo dõi mọi tỷ lệ bất thường"},
+      "answer": "Không; trước hết kiểm tra thay đổi quy trình, sản lượng, ranh giới, tiền chất và lỗi dữ liệu.",
+      "pitfall": "Coi xu hướng có vẻ hợp lý là bằng chứng."
+    },
+    "8": {
+      "title": "Trọng yếu, sai lệch và khắc phục",
+      "explain": "Cộng gộp sai lệch đã phát hiện; phân biệt sai lệch thực tế, dự phóng và do xét đoán; đánh giá định lượng lẫn định tính; yêu cầu đơn vị vận hành sửa, đánh giá ảnh hưởng và ghi nhận mục chưa sửa. Không bù trừ sai lệch nếu việc đó che khuất chiều hướng hoặc vấn đề phạm vi.",
+      "bullets": {"0": "Sai lệch gộp và chiều hướng ảnh hưởng", "1": "Nguyên nhân gốc và tổng thể bị ảnh hưởng", "2": "Hồ sơ sửa chữa và kiểm tra lại"},
+      "answer": "Không tự động bù trừ; kiểm tra nguyên nhân nguồn và tách riêng ảnh hưởng đến báo cáo.",
+      "pitfall": "Bù trừ các ngoại lệ không liên quan để đưa kết quả về 0."
+    },
+    "9": {
+      "title": "Rà soát hệ thống và kiểm soát",
+      "explain": "Tìm hiểu kiểm soát đối với dòng nguồn, đồng hồ, chuyển dữ liệu, dữ liệu chủ, quản lý phiên bản, phép tính, điều chỉnh muộn và tải báo cáo. Kiểm tra thiết kế và vận hành. Chữ ký rà soát của ban quản lý không thay thế công việc độc lập của verifier.",
+      "bullets": {"0": "Chủ sở hữu kiểm soát và bằng chứng", "1": "Nhật ký truy cập/thay đổi", "2": "Tính đầy đủ của dữ liệu trích xuất CNTT và bảo vệ công thức"},
+      "answer": "Không; hiệu lực thiết kế/vận hành giúp định hướng kiểm tra nhưng không loại bỏ yêu cầu bằng chứng.",
+      "pitfall": "Coi khóa bảo vệ bảng tính là bảo đảm kiểm soát."
+    },
+    "10": {
+      "title": "Kiểm tra chuyên sâu: cân bằng carbon ngành thép",
+      "explain": "Tính lại dấu, hệ số, biến động tồn kho, hàm lượng carbon, dòng oxy hóa/khí chuyển giao và carbon ròng. Vị trí công thức nguồn: Phụ lục II B.3.2, Phương trình 12–15; các dẫn chiếu thép ở Phụ lục I chỉ đến vị trí khác. Ghi nhận vấn đề mà không tự sửa nguồn hoặc mặc định rằng khác biệt pháp lý đã được giải quyết.",
+      "bullets": {"0": "Kiểm tra tính đầy đủ có mục tiêu 100% cho dòng trọng yếu khi rủi ro yêu cầu", "1": "Đối chiếu tồn kho và vật liệu xuất đi", "2": "Xung đột về vị trí dẫn chiếu vẫn NEEDS_LEGAL_REVIEW"},
+      "prompt": "Nếu Phương trình 12–15 dẫn sai Phụ lục thì verifier tự chọn vị trí khác không?",
+      "answer": "Verifier ghi nhận nguồn và đánh giá theo tiêu chí; cách diễn giải của CTIC/pháp chế phải được chuyển cấp để xử lý.",
+      "pitfall": "Âm thầm sửa dẫn chiếu trong báo cáo."
+    },
+    "11": {
+      "title": "Kiểm tra chuyên sâu: PFC nhôm và tiền chất",
+      "explain": "Xác minh công nghệ, phương pháp giám sát, AEM/OVC, hiệu suất thu gom, sản xuất nhôm sơ cấp, hệ số và GWP. Với tiền chất, kiểm tra nhà cung cấp, kỳ, khối lượng đã tiêu thụ, đối chiếu tồn kho và trạng thái giá trị do nhà cung cấp khai báo.",
+      "bullets": {"0": "Đầu vào phương pháp khớp bảng hệ số", "1": "Đơn vị và biểu diễn CE được xác minh", "2": "Không tính trùng billet"},
+      "prompt": "Có thể dùng hệ số công nghệ PFPB M cho mọi nhà máy nhôm không?",
+      "answer": "Không; phải khớp công nghệ với Bảng 2/3 và kiểm tra bằng chứng tại nhà máy.",
+      "pitfall": "Dùng hệ số sẵn có mà không chứng minh công nghệ."
+    },
+    "12": {
+      "title": "Kiểm tra chuyên sâu: xi măng và phân bổ sản phẩm",
+      "explain": "Kiểm tra sản lượng clinker, giao hàng/tồn kho theo Phương trình 27, điều kiện của phương pháp nguồn, hàm lượng clinker trong xi măng, phân bổ theo Phương trình 64, phạm vi nhiên liệu/điện và sản lượng hàng hóa. Không gọi mức tối thiểu 0,525 là giá trị mặc định nhập khẩu.",
+      "bullets": {"0": "Đối chiếu lò nung/đầu vào/đầu ra", "1": "Chọn mẫu công thức/hàm lượng theo nhóm sản phẩm", "2": "Kiểm tra phương pháp và điều kiện đo"},
+      "prompt": "SEE của xi măng có thể chỉ dùng cường độ phát thải clinker không?",
+      "answer": "Chỉ khi phương pháp đã xử lý phân bổ và các phát thải quy trình khác nằm trong ranh giới.",
+      "pitfall": "Bỏ phát thải quy trình xi măng nhưng vẫn gọi kết quả là đầy đủ."
+    },
+    "13": {
+      "title": "Báo cáo thẩm tra và nộp qua Registry",
+      "explain": "Điều 6 Quy định 2025/2546 quy định biểu mẫu báo cáo thẩm tra và việc nộp qua quy trình Registry. Danh mục dự án chưa xác minh được bản Excel độc lập có tính công khai của báo cáo này. Lưu biên nhận nộp, phiên bản và thông tin sửa đổi nếu có.",
+      "bullets": {"0": "Tạo/nộp báo cáo qua Registry", "1": "Mẫu CTIC được đánh dấu là bản nháp đào tạo", "2": "Lưu mã báo cáo cuối cùng và bằng chứng"},
+      "prompt": "Biểu mẫu nội bộ có thể thay báo cáo Registry không?",
+      "answer": "Không; hãy xác minh quy trình Registry hiện tại và đầu ra bắt buộc.",
+      "pitfall": "Gọi biểu mẫu nội bộ còn trống là “mẫu chính thức”."
+    },
+    "14": {
+      "title": "Phạm vi công nhận và năng lực",
+      "explain": "Phụ lục I của Quy định 2025/2551 xác định nhóm hoạt động; Phụ lục II yêu cầu năng lực, nhân sự, nhóm thẩm tra, người rà soát độc lập, tính vô tư và giám sát liên tục. Trước khi giao việc, xác minh phạm vi và hiệu lực cụ thể, kể cả công việc đa ngành/liên quan nhiều tiền chất.",
+      "bullets": {"0": "Nhóm phạm vi theo hoạt động của cơ sở lắp đặt", "1": "Ma trận năng lực và nhóm được phân công", "2": "Giám sát định kỳ/hiệu lực/hạn chế"},
+      "prompt": "Chứng chỉ của một trưởng đoàn có chứng minh năng lực quy trình không?",
+      "answer": "Không. Đánh giá năng lực kỹ thuật của cả nhóm đối với hoạt động và phương pháp áp dụng.",
+      "pitfall": "Coi kinh nghiệm kiểm toán chung là năng lực kỹ thuật CBAM."
+    },
+    "15": {
+      "title": "Người rà soát độc lập và tính vô tư",
+      "explain": "Người rà soát độc lập xem xét công việc và kết luận của verifier trong khuôn khổ công nhận; họ không phải nhóm thẩm tra hay chủ thể độc lập của đơn vị vận hành. Đánh giá nguy cơ, biện pháp bảo vệ, quan hệ tài chính/cá nhân, luân chuyển và bảo mật khi áp dụng.",
+      "bullets": {"0": "Vai trò rà soát tách khỏi công việc tại hiện trường", "1": "Không tự rà soát/xung đột do chuẩn bị dữ liệu khách hàng", "2": "Ghi nhận biện pháp bảo vệ và cách xử lý"},
+      "prompt": "Người rà soát có thể xem lại phần việc mà chính họ đã kiểm tra không?",
+      "answer": "Cần bảo đảm rà soát độc lập; tránh tự rà soát và ghi nhận việc phân công.",
+      "pitfall": "Chỉ dựa vào chức danh mà không tách biệt vai trò."
+    },
+    "16": {
+      "prompt": "Chủ thể độc lập có tự động được thẩm tra SEE không?"
+    },
+    "17": {
+      "title": "Thực hành: lập phát hiện giả định và kết thúc",
+      "explain": "Tình huống: phiếu nhận tiền chất lệch 3 t so với sổ tồn kho; hiệu chuẩn đồng hồ trễ 2 tuần; báo cáo sản lượng dùng ánh xạ mã CN cũ. Nhóm lập phát hiện, yêu cầu bằng chứng, đánh giá phạm vi/kỳ bị ảnh hưởng, lộ trình sửa và tính định lượng/định tính của vấn đề.",
+      "bullets": {"0": "Nêu tiêu chí và bằng chứng cụ thể", "1": "Định lượng và đánh giá rủi ro định tính", "2": "Không có vùng an toàn 5% tự động"},
+      "prompt": "Bước đầu tiên khi ánh xạ mã CN đã cũ là gì?",
+      "answer": "Xác nhận quy tắc về sản phẩm và mã CN, định lượng hàng hóa/kỳ bị ảnh hưởng, rồi cập nhật ánh xạ theo quy trình kiểm soát thay đổi.",
+      "pitfall": "Đóng phát hiện vì phép tính phát thải vẫn khớp."
+    },
+    "18": {
+      "title": "Tổng kết bài đánh giá và kết thúc",
+      "explain": "Dùng đáp án để kiểm tra chất lượng phát hiện: tiêu chí, hiện trạng, nguyên nhân, ảnh hưởng, bằng chứng, người phụ trách, biện pháp sửa và tác động đến kết luận. Kết thúc bằng bài kiểm tra 24 câu và yêu cầu CTIC rà soát kỹ thuật/pháp lý độc lập trước mọi hoạt động đào tạo bên ngoài.",
+      "bullets": {"0": "Verifier phải duy trì tính độc lập", "1": "Khóa học ở trạng thái DRAFT/chờ rà soát pháp lý", "2": "Bàn giao quyết định và người phụ trách cho CTIC"},
+      "prompt": "Bằng chứng nào cho phép đóng một phát hiện?",
+      "answer": "Dữ liệu đã sửa, kiểm tra lại, phân tích ảnh hưởng, kết luận đã được người rà soát ghi nhận và cập nhật báo cáo khi cần.",
+      "pitfall": "Coi việc “đơn vị vận hành đã trả lời” là đã giải quyết vấn đề."
+    }
+  }
+}

@@ -1,0 +1,47 @@
+﻿English,Vietnamese term,Definition / usage note,Status
+Actual emissions,Phát thải thực tế,Calculation status under applicable method; not automatically verified.,CHỜ HIỆU ĐÍNH
+Accreditation scope,Phạm vi công nhận,Activity group and technical scope a verifier is authorised to cover.,CHỜ HIỆU ĐÍNH
+Activity data,Dữ liệu hoạt động,Measured quantities feeding an emissions calculation.,CHỜ HIỆU ĐÍNH
+Aggregated goods category,Nhóm hàng tổng hợp,Category used by the methodology; confirm mapping to CN and route.,CHỜ HIỆU ĐÍNH
+Anode effect,Hiệu ứng anode,Electrolysis event relevant to aluminium PFC monitoring.,CHỜ HIỆU ĐÍNH
+Authorised declarant,Người khai báo được uỷ quyền,Importer-side CBAM role under Regulation 2023/956.,CHỜ HIỆU ĐÍNH
+Benchmark,Giá trị chuẩn,Keep CBAM benchmark separate from EU ETS benchmark.,CHỜ HIỆU ĐÍNH
+Carbon balance,Cân bằng carbon,Balance of carbon streams under specified sign convention.,CHỜ HIỆU ĐÍNH
+Carbon-price credit,Khoản khấu trừ giá carbon,"Foreign carbon price actually paid, subject to legal conditions.",CHỜ HIỆU ĐÍNH
+Carbon content,Hàm lượng carbon,Carbon mass per unit of stream; retain basis and unit.,CHỜ HIỆU ĐÍNH
+CBAM factor,Hệ số CBAM,Factor in free-allocation adjustment; not a percent exemption of actual SEE.,CHỜ HIỆU ĐÍNH
+CN code,Mã CN,Combined Nomenclature code; classify by legal product characteristics.,CHỜ HIỆU ĐÍNH
+Collection efficiency,Hiệu suất thu gom,Used to reconcile duct/stack PFC with total including fugitive.,CHỜ HIỆU ĐÍNH
+Complex goods,Hàng hoá phức hợp,Goods whose embedded emissions include precursor contribution.,CHỜ HIỆU ĐÍNH
+CSCF,Hệ số điều chỉnh liên ngành,Cross-sectoral correction factor in applicable free allocation method.,CHỜ HIỆU ĐÍNH
+Default value,Giá trị mặc định,"Legal value matching exact year, origin, CN, route and version.",CHỜ HIỆU ĐÍNH
+Direct emissions,Phát thải trực tiếp,Keep distinct from indirect emissions and installation energy.,CHỜ HIỆU ĐÍNH
+Embedded emissions,Phát thải hàm chứa,Emissions attributed to covered goods and precursors under prescribed method.,CHỜ HIỆU ĐÍNH
+Emission factor,Hệ số phát thải,"Factor with source, unit, method, version and validity period.",CHỜ HIỆU ĐÍNH
+Functional unit,Đơn vị chức năng,Denominator for goods-specific emission intensity.,CHỜ HIỆU ĐÍNH
+Free-allocation adjustment (FAA),Điều chỉnh phân bổ miễn phí,SEFA per unit × mass under Regulation 2025/2620.,CHỜ HIỆU ĐÍNH
+Fugitive emissions,Phát thải thất thoát,Emissions not captured by ducts/stack; method-specific adjustment may apply.,CHỜ HIỆU ĐÍNH
+GWP,Tiềm năng nóng lên toàn cầu,Gas-specific factor; use table required by applicable method.,CHỜ HIỆU ĐÍNH
+Independent reviewer,Người rà soát độc lập,Reviewer in verifier accreditation system; not same as fieldwork reviewer.,CHỜ HIỆU ĐÍNH
+Installation,Cơ sở lắp đặt,"Installation-level reporting boundary, not identical to goods boundary.",CHỜ HIỆU ĐÍNH
+Monitoring Plan,Kế hoạch giám sát,Operator plan describing monitoring method and controls.,CHỜ HIỆU ĐÍNH
+OER,Báo cáo phát thải của người vận hành,Operator Emissions Report; check current Registry process and fields.,CHỜ HIỆU ĐÍNH
+Operator,Người vận hành,"Installation-side operator, distinct from importer/declarant.",CHỜ HIỆU ĐÍNH
+PFC,Perfluorocarbon / khí perfluorocarbon,CF4/C2F6 emissions under aluminium monitoring method.,CHỜ HIỆU ĐÍNH
+Precursor,Tiền chất,Input good whose embedded emissions may carry into complex good.,CHỜ HIỆU ĐÍNH
+SEFA,Phát thải hàm chứa cụ thể dùng cho điều chỉnh phân bổ,Specific embedded free allocation; distinct from actual SEE.,CHỜ HIỆU ĐÍNH
+SEE,Phát thải hàm chứa cụ thể,Specific embedded emissions per applicable functional unit.,CHỜ HIỆU ĐÍNH
+Source stream,Dòng nguồn,Fuel/material/gas/electricity stream mapped to monitorable data.,CHỜ HIỆU ĐÍNH
+Verified actual value,Giá trị thực tế đã được thẩm tra,Keep method status and verification status explicit.,CHỜ HIỆU ĐÍNH
+Verifier,Tổ chức thẩm tra,Independent entity working within applicable accreditation scope.,CHỜ HIỆU ĐÍNH
+Registry,Cơ quan đăng ký CBAM,European Commission CBAM Registry; public UI/templates may be incomplete.,CHỜ HIỆU ĐÍNH
+Mass balance,Cân bằng khối lượng,"Reconciliation of inputs, outputs, stocks and residues.",CHỜ HIỆU ĐÍNH
+Uncertainty,Độ không đảm bảo,Characterisation and control of measurement/calculation uncertainty.,CHỜ HIỆU ĐÍNH
+Primary aluminium,Nhôm sơ cấp,"Route-specific variable for PFC method, not all aluminium output.",CHỜ HIỆU ĐÍNH
+PFPB M,Anode công nghệ PFPB M,Technology designation used to match Table 2/3 factors.,CHỜ HIỆU ĐÍNH
+Independent person,Pháp nhân độc lập chứng nhận báo cáo giá carbon,"Regulation 2026/2498 Article 2(1); main accreditation, independence and competence requirements are in Article 10; eligible verifiers may opt in for reporting periods 2026–27 under Article 11, subject to conditions. This is distinct from SEE verification; implementation needs CTIC review.",CHỜ HIỆU ĐÍNH
+Materiality,Tính trọng yếu,Verifier judgement context; not a blanket operator tolerance.,CHỜ HIỆU ĐÍNH
+Activity group,Nhóm hoạt động,Accreditation category per 2025/2551 Annex I.,CHỜ HIỆU ĐÍNH
+Functional boundary,Ranh giới chức năng,Process and attribution scope used for one goods group.,CHỜ HIỆU ĐÍNH
+Annex,Phụ lục,Preserve roman numeral and point numbering in citations.,CHỜ HIỆU ĐÍNH
+Corrigendum,Đính chính,Check language/version; a corrigendum in another language may not alter EN text.,CHỜ HIỆU ĐÍNH

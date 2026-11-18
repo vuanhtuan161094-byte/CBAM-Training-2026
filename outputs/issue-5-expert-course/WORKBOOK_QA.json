@@ -1,0 +1,159 @@
+{
+  "sheetNames": [
+    "Start Here",
+    "Steel Balance",
+    "Aluminium",
+    "Al PFC",
+    "Cement",
+    "SEE SEFA Cost",
+    "Factors",
+    "Source Register"
+  ],
+  "formulaErrors": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+  "results": {
+    "steelBalance": [
+      [
+        576.331
+      ],
+      [
+        2111.676784
+      ],
+      [
+        0.15083405600000002
+      ],
+      [
+        0
+      ]
+    ],
+    "aluminium": [
+      [
+        1020
+      ],
+      [
+        1000
+      ],
+      [
+        20
+      ],
+      [
+        0
+      ],
+      [
+        1.5
+      ],
+      [
+        22
+      ],
+      [
+        1552
+      ],
+      [
+        1.552
+      ]
+    ],
+    "pfc": [
+      [
+        0.11199999999999999
+      ],
+      [
+        20000
+      ],
+      [
+        0.104
+      ],
+      [
+        0.057
+      ],
+      [
+        0.23295999999999997
+      ],
+      [
+        0.013278719999999999
+      ],
+      [
+        0.9
+      ],
+      [
+        0.25884444444444443
+      ],
+      [
+        0.014754133333333332
+      ],
+      [
+        6630
+      ],
+      [
+        11100
+      ],
+      [
+        1879.9095466666665
+      ]
+    ],
+    "cement": [
+      [
+        525
+      ],
+      [
+        200
+      ],
+      [
+        120
+      ],
+      [
+        0.5
+      ],
+      [
+        60
+      ],
+      [
+        785
+      ],
+      [
+        0.86
+      ],
+      [
+        0.6751
+      ]
+    ],
+    "sefa": [
+      [
+        0.3825
+      ],
+      [
+        0.3825
+      ],
+      [
+        382.5
+      ],
+      [
+        1800
+      ],
+      [
+        1417.5
+      ],
+      [
+        70
+      ],
+      [
+        99225
+      ]
+    ]
+  },
+  "expected": {
+    "steelNetCarbon_tC": 576.331,
+    "aluminiumIntensity": 1.552,
+    "pfcMethod": "PFPB M formula chain",
+    "cementIllustration_tCO2e": 785,
+    "sfaProcessLevelEq2": 0.3825,
+    "sefaSimpleGoodEq3": 0.3825,
+    "freeAllocationAdjustmentEq1_tCO2e": 382.5,
+    "embeddedEmissions_tCO2e": 1800,
+    "scenarioCertificates": 1417.5,
+    "grossScenarioCostEUR": 99225
+  },
+  "limitations": [
+    "Not opened/recalculated in native Excel; no Office available in this environment.",
+    "No legal approval; all non-source workbook values are synthetic.",
+    "Workbook errors scan and Artifact Tool calculation only."
+  ]
+}
