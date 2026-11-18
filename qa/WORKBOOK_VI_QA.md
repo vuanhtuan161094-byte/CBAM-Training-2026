@@ -5,7 +5,7 @@ Date: 2026-11-18
 ## Deliverables
 
 - outputs/issue-1-delivery-acceleration-v2/CBAM_Aluminium_Model_Training_VI.xlsx — SHA-256 96aadcb39c03c66ba10335557583ef3322fd40c0df858042304d5134c12f9620; 12 Vietnamese tabs.
-- outputs/issue-1-delivery-acceleration-v2/CBAM_Steel_Cement_Practice_VI.xlsx — SHA-256 0f53618737b128a31b1abe31554a474ae621c0acfa40242719760c6d6b661331; 6 Vietnamese tabs.
+- outputs/issue-1-delivery-acceleration-v2/CBAM_Steel_Cement_Practice_VI.xlsx — SHA-256 FB8E32BD0A9775D118379E3A3452676E65060ADCB784B462281025576E24BA4B; 6 Vietnamese tabs.
 
 ## Recalculation tests
 
@@ -41,7 +41,7 @@ Date: 2026-11-18
 - Artifact Tool rendered every worksheet: 12/12 aluminium tabs and 6/6 steel/cement tabs. Full-size invalid-state snapshots are under local render evidence in `.build/workbook_agent/renders_invalid/` (not committed): aluminium 10 t mass imbalance and Checks, plus cement missing electricity and Checks; guarded outputs and statuses were visually checked.
 - Aluminium workbook preserves actual/default selector logic; all benchmark/default/CSCF/price amounts are explicitly synthetic placeholders. CBAM factor 0.975 is cited separately as the 2026 free-allocation factor and is not applied to SEE.
 - Aluminium boundary corrected to Regulation (EU) 2025/2547 Annex I 3.17–3.18; PFC method identified separately at Annex II B.7; complex good SEE reference Annex III Eqs. 59–63.
-- Steel carbon-balance exercise cites 2025/2547 Annex III B.3.2 Eqs. 12–15. Purchased pig iron is kept separate so an integrated internal flow is not double-counted. EAF electricity applicability and cement indirect-emissions scope remain NEEDS_LEGAL_REVIEW.
+- Steel carbon-balance equations 12–15 cite 2025/2547 Annex II B.3.2; steel route boundary requirements in Annex I 3.15.2.1–3.15.2.2 refer to Annex III B.3.2. Purchased pig iron is kept separate so an integrated internal flow is not double-counted. EAF electricity applicability and cement indirect-emissions scope remain NEEDS_LEGAL_REVIEW.
 - Synthetic inputs are highlighted yellow; outputs green; sources and legal status are included in each workbook.
 
 ## Limits

@@ -15,8 +15,12 @@
 - Thuật ngữ trong lời dẫn dùng “tệp Excel”, “giá trị chuẩn”, “đơn vị thẩm tra”, “giá trị thực tế”, “giá trị mặc định”, “năm dương lịch” và “Hệ thống CBAM Registry”. O3CI được mô tả là phần để nhà vận hành cơ sở ngoài EU chia sẻ dữ liệu với người khai báo; không phải nơi người khai báo EU nộp tờ khai. Hướng dẫn Ủy ban châu Âu được dẫn như hướng dẫn vận hành không ràng buộc, và trường/giao diện hiện hành cần kiểm tra tại thời điểm dùng.
 - Số ví dụ: BF–BOF 1.5703904 tCO₂e/t, slide hiển thị 1.5704; EAF trực tiếp 0.111752 tCO₂/t, slide hiển thị 0.112; nhôm 1.552 tCO₂e/t; xi măng 0.677982 tCO₂/t, slide hiển thị 0.678; ví dụ ngưỡng nhà nhập khẩu 52 t. Đây là số giả định để đào tạo.
 
+## Cập nhật dẫn chiếu pháp lý P1-R3.1
+- Slides 10–11 and 14–17, 21, their presenter notes and Word footers now distinguish the mass-balance calculation at 2025/2547 Annex II B.3.2 (Eqs. 12–15) from the steel route boundary reference in Annex I 3.15.2.1–3.15.2.2 to Annex III B.3.2.
+- The 20-minute sample sequence checks the legal threshold, steel, aluminium, cement and MRV; its scope and limitations are recorded in `qa/CTIC_CLIENT_V3_1_REVIEW_DECISION.md`.
+
 ## Kết xuất và SHA-256
 
 - Kết xuất Word/PDF vẫn chưa khả dụng: lần thử `render_docx.py` trước không tìm thấy `soffice.exe`; xuất PDF bằng Word COM thất bại với lỗi `0x80070520`. Bản DOCX hiện tại chưa được kiểm tra trực quan; không ghi nhận visual QA PASS.
-- DOCX SHA-256: `5D364D085BBCA60E970FB871AB7DD9691EE3EC98CA8AEF20870C35FC379664D5`
+- DOCX SHA-256: `4B3F2CB6E53AF07AFE05C1B606951E3ECC1E0D3B0DE09C300F0ADC414B43E356`
 - PPTX đối chiếu SHA-256 (sau khi nhúng ảnh và chạy lại QA): `FBBBA0DEAE7D098BDD2BD8672F61DF73D7DCBC5E81ABEE3DD99E044329843BA8`

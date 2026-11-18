@@ -1,0 +1,28 @@
+name: Client V3.1 integrity
+
+on:
+  push:
+    branches:
+      - codex/delivery-acceleration-v2-client-model
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  client-v31:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      CLIENT_SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run V3.1 integrity checks
+        run: python qa/client_v31_integrity.py

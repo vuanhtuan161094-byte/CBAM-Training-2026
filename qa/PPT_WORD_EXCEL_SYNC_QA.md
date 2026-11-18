@@ -7,7 +7,7 @@
 - PPTX: 47 slide, 150 phút; DOCX: 47 mục, bìa 0 phút, 140 phút hướng dẫn và 10 phút hỏi đáp. Tên, thứ tự, thời lượng từng slide và footer nguồn khớp.
 - DOCX có 16.694 từ trong trường lời trình bày ở slide 2–45 và 745 từ cho phần hỏi đáp ở slide 46–47. Phân bổ thời lượng: 108 phút giảng viên + 32 phút học viên trong phần hướng dẫn; 5 + 5 phút trong phần hỏi đáp. Kiểm tra đồng bộ không thay thế việc CTIC diễn tập thực tế.
 - Ba ảnh được thêm vào slide 12/23/35 với credit, nguồn trong notes và cảnh báo phạm vi minh họa. Chúng không làm thay đổi tiêu đề, timing, số liệu hay sơ đồ chỉnh sửa được.
-- PPTX SHA-256: `fbbba0deae7d098bdd2bd8672f61df73d7dcbc5e81abee3dd99e044329843ba8`; DOCX SHA-256: `5d364d085bbca60e970fb871ab7dd9691ee3ec98ca8aef20870c35fc379664d5`.
+- PPTX SHA-256: `6636D6242E209647E51A375F0A768953EA82E32694A30F0E10F703F53EC60B7F`; DOCX SHA-256: `4B3F2CB6E53AF07AFE05C1B606951E3ECC1E0D3B0DE09C300F0ADC414B43E356`.
 
 ## Thời lượng và thứ tự
 
@@ -47,7 +47,7 @@ Slide EAF tách điện khỏi số direct. Workbook dùng bài thử điện ri
 
 ## Căn cứ pháp lý được gắn với ví dụ
 
-- Thép cân bằng carbon: Regulation (EU) 2025/2547, Annex III B.3.2, Eqs. 12–15; phép tính là giản lược, không phải SEE đã thẩm tra.
+- Thép cân bằng carbon: Regulation (EU) 2025/2547, Annex II B.3.2, Eqs. 12–15 for the source-stream mass-balance equations; Annex I 3.15.2.1–3.15.2.2 define steel route boundaries and refer to Annex III B.3.2; phép tính là giản lược, không phải SEE đã thẩm tra.
 - Nhôm: Regulation (EU) 2025/2547, Annex I 3.17–3.18 (ranh giới), Annex II B.7 (PFC), Annex III Eqs. 59–63 (SEE hàng phức hợp). Cần xác minh CN, tiền chất và phần dư cho trường hợp thực tế.
 - Xi măng: Regulation (EU) 2025/2547, Annex II B.3.1/B.5 và Annex III Eq.64 theo mapping nguồn trong workbook; kiểm tra công thức chính xác theo tuyến trước khi dùng thực tế.
 - Ngưỡng: Regulation (EU) 2023/956, Article 2a và Annex VII. Bài 52 tấn là ví dụ tổng hợp.

@@ -6,13 +6,13 @@
 
 | Artifact | Local file | Current SHA-256 | QA result |
 |---|---|---|---|
-| Editable Vietnamese customer deck | `outputs/issue-1-delivery-acceleration-v2/CTIC_VIETNAM_CBAM_CLIENT_150MIN_VI_DRAFT.pptx` | `fbbba0deae7d098bdd2bd8672f61df73d7dcbc5e81abee3dd99e044329843ba8` | 47 slides; 150 minutes; editable diagrams; three credited Unsplash photos; 47/47 notes include source URLs |
-| Slide preview PDF | `outputs/issue-1-delivery-acceleration-v2/CTIC_VIETNAM_CBAM_CLIENT_150MIN_VI_DRAFT.pdf` | `f34d282a98993172c092258b3ba59a6a16c704a7de9c52ec2969750c8bb2fb2f` | 47 pages, rendered from all 47 slides after photo placement |
-| Contact sheet PDF | `outputs/issue-1-delivery-acceleration-v2/CTIC_VIETNAM_CBAM_CLIENT_150MIN_CONTACT_SHEET.pdf` | `3a09a657e01c56c6a9144d57984726e9c495401b784bafcc4059726d36df5ddb` | 4 pages, all 47 slide thumbnails; reviewed after photo placement |
-| Vietnamese presenter script | `outputs/issue-1-delivery-acceleration-v2/CTIC_VIETNAM_CBAM_CLIENT_PRESENTER_SCRIPT_150MIN_VI_DRAFT.docx` | `5d364d085bbca60e970fb871ab7dd9691ee3ec98ca8aef20870c35fc379664d5` | 47 slide sections; 17,439 spoken words; 140 minutes instruction + 10 minutes Q&A; see `PRESENTER_SCRIPT_QA.md` |
+| Editable Vietnamese customer deck | `outputs/issue-1-delivery-acceleration-v2/CTIC_VIETNAM_CBAM_CLIENT_150MIN_VI_DRAFT.pptx` | `6636D6242E209647E51A375F0A768953EA82E32694A30F0E10F703F53EC60B7F` | 47 slides; 150 minutes; editable diagrams; three credited Unsplash photos; 47/47 notes include source URLs |
+| Slide preview PDF | `outputs/issue-1-delivery-acceleration-v2/CTIC_VIETNAM_CBAM_CLIENT_150MIN_VI_DRAFT.pdf` | `713512BF70ECE159B53921C265365B9870C4CD98C5C8CDB5C06578C477A5AF2F` | 47 pages, rendered from all 47 slides after photo placement |
+| Contact sheet PDF | `outputs/issue-1-delivery-acceleration-v2/CTIC_VIETNAM_CBAM_CLIENT_150MIN_CONTACT_SHEET.pdf` | `79B3DD3A0FE26856ADC6BC691C1008504C1821D6491907D6736FA2F1792FE410` | 4 pages, all 47 slide thumbnails; reviewed after photo placement |
+| Vietnamese presenter script | `outputs/issue-1-delivery-acceleration-v2/CTIC_VIETNAM_CBAM_CLIENT_PRESENTER_SCRIPT_150MIN_VI_DRAFT.docx` | `4B3F2CB6E53AF07AFE05C1B606951E3ECC1E0D3B0DE09C300F0ADC414B43E356` | 47 slide sections; 17,439 spoken words; 140 minutes instruction + 10 minutes Q&A; see `PRESENTER_SCRIPT_QA.md` |
 | Aluminium model | `outputs/issue-1-delivery-acceleration-v2/CBAM_Aluminium_Model_Training_VI.xlsx` | `96aadcb39c03c66ba10335557583ef3322fd40c0df858042304d5134c12f9620` | 12 Vietnamese sheets, 80 formulas; Artifact Tool recalculation and invalid-input checks PASS |
 | Steel/cement exercises | `outputs/issue-1-delivery-acceleration-v2/CBAM_Steel_Cement_Practice_VI.xlsx` | `0f53618737b128a31b1abe31554a474ae621c0acfa40242719760d6b6b661331` | 6 Vietnamese sheets, 72 formulas; Artifact Tool recalculation and invalid-input checks PASS |
-| Customer handout/FAQ | `outputs/issue-1-delivery-acceleration-v2/Client_Handout_FAQ.md` | `8286fcaf3df7ef20e20bd2ca2261ad4d764baf2516108af12c83456f11343801` | Vietnamese handout, 2 Mermaid diagrams, glossary, 30/60/90-day checklist, 15 FAQs |
+| Customer handout/FAQ | `outputs/issue-1-delivery-acceleration-v2/Client_Handout_FAQ.md` | `B0988E8F3782DD1AC52902738F263C5461E4511B225ADB2C25CDE5B44ADE7235` | Vietnamese handout, 2 Mermaid diagrams, glossary, 30/60/90-day checklist, 15 FAQs |
 
 ## Local QA evidence
 
@@ -26,6 +26,17 @@
 - **Synthetic/public-only:** All exercise values are marked as training assumptions. No client, supplier, personal, pricing-contract or confidential audit data is included.
 
 ## Limits and CTIC review items
+
+## V3.1 trial acceptance update — 18 November 2026
+
+- Corrected the steel citation in the PPTX, speaker notes, Word source footers, workbook source map, handout and claim matrix: calculation equations 12–15 are in Regulation (EU) 2025/2547 Annex II B.3.2; the steel route boundary in Annex I 3.15.2.1–.2 refers to Annex III B.3.2. Biomass eligibility is Annex II B.3.3. The formula and example values were not changed.
+- Re-rendered the 47-slide deck PDF and four-page contact sheet. All 47 pages/thumbnails are present; the updated steel formula and worked-example slides were inspected at full size. The slide 17 footer now attributes both formula 15 and biomass eligibility to Annex II.
+- Structural synchronization check passes locally: 47 PPT slides, 47 source-bearing notes, 47 Word slide headings, 150 minutes. Local static integrity workflow passes, including the steel/aluminium/cement arithmetic fixtures, source text, sheet/formula counts and public-text checks.
+- DOCX visual rendering remains **BLOCKED**: render_docx.py could not find soffice.exe; Word COM is unavailable with 0x80070520. CTIC must visually inspect the Word file in desktop Word.
+- Native Excel opening/recalculation remains **BLOCKED**: Excel command not found and Excel COM returned 0x80070520. Artifact Tool recalculation and render checks passed; they are not Office-native checks.
+- A 20-minute desk-based rehearsal sequence is recorded at qa/V3_1_SAMPLE_REHEARSAL.md. It covers legal, steel, aluminium, cement and MRV, but is not a live delivery or audience test. The 154.6 words/minute script average remains a pacing risk.
+- Legal points concerning independent-person qualifications/independence/transition under 2026/2498 remain NEEDS_LEGAL_REVIEW. No human review field is filled in.
+- Exact-SHA GitHub Actions result is pending the updated PR #10 head; check the Actions run and PR body after push.
 
 - Three commercial-use photos are embedded with visible credit and notes: a Port Kembla steel mill in the background (Michael SKOPAL), aluminium CNC machining (aluminum Zheng ji), and a Seattle cement plant (Chris Linnett). The verified Unsplash License allows free commercial/non-commercial use and appreciates attribution; see `qa/IMAGE_LICENSE_REGISTER.csv`. Captions and alternative text explicitly limit what each image represents. The photos do not depict BF–BOF/EAF/DRI equipment, billet extrusion, or a specific Vietnamese installation; those process explanations remain in editable diagrams. Earlier Commons candidates remain listed as not embedded because the source returned HTTP 403 under its robot policy.
 - DOCX visual rendering is **NOT VERIFIED**: the required renderer could not find `soffice.exe`; Word COM PDF export failed with `0x80070520`. No script PDF or visual pass is claimed.
