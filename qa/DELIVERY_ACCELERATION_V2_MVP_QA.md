@@ -1,5 +1,8 @@
 # Delivery Acceleration V2 — client and model MVP QA
 
+> **BỔ SUNG SAU MỐC MVP (18/11/2026):** Handout/FAQ đã được Việt hóa và bổ sung tình huống minh họa, checklist/12 FAQ trên cùng nhánh Draft PR #10. Bảng nguồn được chỉnh CL-005: ranh giới sản phẩm nhôm nằm ở **Annex I 3.17–3.18**, phương pháp PFC ở **Annex II B.7** của Regulation 2025/2547. Vì vậy **SHA-256 handout, claim matrix và HEAD trong báo cáo MVP ban đầu đã cũ**; các mục QA bên dưới chỉ áp dụng cho bản MVP đầu tiên (PPTX/XLSX chưa sửa). Bản PPTX vẫn cần Việt hóa, thêm hình ảnh/case studies và chạy QA/CI lại trên HEAD sau khi Codex chỉnh sửa. **Không coi PR #10 đã đạt nghiệm thu nội dung hoặc được phép phát hành.**
+
+
 **Status:** DRAFT_READY  
 **External release:** NOT APPROVED  
 **Legal approval:** not performed or implied  
