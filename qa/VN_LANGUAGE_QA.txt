@@ -1,0 +1,11 @@
+# Báo cáo quét ngôn ngữ Việt · DRAFT
+
+Phạm vi: chữ hiển thị PPTX và speaker notes, nhãn/ghi chú dạng chuỗi trong hai XLSX, đoạn văn và bảng DOCX, cùng handout Markdown.
+Tổng đoạn/cell/shape đã trích: 2128.
+Whitelisted: tên luật và tên chính thức tiếng Anh, điều khoản/trích dẫn gốc, URL, thuật ngữ kỹ thuật đã định nghĩa (CBAM, SEE, SEFA, MRV, OER, ETS, PFC, DRI, EAF, BF–BOF, CN, O3CI, Registry, verifier), và NEEDS_LEGAL_REVIEW/PENDING LEGAL REVIEW.
+Heuristic chỉ tìm đoạn văn có khả năng còn tiếng Anh; đây không phải phép chứng minh rằng mọi bản dịch đều chính xác. Mỗi kết quả cần được đọc theo ngữ cảnh.
+
+Đoạn nghi còn văn xuôi tiếng Anh: 0.
+- Không có đoạn nào bị heuristic gắn cờ trong lần quét này.
+
+Trạng thái hiệu đính ngôn ngữ và pháp lý: CHỜ CTIC RÀ SOÁT; tên nguồn EU/thuật ngữ được giữ nguyên không được tính là nội dung Việt hóa.
