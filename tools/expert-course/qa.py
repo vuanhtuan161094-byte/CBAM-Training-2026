@@ -34,6 +34,15 @@ WORD_FILES = {
     "EXP-07": "CTIC_EXP07_Verification_Accreditation_Lecture_Script_VI_DRAFT.docx",
 }
 NS = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main"}
+TEXT_HASH_SUFFIXES = {".csv", ".json", ".md", ".txt"}
+
+
+def repository_bytes(path: Path) -> bytes:
+    content = path.read_bytes()
+    if path.suffix.lower() in TEXT_HASH_SUFFIXES:
+        # Match Git's canonical LF blob bytes across Windows and Linux checkouts.
+        content = content.replace(b"\r\n", b"\n")
+    return content
 
 
 def word_count(doc: Document) -> int:
@@ -169,6 +178,7 @@ lines += [
     "- All 118 new slides were rendered; all six module contact sheets and the corrected SFA/SEFA worksheet render were visually inspected, with selected full-size slides checked.",
     "- Word desktop visual rendering and native Excel open/recalculate were not available in this runner. No desktop validation is claimed.",
     "- GitHub Actions exact-SHA result must be read from and linked in Draft PR #12 after the delivery commit is pushed; this local report does not infer a CI result.",
+    "- SHA-256 manifest hashes binary artifacts byte-for-byte and normalizes tracked text files to Git's LF blob bytes for Windows/Linux consistency.",
     "",
     "## Completion limits",
     "",
@@ -184,7 +194,7 @@ included = sorted(
     if path.is_file() and path != manifest and not path.name.endswith(".inspect.ndjson")
 )
 manifest.write_text(
-    "".join(f"{hashlib.sha256(path.read_bytes()).hexdigest().upper()}  {path.name}\n" for path in included),
+    "".join(f"{hashlib.sha256(repository_bytes(path)).hexdigest().upper()}  {path.name}\n" for path in included),
     encoding="utf-8",
 )
 print(json.dumps({"modules": rows, "slides": course_slides, "minutes": course_minutes, "qa": str(OUT / "EXPERT_COURSE_QA.md"), "manifestEntries": len(included)}, ensure_ascii=False, indent=2))

@@ -36,6 +36,7 @@ EXP-01 remains the existing 18-slide / 90-minute module. EXP-02–07 contribute 
 - All 118 new slides were rendered; all six module contact sheets and the corrected SFA/SEFA worksheet render were visually inspected, with selected full-size slides checked.
 - Word desktop visual rendering and native Excel open/recalculate were not available in this runner. No desktop validation is claimed.
 - GitHub Actions exact-SHA result must be read from and linked in Draft PR #12 after the delivery commit is pushed; this local report does not infer a CI result.
+- SHA-256 manifest hashes binary artifacts byte-for-byte and normalizes tracked text files to Git's LF blob bytes for Windows/Linux consistency.
 
 ## Completion limits
 

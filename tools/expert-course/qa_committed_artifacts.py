@@ -24,11 +24,19 @@ MODULES = [
     ("EXP-07", "CTIC_EXP07_verification_accreditation_VI_DRAFT", "CTIC_EXP07_Verification_Accreditation_Lecture_Script_VI_DRAFT.docx", 18, 90),
 ]
 NS = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main"}
+TEXT_HASH_SUFFIXES = {".csv", ".json", ".md", ".txt"}
 
 
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise AssertionError(message)
+
+
+def repository_bytes(path: Path) -> bytes:
+    content = path.read_bytes()
+    if path.suffix.lower() in TEXT_HASH_SUFFIXES:
+        content = content.replace(b"\r\n", b"\n")
+    return content
 
 
 def check_module(code: str, stem: str, word_name: str, slide_count: int) -> dict:
@@ -116,7 +124,7 @@ def main() -> None:
         expected, name = match.groups()
         path = OUT / name
         require(path.is_file(), f"Manifest file missing: {name}")
-        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+        actual = hashlib.sha256(repository_bytes(path)).hexdigest()
         require(actual.lower() == expected.lower(), f"SHA-256 mismatch: {name}")
         manifest_count += 1
     require(manifest_count == 42, f"Expected 42 hashed deliverables, found {manifest_count}")
