@@ -15,6 +15,6 @@ Set `CTIC_NODE_RUNTIME` and `CTIC_PYTHON_RUNTIME` to the executable paths when N
 ./tools/expert-course/build.ps1
 ```
 
-The scripts write generated slide images and intermediate JSON to ignored `.build/expert-course/`; the final course files are written to `outputs/issue-5-expert-course/`. The build validates slide/PDF/Word alignment and workbook expected values. It cannot perform native PowerPoint, Word or Excel desktop validation.
+The scripts write generated slide images and intermediate JSON to ignored `.build/expert-course/`; the final course files are written to `outputs/issue-5-expert-course/`. The build validates slide/PDF/Word alignment and workbook expected values. `qa_committed_artifacts.py` checks the committed package without the intermediate build directory; the PR workflow runs it on pushes and pull requests. It cannot perform native PowerPoint, Word or Excel desktop validation.
 
 All case values are synthetic. Legal citations link to EUR-Lex; this pipeline does not download or translate complete EU instruments and cannot grant legal approval. `NEEDS_LEGAL_REVIEW` flags remain in the generated claim matrix for unresolved or not directly retrieved source text.
