@@ -1,0 +1,74 @@
+{
+  "generatedOn": "2026-11-18",
+  "moduleResults": [
+    {
+      "module": "EXP-02",
+      "slides": 22,
+      "speakerNotes": 22,
+      "wordSlideHeadings": 22,
+      "wordCount": 7419,
+      "previewPdfPages": 22,
+      "slideWordTitleSourceSync": "PASS"
+    },
+    {
+      "module": "EXP-03",
+      "slides": 22,
+      "speakerNotes": 22,
+      "wordSlideHeadings": 22,
+      "wordCount": 6894,
+      "previewPdfPages": 22,
+      "slideWordTitleSourceSync": "PASS"
+    },
+    {
+      "module": "EXP-04",
+      "slides": 17,
+      "speakerNotes": 17,
+      "wordSlideHeadings": 17,
+      "wordCount": 5684,
+      "previewPdfPages": 17,
+      "slideWordTitleSourceSync": "PASS"
+    },
+    {
+      "module": "EXP-05",
+      "slides": 22,
+      "speakerNotes": 22,
+      "wordSlideHeadings": 22,
+      "wordCount": 6367,
+      "previewPdfPages": 22,
+      "slideWordTitleSourceSync": "PASS"
+    },
+    {
+      "module": "EXP-06",
+      "slides": 17,
+      "speakerNotes": 17,
+      "wordSlideHeadings": 17,
+      "wordCount": 5439,
+      "previewPdfPages": 17,
+      "slideWordTitleSourceSync": "PASS"
+    },
+    {
+      "module": "EXP-07",
+      "slides": 18,
+      "speakerNotes": 18,
+      "wordSlideHeadings": 18,
+      "wordCount": 5098,
+      "previewPdfPages": 18,
+      "slideWordTitleSourceSync": "PASS"
+    }
+  ],
+  "newModuleSlides": 118,
+  "totalCourseSlidesIncludingEXP01": 136,
+  "totalTeachingMinutes": 720,
+  "newModuleWordCount": 36901,
+  "claimMatrixRows": 182,
+  "claimsMarkedNeedsLegalReviewFor2026_2498": 3,
+  "glossaryTerms": 46,
+  "workbookExpectedValues": {
+    "SFA_process_Eq2": 0.3825,
+    "SEFA_simple_good_Eq3": 0.3825,
+    "FAA_Eq1_tCO2e": 382.5,
+    "scenarioCost_EUR": 99225,
+    "formulaErrorMatches": 0
+  },
+  "nativeOfficeValidation": "NOT AVAILABLE in this runner; do not infer Excel or Word desktop validation"
+}
