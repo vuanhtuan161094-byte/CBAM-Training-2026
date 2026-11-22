@@ -14,7 +14,7 @@
 | Hiệu lực / áp dụng | Điều 9: có hiệu lực ngày thứ ba sau công bố; áp dụng từ 01/01/2026 |
 | Phạm vi dịch | Articles 1–9, toàn bộ khoản và câu; không có Annex trong văn bản |
 | English alignment | Mỗi điểm `Điều n(k)` dẫn tới cùng điểm `Article n(k)` trong OJ nguyên gốc được liên kết phía trên; bản EN/PDF P0 giữ nguyên, không ghi đè |
-| QA | Soát số lượng Điều và khoản qua cấu trúc: 9 Điều / 28 khoản đánh số + Điều 9 không đánh số; đối chiếu từng câu với OJ và rà soát thuật ngữ **chưa có người ký** |
+| QA | Soát số lượng Điều và khoản qua cấu trúc: 9 Điều / 25 khoản đánh số + 3 đoạn không đánh số tại Điều 9; đối chiếu từng câu với OJ và rà soát thuật ngữ **chưa có người ký** |
 | Rights | Chỉ dùng văn bản pháp luật từ OJ; không sao chép dữ liệu IEA, không dùng dữ liệu khách hàng |
 
 **Quy ước song ngữ:** *auction clearing price* = giá khớp đấu giá; *allowance* = hạn ngạch phát thải; *volume-weighted* = gia quyền theo khối lượng; *authorised CBAM declarant* = người khai báo CBAM được cấp phép; *common auction platform* = nền tảng đấu giá chung; *opt-out auction platform* = nền tảng đấu giá riêng theo cơ chế không tham gia nền tảng chung. Phần EN tác nghiệp được đối chiếu theo Article/paragraph trên OJ và bản gốc P0, tránh tái xuất bản nguồn EN dưới tên tài liệu CTIC.
