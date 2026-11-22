@@ -4,11 +4,11 @@
 >
 > **Không dịch lại những phần đã có:** Điều 11(1) nằm trong `P1_R2_clause_translation_corpus.md` (P1R2-2498-ART11-1); Điều 15(1)–(2) nằm trong `P1_R3_expanded_corpus.md` (P1R3-2498-ART15-1-2). Tệp này cung cấp **Điều 10; Điều 11(2)–(6); Điều 12; Điều 13; Điều 14; Điều 15(3)**. Đọc cả ba tệp mới có đủ phạm vi Điều 10–15, nhưng **chưa được reviewer ký**.
 
-**Source ID:** `ACT-2026-2498`  
-**Official OJ English:** https://eur-lex.europa.eu/eli/reg_impl/2026/2498/oj/eng  
-**Official Publications Office PDF:** https://publications.europa.eu/resource/cellar/f29af7fa-e188-11f1-aefc-01aa75ed71a1.0006.01/DOC_1  
-**P0 saved PDF:** `sources/official/originals/ACT-2026-2498.pdf`, SHA-256 `2f7c95bfd566cd6bc6ea2f0244f7dd2d45c8c42f1d42786d7f15da2c768856be` (source-register).  
-**OJ:** 16/11/2026. **Có hiệu lực:** 19/11/2026 (Điều 36); **áp dụng:** từ 01/01/2026.  
+**Source ID:** `ACT-2026-2498`
+**Official OJ English:** https://eur-lex.europa.eu/eli/reg_impl/2026/2498/oj/eng
+**Official Publications Office PDF:** https://publications.europa.eu/resource/cellar/f29af7fa-e188-11f1-aefc-01aa75ed71a1.0006.01/DOC_1
+**P0 saved PDF:** `sources/official/originals/ACT-2026-2498.pdf`, SHA-256 `2f7c95bfd566cd6bc6ea2f0244f7dd2d45c8c42f1d42786d7f15da2c768856be` (source-register).
+**OJ:** 16/11/2026. **Có hiệu lực:** 19/11/2026 (Điều 36); **áp dụng:** từ 01/01/2026.
 **Vị trí OJ để soát:** trang in 15–20/56 (Article 10–15); không nhập nội dung EU/IEA bị giữ quyền; không có dữ liệu cá nhân/khách hàng.
 
 **English paragraph alignment:** Nhãn `Article N(k)(a)` ở dưới trỏ đến đoạn gốc cùng số của OJ/PDF đã lưu P0; không coi tên điều bằng tiếng Anh là bản tiếng Anh đầy đủ. Đây là dịch toàn văn *các điểm được ghi là đã dịch*, không phải tóm tắt của chúng.
