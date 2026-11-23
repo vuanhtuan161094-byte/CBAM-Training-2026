@@ -65,10 +65,12 @@ def source_text(path: str) -> str:
 
 
 def assert_equations(text: str, expected: list[str], source_id: str) -> None:
-    # Work with source-preserving ASCII/math-symbol canonical identities.
-    for equation in expected:
-        check(text.count(equation) == 1,
-              f"{source_id} equation absent or ambiguous (expected exactly once): {equation}")
+    # Both the identity and the original equation number must occur on the SAME line.
+    indices = [59, 60, 61, 62, 63] if source_id == "ACT-2025-2547" else [3, 4, 5, 6]
+    for number, equation in zip(indices, expected, strict=True):
+        matches = [line for line in text.splitlines()
+                   if equation in line and f"(Equation {number})" in line]
+        check(len(matches) == 1, f"{source_id} Eq{number} identity missing or repeated: {equation}")
 
 
 def main() -> None:
