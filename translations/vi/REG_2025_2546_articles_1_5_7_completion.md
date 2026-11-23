@@ -45,7 +45,7 @@
 - **(c)** Tổ chức thẩm tra hiểu biết đầy đủ cách vận hành cơ sở, các quá trình sản xuất và hệ thống giám sát/báo cáo, bao gồm hệ thống kiểm soát của người vận hành.
 - **(d)** Theo đánh giá của tổ chức thẩm tra, bản chất và mức phức tạp của hệ thống giám sát/báo cáo của cơ sở cũng như rủi ro tiềm tàng và rủi ro kiểm soát không đòi hỏi khảo sát thực địa trực tiếp.
 - **(e)** Tổ chức thẩm tra có thể thu thập và đánh giá từ xa **toàn bộ** thông tin cần thiết để thẩm tra, bao gồm việc áp dụng đúng phương pháp đã mô tả trong Kế hoạch giám sát, dữ liệu trong Báo cáo phát thải của người vận hành, quy trình sản xuất và các tiền chất đã sử dụng.
-- **(f)** Quyết định khảo sát trực tuyến hoặc miễn khảo sát trực tiếp dựa trên kết quả phân tích rủi ro; tổ chức thẩm tra đã xác định và áp dụng các biện pháp cần thiết để giảm rủi ro thẩm tra xuống mức chấp nhận được nhằm đạt được **mức đảm bảo hợp lý** rằng báo cáo phát thải không có sai lệch trọng yếu và sự không phù hợp trọng yếu.
+- **(f)** Quyết định khảo sát trực tuyến hoặc miễn khảo sát trực tiếp dựa trên kết quả phân tích rủi ro; tổ chức thẩm tra đã xác định và áp dụng các biện pháp cần thiết để giảm rủi ro thẩm tra xuống mức chấp nhận được nhằm đạt được **mức đảm bảo hợp lý** rằng báo cáo phát thải không có sai lệch trọng yếu và không có sự không phù hợp.
 - **(g)** Cơ sở hoặc Kế hoạch giám sát không có thay đổi đáng kể kể từ lần khảo sát trực tiếp gần nhất, bao gồm những thay đổi đáng kể sau:
   - **(1)** Bắt đầu hoặc ngừng một quá trình sản xuất hay tuyến công nghệ sản xuất.
   - **(2)** Thay đổi quy trình sản xuất liên hợp của tiền chất và hàng hóa phức hợp theo Điều 4(9) Quy định 2025/2547.
