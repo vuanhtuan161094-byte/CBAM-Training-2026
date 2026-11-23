@@ -4,7 +4,7 @@
 >
 > Phần **bổ sung**, không tái dịch phần B.7 và B.9.2.1–B.9.2.2 đã có trong corpus R4. Nguồn đối chiếu: Phụ lục II B.7.2–7.3 và B.9.2.3 của Quy định (EU) 2025/2547, theo các trang **46–48 và 50–51/86** của bản OJ tiếng Anh. Tất cả phép toán được gắn số phương trình gốc; chưa có review/phê duyệt CTIC độc lập.
 
-**Source ID:** `ACT-2025-2547` · **SHA-256 PDF P0:** `6ca80e3ed665e47aaef801e59e0791c50287ca46db20aad046e861134608ccf7` · **ELI:** https://eur-lex.europa.eu/eli/reg_impl/2025/2547/oj/eng  
+**Source ID:** `ACT-2025-2547` · **SHA-256 PDF P0:** `6ca80e3ed665e47aaef801e59e0791c50287ca46db20aad046e861134608ccf7` · **ELI:** https://eur-lex.europa.eu/eli/reg_impl/2025/2547/oj/eng
 **PDF để kiểm:** https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?qid=1784781252055&uri=OJ:L_202502547
 
 ## B.7.2 — Phương pháp B: điện áp vượt mức (Overvoltage Method)
