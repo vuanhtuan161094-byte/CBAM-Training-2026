@@ -4,10 +4,10 @@
 >
 > P1 FINISH 23/11/2026. Bản dịch bổ sung theo **Article 10–16** của Quy định được ủy quyền (EU) 2025/2551. Đọc cùng [bản dịch Điều 2–9](REG_2025_2551_articles_2_9_accreditation_vi.md) và R2–R4 (Điều 1(3), Annex selected); phần Điều 17–26 và toàn bộ các yêu cầu còn lại của Annex II **chưa hoàn tất**.
 
-**Nguồn chính thức OJ tiếng Anh:** https://eur-lex.europa.eu/eli/reg_del/2025/2551/oj/eng  
-**Source ID:** `ACT-2025-2551`  
-**P0 PDF SHA-256:** `709e3bf1a3dc9b1694eb0e2e83503d0c775b005b632397386333182ee02cbd8d`  
-**Xuất bản:** 22/12/2025; áp dụng từ 01/01/2026 (Điều 26).  
+**Nguồn chính thức OJ tiếng Anh:** https://eur-lex.europa.eu/eli/reg_del/2025/2551/oj/eng
+**Source ID:** `ACT-2025-2551`
+**P0 PDF SHA-256:** `709e3bf1a3dc9b1694eb0e2e83503d0c775b005b632397386333182ee02cbd8d`
+**Xuất bản:** 22/12/2025; áp dụng từ 01/01/2026 (Điều 26).
 **QA:** bản VI theo nhãn EN Article/paragraph/point; human bilingual/legal/accreditation verification còn PENDING.
 
 ## Article 10 — Competence requirements for assessors
