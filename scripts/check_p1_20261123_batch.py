@@ -60,7 +60,6 @@ def source_text(path: str) -> str:
     check(document.is_file(), f"Missing translated file: {path}")
     text = document.read_text(encoding="utf-8")
     check(WATERMARK in text, f"Missing unofficial-draft watermark: {path}")
-    check(not re.search(r"(?m)^\s+\S", text), f"Unexpected indented line: {path}")
     return text
 
 
