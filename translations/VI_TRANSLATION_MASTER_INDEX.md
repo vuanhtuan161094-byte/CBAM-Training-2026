@@ -9,7 +9,7 @@
 | Nhóm nội dung | Bản dịch tham khảo hiện có | Độ đầy đủ / việc chưa hoàn tất |
 |---|---|---|
 | Luật gốc CBAM 2023/956, sửa đổi 2025/2083 | [Corpus R2](vi/P1_R2_clause_translation_corpus.md), [phạm vi/báo cáo](vi/REG_2023_956_scope_and_reporting.md) | Một số khoản của Điều 2a, 6–9 và Phụ lục VII; Annex I, IV, VI, nghĩa vụ khác chưa dịch đầy đủ |
-| Phương pháp MRV 2025/2547; thép, nhôm, xi măng | [R2](vi/P1_R2_clause_translation_corpus.md), [R3](vi/P1_R3_expanded_corpus.md), [R4](vi/P1_R4_expanded_corpus.md), **[Annex III B: SEE hàng phức hợp Eq59–63](vi/REG_2025_2547_annexIII_B_complex_SEE_eq59_63_vi.md)** | Dự thảo đã mở rộng ranh giới và SEE/tiền chất; còn Annex II/III/IV khác, OER/sector tables, QA công thức độc lập |
+| Phương pháp MRV 2025/2547; thép, nhôm, xi măng | [R2](vi/P1_R2_clause_translation_corpus.md), [R3](vi/P1_R3_expanded_corpus.md), [R4](vi/P1_R4_expanded_corpus.md), [SEE Eq59–63](vi/REG_2025_2547_annexIII_B_complex_SEE_eq59_63_vi.md), **[A1 Annex II–IV tại bảng dưới](#a1--bản-dịch-và-bảng-dữ-liệu-20252547-ngày-23112026)** | A1 mở rộng Annex II E/F/G, B.7.2–7.3/B.9.2.3, Annex III quy thuộc Eq41/42/53–58/64, Annex IV 35+3+16 mục chính và 19 nhóm/52 trường; vẫn **PARTIAL** do còn nhiều mục và thiếu human source/bilingual QA |
 | Thẩm tra 2025/2546 | [R2 Điều 6](vi/P1_R2_clause_translation_corpus.md), [R4 Annex 1.1–2.3](vi/P1_R4_expanded_corpus.md), **[Điều 1–5, 7](vi/REG_2025_2546_articles_1_5_7_completion.md)**, **[Annex 2.4–2.6](vi/REG_2025_2546_annex_2_4_to_4_completion.md)** | 7/7 Điều tác nghiệp có VI draft ghép, Annex 1.1–2.6 dự thảo; Annex 3–4 mới dịch tiêu đề; người hiệu đính và Recitals còn thiếu |
 | Công nhận 2025/2551 | [R2/R4](vi/P1_R4_expanded_corpus.md), **[Điều 2–9](vi/REG_2025_2551_articles_2_9_accreditation_vi.md)**, **[Điều 10–16](vi/REG_2025_2551_articles_10_16_oversight_vi.md)** | 15 Điều 2–16 đã có VI draft; Điều 1 còn thiếu phần lớn định nghĩa, Điều 17–26 và Annex II chưa dịch đầy đủ; human source review PENDING |
 | SEFA/FAA/benchmark 2025/2620 | [R4 Eq1–2](vi/P1_R4_expanded_corpus.md), **[Annex 3.2–5.2 và Eq3–6](vi/REG_2025_2620_annex_3_2_to_5_2_sefa_vi.md)** | Phương pháp SEFA, recursive precursor có bản dịch dự thảo; **Annex 5.3 benchmark numerical table chưa dịch/QA**, có 1 cross-reference cần legal review |
@@ -21,6 +21,23 @@
 | Nguồn Guide 5b/5c và Registry 429 | [Đăng ký tình trạng từng nguồn](FINAL_SCOPE_AND_GAP_REGISTER.csv) | `UNAVAILABLE`: giữ URL, không dựng nội dung |
 | Guide No.3 + default Excel IEA | [Tình trạng rights hold](FINAL_SCOPE_AND_GAP_REGISTER.csv) | `RIGHTS_HOLD`: không nhập dữ liệu bị giới hạn |
 | 2024 transitional / proposals 2026 | [Sổ pháp lý](../legal/CONFLICT_LOG.md) | Chỉ tham khảo/thông tin đề xuất, không diễn giải như luật đang áp dụng |
+
+## A1 — Bản dịch và bảng dữ liệu 2025/2547 ngày 23/11/2026
+
+> **A1 không hoàn tất toàn bộ Annex II–IV**; bảng và công thức dưới đây là nội dung mới có thể đối chiếu theo vị trí OJ, ở mức `DRAFT_SOURCE_CITED`. Nội dung R2–R4 không bị ghi đè.
+
+| Nhóm | Tài liệu | Phạm vi và giới hạn |
+|---|---|---|
+| Annex II E–F | [Giám sát tiền chất và mức hoạt động](vi/REG_2025_2547_annexII_E_F_precursor_activity_vi.md) | E(1)–(4), F(3 đoạn): same process, external precursor, default fallback, scrap và AL |
+| Annex II G | [Bảng dữ liệu G 1–6](data/REG_2025_2547_ANNEXII_G_TABLES1_6.csv) | **75 hàng nguồn**: 40+11+9+3+9+3; có đơn vị, số OJ và status review |
+| Annex II nhôm/xi măng | [B7.2/B7.3 và B9.2.3](vi/REG_2025_2547_annexII_B7_2_B9_2_3_PFC_CKD_vi.md) | Công thức 24–26, 28; PFC công nghệ và bụi clinker; không lặp R4 B7.1/B9.2.1–2 |
+| Annex III quy thuộc | [A.1/A.2.3/A.3, clinker Eq64](vi/REG_2025_2547_annexIII_A_attribution_eq41_64_vi.md) | Eq41–42, Eq53–58, Eq64, bảo toàn dấu nhiệt/điện/khí; tài liệu B Eq59–63 cũ giữ nguyên |
+| Annex IV OER | [Yêu cầu báo cáo OER và bản tóm tắt](vi/REG_2025_2547_annexIV_OER_full_outline_vi.md) | 35 mục OER; 3 addendum điện; 16 mục summary; bảng sector theo nguồn |
+| Annex IV field schema | [54 mục cấp chính](data/REG_2025_2547_ANNEXIV_OER_54_FIELD_INDEX.csv) | **35+3+16**, cần tiếp tục triển khai tiểu mục khi làm form thực tế |
+| Annex IV sector table | [19 nhóm và 52 trường](data/REG_2025_2547_ANNEXIV_SECTOR_OER_FIELDS.csv) | Giữ phân biệt clinker ratio, pre-consumer scrap, hợp kim; cờ source-text FeNi |
+| QA A1 | [Bộ kiểm tra A1](../scripts/check_cbam_a1_20261123.py) | Kiểm đếm 75+52+54, source ID/hash, 13 nhãn công thức, điều kiện; **không tự kiểm duyệt pháp lý** |
+
+**Nguồn gốc:** OJ 2025/2547 86 trang, bản gốc có SHA-256 `6ca80e3ed665e47aaef801e59e0791c50287ca46db20aad046e861134608ccf7`. Báo cáo QA và tồn đọng được ghi tại `qa/CBAM_A1_20261123_QA_HANDOFF.md` (đối chiếu từng phần còn mở). Chuyên gia pháp lý/ngôn ngữ/MRV CTIC chưa ký.
 
 ## Sổ đăng ký và đánh giá pháp lý
 
