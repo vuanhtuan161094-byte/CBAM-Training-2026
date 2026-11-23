@@ -54,6 +54,9 @@ jobs:
       - name: Validate 23 November P1 source-aligned translation batch and formula identities
         run: python scripts/check_p1_20261123_batch.py
 
+      - name: Validate A1 Annex II-IV sector data, formula IDs, precursor and OER guardrails
+        run: python scripts/check_cbam_a1_20261123.py
+
       - name: Test P1-R3/R4 formula evidence against intentional mutations
         run: python -m unittest discover -s tests -p 'test_p1_formula_evidence.py' -v
 
