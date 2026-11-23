@@ -32,8 +32,7 @@ Trong đó `SFA_(Proc,g,y)` là kết quả trực tiếp của **Phương trìn
 Đối với hàng hóa phức hợp, việc tính SEFA phải tính đến cả quá trình sản xuất và SEFA của mỗi tiền chất; **Phương trình 4**:
 
 ```text
-SEFA_(g,y) = SFA_(Proc,g,y) + SUM_(i=1)^n [m_(i,y) × SEFA_(i,y′)]
-                                                          (Equation 4)
+SEFA_(g,y) = SFA_(Proc,g,y) + SUM_(i=1)^n [m_(i,y) × SEFA_(i,y′)]  (Equation 4)
 ```
 
 Trong đó:
