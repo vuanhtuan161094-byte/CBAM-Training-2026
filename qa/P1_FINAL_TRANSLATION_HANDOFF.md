@@ -1,5 +1,15 @@
 # CTIC VIETNAM — P1 FINISH · Technical translation handoff · 22–23 November 2026
 
+## A1 — Annex II–IV của 2025/2547 (23/11/2026)
+
+**Đã commit trực tiếp vào Draft PR #9, chưa merge.** A1 có **4 tài liệu VI dự thảo và 3 CSV**: Annex II E/F tiền chất và AL; B.7.2/7.3 PFC Eq24–26 và B.9.2.3 CKD Eq28; bảng G 1–6 **75 hàng**; Annex III A.1/A.2.3/A.3 Eq41–42/53–58 và B Eq64 clinker; Annex IV báo cáo đầy đủ **35 mục**, addendum điện **3 mục**, báo cáo tóm tắt **16 mục** và **19 nhóm hàng/52 trường thông số**. Không dịch lại công thức Annex III B Eq59–63 và phần R2–R4 đã lưu.
+
+Báo cáo chi tiết có nguồn, trang, SHA-256 và từng giới hạn: [CBAM_A1_20261123_QA_HANDOFF.md](CBAM_A1_20261123_QA_HANDOFF.md). Master index, coverage và 56-source gap register đã đồng bộ source `ACT-2025-2547` ở mức **PARTIAL**. Bổ sung conflict log **CL-21, CL-22, CL-23**: văn bản EN E(2)(c) không trọn mệnh đề; hàng FeNi thiếu tên nguyên tố; biểu diễn phần trăm `CE`/`d` có nguy cơ sai công thức. Không tự giải thích thay EU.
+
+Workflow `p1-r2-qa.yml` đã thêm `scripts/check_cbam_a1_20261123.py` kiểm kết nối SHA, 75 yếu tố, 52 trường ngành, 54 mục OER, 13 nhãn phương trình và số mẫu, nhưng **không phải** nghiệm thu pháp lý, nguồn từng ô hoặc full English–Vietnamese review. **P1 vẫn NOT PASSED**; mọi chữ ký CTIC chưa có.
+
+---
+
 ## Handoff bổ sung — 23/11/2026 (phương án A, lô tiếp theo)
 
 **Thực hiện trên cùng Draft PR #9; không merge.** Lô này bổ sung **6 tài liệu dịch theo điều khoản** thuộc 4 văn bản đã có từ R2–R4. Tất cả giữ nhãn BẢN DỊCH THAM KHẢO — CHỜ HIỆU ĐÍNH — KHÔNG PHẢI VĂN BẢN CHÍNH THỨC CỦA EU. Chi tiết và nguồn OJ/P0 SHA xem [P1_BATCH_20261123_QA_REPORT.md](P1_BATCH_20261123_QA_REPORT.md).
