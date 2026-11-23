@@ -1,4 +1,23 @@
-# CTIC VIETNAM — P1 FINISH · Technical translation handoff · 22 November 2026
+# CTIC VIETNAM — P1 FINISH · Technical translation handoff · 22–23 November 2026
+
+## Handoff bổ sung — 23/11/2026 (phương án A, lô tiếp theo)
+
+**Thực hiện trên cùng Draft PR #9; không merge.** Lô này bổ sung **6 tài liệu dịch theo điều khoản** thuộc 4 văn bản đã có từ R2–R4. Tất cả giữ nhãn BẢN DỊCH THAM KHẢO — CHỜ HIỆU ĐÍNH — KHÔNG PHẢI VĂN BẢN CHÍNH THỨC CỦA EU. Chi tiết và nguồn OJ/P0 SHA xem [P1_BATCH_20261123_QA_REPORT.md](P1_BATCH_20261123_QA_REPORT.md).
+
+| Nhóm | Tài liệu mới thực sự đã commit | Phạm vi đã bổ sung |
+|---|---|---|
+| 2025/2546 | [Điều 1–5,7](../translations/vi/REG_2025_2546_articles_1_5_7_completion.md), [Annex 2.4–2.6](../translations/vi/REG_2025_2546_annex_2_4_to_4_completion.md) | Dự thảo nguyên các Điều còn thiếu và trường nội dung báo cáo thẩm tra; giữ R2 Điều 6 và R4 Annex 1.1–2.3 |
+| 2025/2547 | [Annex III B Eq 59–63](../translations/vi/REG_2025_2547_annexIII_B_complex_SEE_eq59_63_vi.md) | SEE hàng phức hợp và tiền chất nhiều cấp; chưa hoàn tất toàn bộ Annex II–IV |
+| 2025/2551 | [Điều 2–9](../translations/vi/REG_2025_2551_articles_2_9_accreditation_vi.md), [Điều 10–16](../translations/vi/REG_2025_2551_articles_10_16_oversight_vi.md) | Thủ tục công nhận và giám sát; còn Điều 17–26 và Annex II |
+| 2025/2620 | [Annex 3.2–5.2, Eq 3–6](../translations/vi/REG_2025_2620_annex_3_2_to_5_2_sefa_vi.md) | Quy tắc SEFA/precursor; benchmark table point 5.3 chưa được dịch, không đoán số |
+
+Sổ `coverage.csv`, `P1_R3_SECTION_COVERAGE.csv` và `FINAL_SCOPE_AND_GAP_REGISTER.csv` đã cập nhật bốn source_id; kiểm kê **56 nguồn** không đổi, vẫn **10 PARTIAL / 22 NOT_STARTED** và các nhóm ngoại lệ còn lại. Mở `legal/CONFLICT_LOG.md` xem **CL-19** (dẫn chiếu Annex 3.3 so với 5.1 trong OJ 2025/2620) và **CL-20** (ngưỡng 5% không phải ngưỡng miễn sai lệch/thay khảo sát trực tiếp tự động).
+
+**QA lô mới:** `scripts/check_p1_20261123_batch.py` đã tích hợp workflow. Các thất bại CI ở commit trung gian gồm assertion sai vì Markdown hợp lệ có indent và 4 dòng trailing spaces; đã sửa bằng commit tiếp theo. Phải xem **run exact HEAD cuối cùng** trước khi kết luận CI PASS. QA này chỉ xác nhận cấu trúc/file/hash/định danh công thức — **không phải đối chiếu toàn văn EN–VI độc lập, phê duyệt pháp lý, phép sử dụng bản quyền hay kiểm thử Word/PDF**. Điều kiện hiệu đính vẫn là PENDING.
+
+---
+
+
 
 **Repository:** `vuanhtuan161094-byte/CBAM-Training-2026` (PUBLIC). **Branch/PR:** `codex/issue-3-p1-legal-matrix-translations`, Draft PR #9, based on Draft PR #8. **Issue:** #3, P1 FINISH.
 
