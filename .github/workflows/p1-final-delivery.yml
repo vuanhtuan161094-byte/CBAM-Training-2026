@@ -1,0 +1,83 @@
+name: CTIC CBAM P1 final deliverable pack
+
+on:
+  pull_request:
+    branches:
+      - codex/issue-2-p0-source-inventory
+    paths:
+      - "translations/**"
+      - "scripts/build_cbam_p1_final_delivery.py"
+      - "qa/**"
+      - "legal/**"
+      - ".github/workflows/p1-final-delivery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review-bundle:
+    name: Build final review DOCX PDF CSV source and SHA package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install offline packager dependencies
+        run: python -m pip install python-docx==1.2.0 reportlab==4.4.5 pypdf==5.9.0
+
+      - name: Build Word and PDF two-volume handover and ZIP
+        run: python scripts/build_cbam_p1_final_delivery.py
+
+      - name: Verify ZIP, document text coverage and PDF page counts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, zipfile
+          from pypdf import PdfReader
+          out = Path("outputs/p1-final-20261124")
+          zip_path = out / "CTIC_CBAM_P1_FINISH_REVIEW_20261124.zip"
+          manifest = json.loads((out / "SHA256_MANIFEST.json").read_text(encoding="utf-8"))
+          assert manifest["legal_approval"] == "HUMAN_LEGAL_BILINGUAL_REVIEW_PENDING"
+          assert len(manifest["documents"]) >= 20
+          for pdf in out.glob("*.pdf"):
+              assert len(PdfReader(str(pdf)).pages) >= 5
+          for docx in out.glob("*.docx"):
+              assert docx.stat().st_size > 10000
+          with zipfile.ZipFile(zip_path) as z:
+              assert z.testzip() is None
+              paths = z.namelist()
+              assert any(x.endswith("ACT-2025-2547-original.pdf") for x in paths)
+              assert any(x.endswith("REG_2025_2547_ANNEXII_G_TABLES1_6.csv") for x in paths)
+              assert any(x.endswith("REG_2025_2547_ANNEXIV_SECTOR_OER_FIELDS.csv") for x in paths)
+              assert len(paths) >= 27
+          print("DELIVERY QA PASS:", len(paths), "ZIP entries; DOCX/PDF source and manifest valid.")
+          PY
+
+      - name: Upload final review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CTIC_CBAM_P1_FINISH_REVIEW_20261124
+          path: |
+            outputs/p1-final-20261124/CTIC_CBAM_P1_FINISH_REVIEW_20261124.zip
+            outputs/p1-final-20261124/*.docx
+            outputs/p1-final-20261124/*.pdf
+            outputs/p1-final-20261124/SHA256_MANIFEST.json
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Write exact-SHA delivery summary
+        if: always()
+        run: |
+          echo "## CTIC P1 final review package" >> "$GITHUB_STEP_SUMMARY"
+          echo "tested_commit=$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          echo "source_sha=6ca80e3ed665e47aaef801e59e0791c50287ca46db20aad046e861134608ccf7" >> "$GITHUB_STEP_SUMMARY"
+          echo "This is a review bundle, **not human legal signoff**." >> "$GITHUB_STEP_SUMMARY"
