@@ -52,3 +52,10 @@
 `FINAL_SCOPE_AND_GAP_REGISTER.csv` ghi 56 nguồn: **10 PARTIAL, 22 NOT_STARTED, 5 UNAVAILABLE, 4 NOT_PUBLICLY_VERIFIED, 2 RIGHTS_HOLD, 4 PROPOSAL_ONLY, 4 TRANSITIONAL_ONLY, 5 SOURCE_OR_CLAIM_ONLY**. Không có nguồn nào được gọi là **full-instrument legally approved translation**; lô 23/11 có 6 tài liệu dịch mở rộng theo phần khai báo; riêng 2025/2548 có 9 Điều quy phạm dịch VI *ở mức dự thảo*. Số 33 trong corpus cũ là **33 cặp đã chọn**, không phải 33 văn bản đủ bộ.
 
 **Điều kiện nghiệm thu P1:** bảo toàn cấu trúc điều/khoản/bảng/công thức; so sánh nguồn EN từ OJ theo từng khoản; rà soát thuật ngữ, lệch hiệu lực, quyền sử dụng và sửa chính xác những lỗi được xác nhận; người duyệt pháp lý/EN–VI và chuyên môn CTIC phải ký. Không dùng PASS kỹ thuật thay chữ ký.
+
+## Chuyên đề mới ngày 24/11/2026: Importer EU, xuất khẩu Việt Nam và tái chế
+
+- [Chuyên đề tiếng Việt: trách nhiệm importer và exporter, 8 bước xuất khẩu, O3CI, thẩm tra và tái chế thép/nhôm/xi măng](vi/CBAM_2026_IMPORTER_EXPORTER_RECYCLING_TRAINING_vi.md).
+- Có bản DOCX 8 trang, PPTX 13 slide và PDF/infographic một trang bàn giao dưới dạng tệp tải trong cuộc trò chuyện; **file nhị phân chưa đưa vào repository**.
+- Đây là tài liệu **diễn giải nghiệp vụ/dùng học**, không được tính là đã dịch toàn văn mới của một trong **56 nguồn**; các trạng thái NOT_STARTED, PARTIAL trong sổ coverage giữ nguyên.
+- Bổ sung các mốc 01/01/2026, bán chứng chỉ từ 02/2027, first declaration 30/09/2027; ngưỡng 50 tấn tổng theo importer EU (ngoại lệ điện/hydro); phân biệt scrap input zero và sản phẩm tái chế có emissions; liên kết đến nguồn EU 2023/956, 2025/2083, 2025/2547 và Guide 5a/5d/5e.
