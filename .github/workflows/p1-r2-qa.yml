@@ -66,6 +66,24 @@ jobs:
       - name: Compare selected clauses and claims with hash-verified local EU originals
         run: python scripts/check_p1_original_text.py
 
+      - name: Install full handover document packager
+        run: python -m pip install python-docx==1.2.0 reportlab==4.4.5
+
+      - name: Generate two Word and PDF volumes plus OJ source evidence ZIP
+        run: python scripts/build_cbam_p1_final_delivery.py
+
+      - name: Upload CTIC P1 complete technical review package
+        uses: actions/upload-artifact@v4
+        with:
+          name: CTIC_CBAM_P1_FINISH_REVIEW_20261124
+          path: |
+            outputs/p1-final-20261124/*.zip
+            outputs/p1-final-20261124/*.docx
+            outputs/p1-final-20261124/*.pdf
+            outputs/p1-final-20261124/SHA256_MANIFEST.json
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Record exact-SHA QA summary
         if: always()
         run: |
