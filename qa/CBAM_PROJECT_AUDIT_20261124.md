@@ -82,4 +82,4 @@
 - Kiểm trên **GitHub repository**; chưa đối chiếu bất kỳ file CTIC khác nằm ngoài repo/GitHub. Đọc metadata + QA kết quả từ repo **không phải** là thử giảng trực tiếp 12 giờ hoặc kiểm thủ công mọi slide/đơn vị trong PDF, hoặc full native Excel.
 - Bảng này ưu tiên sự tồn tại, khả năng tải, đóng gói và mâu thuẫn dữ liệu. Nội dung sau đây không được khẳng định toàn bộ là EN-VI verbatim. Đối với source-law của P1, coverage còn `PARTIAL` và độc lập song ngữ chưa ký.
 
-**Đầu ra tự động hóa:** `qa/CBAM_ALL_PROJECT_FILE_INVENTORY_20261124.csv` và workflow tích hợp project bundle được triển khai trong đợt cùng ngày. 
+**Đầu ra tự động hóa:** `qa/CBAM_ALL_PROJECT_FILE_INVENTORY_20261124.csv` và workflow tích hợp project bundle được triển khai trong đợt cùng ngày.
