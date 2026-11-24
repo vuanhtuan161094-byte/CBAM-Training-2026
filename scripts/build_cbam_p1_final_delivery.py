@@ -87,7 +87,7 @@ def sha256(path: Path) -> str:
 
 def clean(text: str) -> str:
     text = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", text)
-    text = re.sub(r"(?<!\\)[*_]{1,2}", "", text)
+    text = text.replace("**", "")  # Markdown bold only; NEVER strip formula underscores
     return text.replace("`", "").strip()
 
 
