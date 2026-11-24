@@ -1,0 +1,113 @@
+name: CTIC CBAM complete project review delivery
+
+on:
+  pull_request:
+    branches:
+      - codex/issue-2-p0-source-inventory
+    paths:
+      - "qa/CBAM_PROJECT_AUDIT_20261124.md"
+      - "qa/CBAM_ALL_PROJECT_FILE_INVENTORY_20261124.csv"
+      - "scripts/build_cbam_project_integrated_delivery.py"
+      - ".github/workflows/cbam-full-project-delivery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-review-package:
+    name: Build consolidated training and original source ZIPs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout P1 legal/source branch at exact triggering SHA
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: stage/legal
+          fetch-depth: 0
+
+      - name: Checkout EXP-01 to EXP-07, client and workbook snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: 0ecbe75becaa47b0951b5ff06ec79095ef94a8db
+          path: stage/expert
+          fetch-depth: 1
+
+      - name: Checkout independent MRV/verifier form snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: 0692a0324c38ceffa729d8a5810988e5d20f239f
+          path: stage/mrv
+          fetch-depth: 1
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Word PDF and cross-format validation tools
+        run: python -m pip install python-docx==1.2.0 reportlab==4.4.5 pypdf==5.9.0
+
+      - name: Build source-anchored P1 review books
+        run: python stage/legal/scripts/build_cbam_p1_final_delivery.py
+
+      - name: Integrate cross-PR PPTX DOCX XLSX PDF and full source library
+        run: |
+          python stage/legal/scripts/build_cbam_project_integrated_delivery.py \
+            --legal stage/legal \
+            --expert stage/expert \
+            --mrv stage/mrv \
+            --out stage/legal/outputs/full-project-delivery-20261124 \
+            --legal-sha "${{ github.event.pull_request.head.sha || github.sha }}"
+
+      - name: Independent opening and manifest check
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          import json
+          from pypdf import PdfReader
+          root = Path("stage/legal/outputs/full-project-delivery-20261124")
+          summary = json.loads((root/"RELEASE_SUMMARY.json").read_text(encoding="utf-8"))
+          assert summary["branches_merged"] is False
+          assert summary["client_slides"] == 47 and summary["expert_slides"] == 136
+          assert summary["source_pdf_count"] == 36
+          for k in ("training_zip", "source_zip"):
+              f=root/summary[k]["file"]
+              with ZipFile(f) as z: assert z.testzip() is None
+          with ZipFile(root/summary["training_zip"]["file"]) as z:
+              names=z.namelist()
+              assert len(names) >= 60
+              assert any(n.endswith("CTIC_EXP07_verification_accreditation_VI_DRAFT.pptx") for n in names)
+              assert any(n.endswith("CTIC_MRV_Verifier_Forms_and_Dossiers_DRAFT.xlsx") for n in names)
+              assert any(n.endswith("CTIC_CBAM_2026_01_SECTOR_MRV.pdf") for n in names)
+          print("CTIC P0-P5 integrated delivery verification PASS")
+          PY
+
+      - name: Upload practical one-click training package
+        uses: actions/upload-artifact@v4
+        with:
+          name: CTIC_CBAM_WHOLE_PROJECT_TRAINING_20261124
+          path: |
+            stage/legal/outputs/full-project-delivery-20261124/CTIC_CBAM_ALL_PROJECT_TRAINING_20261124.zip
+            stage/legal/outputs/full-project-delivery-20261124/RELEASE_SUMMARY.json
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Upload separate official EU source library
+        uses: actions/upload-artifact@v4
+        with:
+          name: CTIC_CBAM_36_OFFICIAL_EU_PDFS_20261124
+          path: stage/legal/outputs/full-project-delivery-20261124/CTIC_CBAM_EU_OFFICIAL_SOURCES_20261124.zip
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Report exact SHA and important limitations
+        if: always()
+        run: |
+          echo "## CTIC CBAM full-project audit and handover" >> "$GITHUB_STEP_SUMMARY"
+          echo "P1 tested commit: $(git -C stage/legal rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          echo "Expert snapshot: $(git -C stage/expert rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          echo "MRV forms snapshot: $(git -C stage/mrv rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          echo "47 client slides + 136 expert slides; 2 P1 review books; 36 official source PDFs in a separate ZIP." >> "$GITHUB_STEP_SUMMARY"
+          echo "All component PRs remain separate Drafts. Translation source coverage remains PARTIAL; native desktop Office test and CTIC teaching review pending." >> "$GITHUB_STEP_SUMMARY"
