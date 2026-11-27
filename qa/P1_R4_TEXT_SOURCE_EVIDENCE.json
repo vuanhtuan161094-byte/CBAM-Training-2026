@@ -1,0 +1,51 @@
+{
+  "evidence_version": 1,
+  "scope": "Two P1-R4 passages checked against rendered pages of the hash-verified local EUR-Lex Official Journal PDFs.",
+  "render": {
+    "tool": "Poppler pdftoppm",
+    "mode": "monochrome PNG",
+    "resolution_dpi": 110,
+    "render_date": "2026-11-18"
+  },
+  "overall_status": "PENDING_INDEPENDENT_LEGAL_AND_BILINGUAL_REVIEW",
+  "entries": [
+    {
+      "clause_id": "P1R4-2547-ANNEXII-A5",
+      "source_id": "ACT-2025-2547",
+      "provision": "Annex II, point A.5, item 22(b)",
+      "source_version": "OJ L, 2025/2547, 22 December 2025; English OJ PDF",
+      "official_pdf_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202502547",
+      "official_eli_url": "https://eur-lex.europa.eu/eli/reg_impl/2025/2547/oj/eng",
+      "local_pdf_path": "sources/official/originals/ACT-2025-2547.pdf",
+      "local_pdf_sha256": "6ca80e3ed665e47aaef801e59e0791c50287ca46db20aad046e861134608ccf7",
+      "source_page": "33/86",
+      "evidence_image_path": "qa/evidence/ACT-2025-2547-ANNEX-II-A5-OJ-p33-mono.png",
+      "evidence_image_sha256": "54ad39bc84489ef6565664e51b0c2f2c40aa2fdef0f15210197d5d1b52f4627a",
+      "visually_verified_english": "risk assessment where sources of risks of errors in the data flow from primary data to final data are identified;",
+      "local_text_layer_status": "UNMATCHED_SEGMENT",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "human_review_status": "PENDING_INDEPENDENT_LEGAL_AND_BILINGUAL_REVIEW"
+    },
+    {
+      "clause_id": "P1R4-2621-ART1-2",
+      "source_id": "ACT-2025-2621",
+      "provision": "Article 1(2), including footnote marker (2)",
+      "source_version": "OJ L, 2025/2621, 31 December 2025; English OJ PDF",
+      "official_pdf_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202502621",
+      "official_eli_url": "https://eur-lex.europa.eu/eli/reg_impl/2025/2621/oj/eng",
+      "local_pdf_path": "sources/official/originals/ACT-2025-2621.pdf",
+      "local_pdf_sha256": "a6f2a1e67af89aae886862c570f866ac7fd2533d600b766b772a1321f575e66f",
+      "source_page": "2/2400",
+      "evidence_image_path": "qa/evidence/ACT-2025-2621-ARTICLE-1-OJ-p2-mono.png",
+      "evidence_image_sha256": "1d24c7b2731297a59289445dcb83fcb3638fbddfde18781ddbc41e78158a3eac",
+      "visually_verified_english": "Where the embedded emissions of complex goods are determined on the basis of actual values, and the embedded emissions of precursors used in the production of those complex goods are determined on the basis of default values in accordance with Article 15 of Commission Implementing Regulation (EU) 2025/2547 (2), the default values laid down in Annex I shall be used for those precursors.",
+      "local_text_layer_status": "UNMATCHED_FOOTNOTE_SEGMENT; CODEX_VISUAL_SOURCE_BACKUP",
+      "rendered_visual_status": "PASS_CODEX_VISUAL_SOURCE_MATCH",
+      "human_review_status": "PENDING_INDEPENDENT_LEGAL_AND_BILINGUAL_REVIEW"
+    }
+  ],
+  "limitations": [
+    "Rendered images are the checked pages from the saved local PDFs whose SHA-256 values are pinned above; these are Codex visual comparisons, not independent human review.",
+    "Text extraction or visual matching does not establish translation accuracy, legal interpretation, applicability, or legal approval."
+  ]
+}

@@ -1,0 +1,55 @@
+source_id,annex_point,field_id,vi_requirement_draft,subclause_tracking,conditional_flag,oj_pages_of_86,review_status
+ACT-2025-2547,Annex IV 1.1,1,"Nhận diện người vận hành và cơ sở: tên, đăng ký, địa chỉ, ID Registry, UN/LOCODE, tọa độ",NESTED_FIELDS_IN_ORIGINAL_OJ,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,2,"Tóm tắt Kế hoạch giám sát: quá trình/tuyến CBAM và ngoài CBAM; 5 hàng, 5 nhiên liệu, 5 vật liệu phát thải lớn nhất; CEMS; zero-rated fuels; nhiệt",NESTED_FIELDS_IN_ORIGINAL_OJ,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,3,"Nguồn và lượng điện tiêu thụ phục vụ tính indirect, gồm nhận diện nhà cung cấp bên ngoài",NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,4,"Điện tự sản xuất: CHP, điện riêng, nguồn hóa thạch/tái tạo, điện xuất khỏi process boundary",NESTED_FIELDS_IN_ORIGINAL_OJ,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,5,"Khí thải công nghiệp: tạo, dùng, nhập, xuất và nhận diện cơ sở liên quan",NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,6,"Chuyển giao CO2: bên nhận, hạ tầng vận chuyển, người phụ trách",NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,7,Tổng phát thải trực tiếp của cơ sở trong kỳ,NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,8,Với cơ sở mới: số tháng giám sát phát thải,NONE,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,9,Điện tiêu thụ toàn cơ sở nếu sản xuất hàng thuộc Annex I nhưng không thuộc Annex II của 2023/956,NONE,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,10,Điện tiêu thụ cho các hàng Annex I nhưng không thuộc Annex II của 2023/956,NONE,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,11,Cơ sở cung cấp điện liên quan cho hàng cần tính indirect,NONE,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,12,"Nhiều nguồn điện: lượng theo nguồn, quốc gia xuất xứ, EF từng nguồn và EF tính indirect theo Art 9",NONE,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,13,Sản lượng hàng toàn cơ sở và từng quá trình,NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,14,Hàng ngoài phạm vi CBAM và sản lượng theo từng quá trình,NONE,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,15,"Theo từng hàng hóa: SEE trực tiếp và theo thành phần, phương pháp/chất lượng dữ liệu, tỷ trọng default, indirect có điều kiện, điện nhập và bằng chứng",NESTED_FIELDS_IN_ORIGINAL_OJ,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,16,"Tổng phát thải cơ sở: AD, factors, CEMS, phương pháp khác, CO2 nhận/chuyển, data gaps và estimates",NESTED_FIELDS_IN_ORIGINAL_OJ,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,17,"Cân bằng nhiệt đo được, khí thải công nghiệp và điện: nhập, tạo, tiêu thụ, xuất theo process",NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,18,Khối lượng từng loại tiền chất sản xuất nội bộ và sử dụng trong cơ sở (loại trừ cùng process Art4(9)),NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,19,Khối lượng tiền chất nội bộ sử dụng trong từng quá trình (loại trừ cùng process Art4(9)),NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,20,Khối lượng tiền chất sản xuất ngoài cơ sở và được cơ sở sử dụng,NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,21,Khối lượng tiền chất sản xuất ngoài cơ sở sử dụng trong từng quá trình,NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,22,"Dữ liệu tiền chất dùng default: CN, tên, xuất xứ nếu biết, giá trị default; loại trừ cùng process Art4(9)",NESTED_FIELDS_IN_ORIGINAL_OJ,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,23,"Dữ liệu tiền chất dùng actual: CN, tên, xuất xứ, kỳ báo cáo/default period hoặc thời gian sản xuất thực tế, SEE; loại trừ cùng process Art4(9)",NESTED_FIELDS_IN_ORIGINAL_OJ,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,24,Cùng CN nhưng tiền chất nhận từ cơ sở khác sản xuất trong nhiều kỳ: SEE theo Art14(1),NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,25,Tiền chất cùng CN từ nhiều cơ sở: SEE và lựa chọn phương pháp Art14(2) hay 14(3),NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,26,Lượng điện sử dụng trong từng quá trình nếu áp dụng,NONE,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,27,"Lượng tiền chất sản xuất tại cơ sở được dùng trong từng quá trình, loại trừ cùng process theo Art4",NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,28,"Nhận diện người vận hành/cơ sở xuất xứ tiền chất, Registry ID nếu có và kỳ báo cáo",NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,29,Phương pháp tính phát thải trực tiếp/gián tiếp quy thuộc cho từng quá trình,NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,30,Mức hoạt động và phát thải quy thuộc theo từng quá trình,NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,31,Danh sách hàng hóa theo mã CN và đơn vị chức năng; gồm tiền chất không có process riêng theo Art4,NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,32,"Hệ số phát thải điện khi dùng actual, nếu áp dụng",NONE,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,33,"Hệ số phát thải điện trong PPA, nếu áp dụng",NONE,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,34,"Khối lượng hàng theo tuyến sản xuất, theo CN và đơn vị chức năng; xử lý khi functional unit khác tấn CN",NESTED_FIELDS_IN_ORIGINAL_OJ,CONDITIONAL_AS_IN_OJ,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1,35,Giá trị thông số theo ngành bắt buộc ở Annex IV điểm 2,NONE,CHECK_AS_APPLICABLE,78-81,DRAFT
+ACT-2025-2547,Annex IV 1.1.1,1,EORI của người khai báo CBAM được cấp phép,DECLARANT_SPECIFIC,ELECTRICITY_ACTUAL_ONLY,81-82,DRAFT
+ACT-2025-2547,Annex IV 1.1.1,2,Xác nhận các tiêu chí dùng giá trị thực tế cho điện và việc cung cấp bằng chứng D.2.4 cho thẩm tra viên,DECLARANT_SPECIFIC,ELECTRICITY_ACTUAL_ONLY,81-82,DRAFT
+ACT-2025-2547,Annex IV 1.1.1,3,"Lượng điện do người khai báo tương ứng nhập từ cơ sở, đáp ứng tiêu chí Annex IV point5 2023/956",DECLARANT_SPECIFIC,ELECTRICITY_ACTUAL_ONLY,81-82,DRAFT
+ACT-2025-2547,Annex IV 1.2,1,"Nhận diện người vận hành: tên, số đăng ký, địa chỉ tiếng Anh",NESTED_FIELDS_IN_ORIGINAL_OJ,CHECK_AS_APPLICABLE,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,2,"Nhận diện cơ sở: tên, ID Registry, UN/LOCODE, địa chỉ và tọa độ nguồn phát thải chính",NESTED_FIELDS_IN_ORIGINAL_OJ,CHECK_AS_APPLICABLE,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,3,"Danh sách quá trình và tuyến CBAM, hàng hóa theo từng quá trình",NONE,CHECK_AS_APPLICABLE,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,4,"Theo hàng: direct SEE, tỷ lệ default, indirect khi áp dụng, bằng chứng điện, SEFA và benchmark",NESTED_FIELDS_IN_ORIGINAL_OJ,CONDITIONAL_AS_IN_OJ,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,5,Tổng phát thải trực tiếp tại cơ sở và cho từng quá trình,NONE,CHECK_AS_APPLICABLE,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,6,Phát thải gián tiếp của cơ sở nếu hàng nằm ngoài Annex II của 2023/956,NONE,CONDITIONAL_AS_IN_OJ,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,7,Thông tin nhập và xuất nhiệt đo được,NONE,CHECK_AS_APPLICABLE,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,8,Đã dùng nhiên liệu zero-rated chưa và cách chứng minh,NONE,CHECK_AS_APPLICABLE,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,9,"Dòng khí thải công nghiệp tạo, dùng, nhập và xuất",NONE,CHECK_AS_APPLICABLE,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,10,Thu giữ CO2 và cơ sở/hạ tầng tiếp nhận,NONE,CHECK_AS_APPLICABLE,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,11,"Điện tạo nội bộ: CHP, riêng, hóa thạch/tái tạo, điện xuất khỏi ranh giới",NESTED_FIELDS_IN_ORIGINAL_OJ,CHECK_AS_APPLICABLE,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,12,"Tiền chất dùng default: mã CN, hàng, xuất xứ nếu biết, default value",NESTED_FIELDS_IN_ORIGINAL_OJ,CONDITIONAL_AS_IN_OJ,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,13,"Tiền chất dùng actual: mã CN, hàng, xuất xứ, kỳ báo cáo, direct/indirect SEE",NESTED_FIELDS_IN_ORIGINAL_OJ,CONDITIONAL_AS_IN_OJ,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,14,Tiền chất cùng CN sản xuất trong nhiều kỳ: SEE được dùng theo Art14(1),NONE,CONDITIONAL_AS_IN_OJ,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,15,Tiền chất cùng CN từ nhiều cơ sở: phương pháp Art14 và SEE được dùng,NONE,CONDITIONAL_AS_IN_OJ,82-83,DRAFT
+ACT-2025-2547,Annex IV 1.2,16,"Nhận diện bên vận hành/cơ sở xuất xứ tiền chất, Registry ID, kỳ báo cáo",NONE,CONDITIONAL_AS_IN_OJ,82-83,DRAFT

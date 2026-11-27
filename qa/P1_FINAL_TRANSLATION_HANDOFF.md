@@ -1,0 +1,98 @@
+# CTIC VIETNAM — P1 FINISH · Technical translation handoff · 22–23 November 2026
+
+## A1 — Annex II–IV của 2025/2547 (23/11/2026)
+
+**Đã commit trực tiếp vào Draft PR #9, chưa merge.** A1 có **4 tài liệu VI dự thảo và 3 CSV**: Annex II E/F tiền chất và AL; B.7.2/7.3 PFC Eq24–26 và B.9.2.3 CKD Eq28; bảng G 1–6 **75 hàng**; Annex III A.1/A.2.3/A.3 Eq41–42/53–58 và B Eq64 clinker; Annex IV báo cáo đầy đủ **35 mục**, addendum điện **3 mục**, báo cáo tóm tắt **16 mục** và **19 nhóm hàng/52 trường thông số**. Không dịch lại công thức Annex III B Eq59–63 và phần R2–R4 đã lưu.
+
+Báo cáo chi tiết có nguồn, trang, SHA-256 và từng giới hạn: [CBAM_A1_20261123_QA_HANDOFF.md](CBAM_A1_20261123_QA_HANDOFF.md). Master index, coverage và 56-source gap register đã đồng bộ source `ACT-2025-2547` ở mức **PARTIAL**. Bổ sung conflict log **CL-21, CL-22, CL-23**: văn bản EN E(2)(c) không trọn mệnh đề; hàng FeNi thiếu tên nguyên tố; biểu diễn phần trăm `CE`/`d` có nguy cơ sai công thức. Không tự giải thích thay EU.
+
+Workflow `p1-r2-qa.yml` đã thêm `scripts/check_cbam_a1_20261123.py` kiểm kết nối SHA, 75 yếu tố, 52 trường ngành, 54 mục OER, 13 nhãn phương trình và số mẫu, nhưng **không phải** nghiệm thu pháp lý, nguồn từng ô hoặc full English–Vietnamese review. **P1 vẫn NOT PASSED**; mọi chữ ký CTIC chưa có.
+
+---
+
+## Handoff bổ sung — 23/11/2026 (phương án A, lô tiếp theo)
+
+**Thực hiện trên cùng Draft PR #9; không merge.** Lô này bổ sung **6 tài liệu dịch theo điều khoản** thuộc 4 văn bản đã có từ R2–R4. Tất cả giữ nhãn BẢN DỊCH THAM KHẢO — CHỜ HIỆU ĐÍNH — KHÔNG PHẢI VĂN BẢN CHÍNH THỨC CỦA EU. Chi tiết và nguồn OJ/P0 SHA xem [P1_BATCH_20261123_QA_REPORT.md](P1_BATCH_20261123_QA_REPORT.md).
+
+| Nhóm | Tài liệu mới thực sự đã commit | Phạm vi đã bổ sung |
+|---|---|---|
+| 2025/2546 | [Điều 1–5,7](../translations/vi/REG_2025_2546_articles_1_5_7_completion.md), [Annex 2.4–2.6](../translations/vi/REG_2025_2546_annex_2_4_to_4_completion.md) | Dự thảo nguyên các Điều còn thiếu và trường nội dung báo cáo thẩm tra; giữ R2 Điều 6 và R4 Annex 1.1–2.3 |
+| 2025/2547 | [Annex III B Eq 59–63](../translations/vi/REG_2025_2547_annexIII_B_complex_SEE_eq59_63_vi.md) | SEE hàng phức hợp và tiền chất nhiều cấp; chưa hoàn tất toàn bộ Annex II–IV |
+| 2025/2551 | [Điều 2–9](../translations/vi/REG_2025_2551_articles_2_9_accreditation_vi.md), [Điều 10–16](../translations/vi/REG_2025_2551_articles_10_16_oversight_vi.md) | Thủ tục công nhận và giám sát; còn Điều 17–26 và Annex II |
+| 2025/2620 | [Annex 3.2–5.2, Eq 3–6](../translations/vi/REG_2025_2620_annex_3_2_to_5_2_sefa_vi.md) | Quy tắc SEFA/precursor; benchmark table point 5.3 chưa được dịch, không đoán số |
+
+Sổ `coverage.csv`, `P1_R3_SECTION_COVERAGE.csv` và `FINAL_SCOPE_AND_GAP_REGISTER.csv` đã cập nhật bốn source_id; kiểm kê **56 nguồn** không đổi, vẫn **10 PARTIAL / 22 NOT_STARTED** và các nhóm ngoại lệ còn lại. Mở `legal/CONFLICT_LOG.md` xem **CL-19** (dẫn chiếu Annex 3.3 so với 5.1 trong OJ 2025/2620) và **CL-20** (ngưỡng 5% không phải ngưỡng miễn sai lệch/thay khảo sát trực tiếp tự động).
+
+**QA lô mới:** `scripts/check_p1_20261123_batch.py` đã tích hợp workflow. Các thất bại CI ở commit trung gian gồm assertion sai vì Markdown hợp lệ có indent và 4 dòng trailing spaces; đã sửa bằng commit tiếp theo. Phải xem **run exact HEAD cuối cùng** trước khi kết luận CI PASS. QA này chỉ xác nhận cấu trúc/file/hash/định danh công thức — **không phải đối chiếu toàn văn EN–VI độc lập, phê duyệt pháp lý, phép sử dụng bản quyền hay kiểm thử Word/PDF**. Điều kiện hiệu đính vẫn là PENDING.
+
+---
+
+
+
+**Repository:** `vuanhtuan161094-byte/CBAM-Training-2026` (PUBLIC). **Branch/PR:** `codex/issue-3-p1-legal-matrix-translations`, Draft PR #9, based on Draft PR #8. **Issue:** #3, P1 FINISH.
+
+> **BẢN DỊCH THAM KHẢO — CHỜ HIỆU ĐÍNH — KHÔNG PHẢI VĂN BẢN CHÍNH THỨC CỦA EU**
+>
+> **Disposition: P1 NOT PASSED — LEGAL/BILINGUAL HUMAN REVIEW PENDING.** P1 FINISH task is **partially implemented**. Do not call it full legal corpus, a final Word/PDF delivery, CTIC approval or release-ready.
+
+## Actual new deliverables in this PR iteration
+
+| Type | File | Measured scope |
+|---|---|---|
+| Translation, operative articles | [2025/2548 certificate price Articles 1–9](../translations/vi/REG_2025_2548_certificate_price_operative_articles_vi.md) | 9 operative articles, 25 numbered clauses + 3 unnumbered paragraphs in Article 9; 14 recitals, preamble and footnotes excluded; **English is linked to immutable EU OJ/P0 original by article anchor, not verbatim copied into a new bilingual corpus** |
+| Translation, independent certifier | [2026/2498 Chapter IV Articles 10–15 completion](../translations/vi/REG_2026_2498_chapterIV_articles10_15_completion.md) | Existing Art 11(1) and 15(1)–(2) **not retranslated**, remaining specified clauses translated; no Annex I–V full coverage |
+| Global scope | [Final 56-source register](../translations/FINAL_SCOPE_AND_GAP_REGISTER.csv) | Every source_id, source hash, source/legal category, explicit coverage/gaps/rights and human approval pending |
+| Navigation | [Master translation index](../translations/VI_TRANSLATION_MASTER_INDEX.md) | All existing R2–R4 sources plus FINISH additions, sector/rights scope |
+| Coverage reconciliation | [coverage.csv](../translations/coverage.csv), [section coverage](../translations/P1_R3_SECTION_COVERAGE.csv) | Original 2025/2548 changed from NOT_STARTED to PARTIAL; 2026/2498 Chapter IV updated; original 33 R2–R4 clause pairs unchanged |
+| Cross-product audit | [Cross-PR errata](P1_CROSS_PR_ERRATA.md) | 2 confirmed Annex III B.3.2 citation errors in PR10/PR11 *QA/source maps*, and 5 more review checks |
+| Review | [Human review assignment pack](P1_HUMAN_REVIEW_ASSIGNMENT_PACK.md) | 9 qualified reviewer lanes, all name/date/signature fields blank |
+| Automated scope QA | [check_p1_finish_scope.py](../scripts/check_p1_finish_scope.py), [workflow](../.github/workflows/p1-r2-qa.yml) | Structural 56-row/gap synchronization, article count and watermark; does **NOT** independently check original English source text or approve translation |
+
+## P1 actual status inventory — after updates
+
+| Scope status | Number of sources | Meaning |
+|---|---:|---|
+| PARTIAL | 10 | Only declared selected clauses, or 9 operative Articles of one act, have Vietnamese draft |
+| NOT_STARTED | 22 | Source retrieved but translation task not performed |
+| UNAVAILABLE | 5 | HTTP 429 / retrieval blocked, no invented translation |
+| NOT_PUBLICLY_VERIFIED | 4 | Current Registry form templates not confirmed as public downloadable |
+| RIGHTS_HOLD | 2 | IEA / redistribution restrictions unresolved |
+| PROPOSAL_ONLY | 4 | Proposal or non-operative, not cited as current law |
+| TRANSITIONAL_ONLY | 4 | Historical transitional-only material |
+| SOURCE_OR_CLAIM_ONLY | 5 | Original/summary/index/claims; not whole legal translation |
+| **TOTAL** | **56** | **No act certified FULL legal translation** |
+
+The source-aligned P1-R2/R3/R4 baseline contains **33 selected EN–VI pairs**, of which the previous workflow verified **28/28** selected source excerpts at the last reported exact-SHA `03eb0cd...` (Actions `44146656076`). **That earlier CI evidence must not be presented as PASS for the new FINISH commits**. Run the revised GitHub Actions workflow at the current PR HEAD and record exact tested SHA, conclusion, and job logs separately.
+
+## Cross-PR legal impact — fix before external release
+
+- **P1-XPR-001 (HIGH):** PR #10 `qa/CLIENT_MVP_CLAIM_SOURCES.csv`, `CL-004`, erroneously attributes steel carbon-balance Eqs 12–15 to `2025/2547 Annex II B.3.2`. P1 R3 source-evidence uses **Annex III B.3.2**. PPTX/XLSX propagation **not yet examined**.
+- **P1-XPR-002 (HIGH):** PR #11 `outputs/issue-4-mrv-verification/MRV_QA.md` repeats the erroneous `Annex II B.3.2` reference. Workbook/Word content **not yet examined**.
+- Remaining items P1-XPR-003–007 are **review candidates**, not proven defects: hypothetical price 2026 vs 2027 pricing, CBAM vs EU ETS benchmark, independence/role of carbon-price certifier, Registry-only forms, scrap/precursor formulas.
+- Both confirmed errors are **documented, not changed** in PR10/11 because P1 FINISH scope prohibits edits to these branches.
+
+## What is not finished
+
+1. **Full relevant translations:** remaining 2023/956 consolidated, Annexes II–IV 2025/2547 for steel/aluminium/cement, verification/accreditation 2025/2546/2551, CBAM free allocation 2025/2620, amended/corrected defaults 2025/2621/2026/1740, 2026/2498 Annex I–V, operational regulations and guidance/Registry manuals. A Word file per law group and PDF previews were **not delivered in this iteration**.
+2. **Exact bilingual proof:** New FINISH files have Vietnamese full operative paragraphs and **English OJ clause anchors**, but not complete verbatim English paired text. Independent source-to-source QA, formula/table cell-by-cell comparison, human bilingual validation and Word/PDF rendering remain open.
+3. **Source availability/rights:** 5 failed downloads, 4 Registry templates requiring authorized read-only check, 2 IEA rights holds. Do not copy restricted workbook values.
+4. **2027 benchmark:** an ETS benchmark revision is not proof of a binding CBAM benchmark update; retain `NEEDS_LEGAL_REVIEW` until current OJ confirmation.
+5. **Release control:** no legal, bilingual, MRV or copyright reviewer signatures. P2/P3/P4 have internal Draft outputs, but P5 legal acceptance remains blocked.
+
+## Release/acceptance gates and test declarations
+
+| Gate | This iteration |
+|---|---|
+| Source register / source hash identity | Existing P0 retained; source coverage refers to original P0 SHA |
+| 56-source scope inventory and article headers | Automated integrity script prepared; report actual CI run separately |
+| Independent exact EN wording comparison for NEW translations | **NOT RUN / PENDING** |
+| Equation/table and CN/country/route cross-check for full relevant annexes | **INCOMPLETE** |
+| Native Word/Excel rendering, PDF preview per law group | **NOT RUN** |
+| Human legal/bilingual/sector review | **PENDING — NO SIGNOFF** |
+| Merge, PR ready for review, product release | **NOT PERFORMED** |
+
+## Continue production without repeating completed work
+
+Keep R2–R4 translations, formula mutant tests and source PDF hashes. Next largest-value batch is Annex II–IV 2025/2547 (steel/aluminium/cement) + Annex evidence from 2025/2546 and 2025/2551, then corrected country–CN–route tables from 2026/1740 and full operational guidance 2026. Group sections into coherent large deliveries; don't produce micro-checkpoints with 1–4 extra clauses. Fix two confirmed cross-PR citation bugs on the *target branches* as a separate authorized patch after inspecting the binary products.
+
+**All PRs must remain Draft; no merging or external sharing of draft training materials.**
